@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
 /* Layout: vault-and-paper ledger. Full-bleed bands alternate a blue-black vault ground with pale cool paper; left-aligned geometric sans headlines on a wide measure; one engraved guilloche rosette is the signature, echoed in the card's security print. */
 /* Söhne (Klim Type Foundry) is a licensed typeface. Once Coincashy holds a web licence, drop the files into
    fonts/ and uncomment these four rules; the stack below picks Söhne up automatically and falls back to Inter.
@@ -903,4 +902,3 @@ textarea.input{height:auto;min-height:110px;padding:14px 16px;resize:vertical;li
   .marquee-group{flex:1 1 100%;flex-wrap:wrap;row-gap:10px}
   .marquee{-webkit-mask-image:none;mask-image:none}
 }
-
