@@ -158,21 +158,21 @@ export default function Home() {
         <header className="section-head">
           <h2 className="title">Our Mission &amp; Values</h2>
         </header>
-        <div className="b-grid b-grid-3">
-          <div className="card b-card">
+        <div className="about-grid-3">
+          <div className="about-card">
             <div className="bc-ic"><svg className="ic" aria-hidden="true"><use href="#i-lock" /></svg></div>
-            <h3 className="bc-title">Uncompromising Security</h3>
-            <p className="bc-desc">Compliance isn't an afterthought—it's our foundation. We employ bank-grade security and strict regulatory standards to keep your assets safe.</p>
+            <h3 className="about-title">Uncompromising Security</h3>
+            <p className="about-desc">Compliance isn't an afterthought—it's our foundation. We employ bank-grade security and strict regulatory standards to keep your assets safe.</p>
           </div>
-          <div className="card b-card">
+          <div className="about-card">
             <div className="bc-ic"><svg className="ic" aria-hidden="true"><use href="#i-globe" /></svg></div>
-            <h3 className="bc-title">Borderless Accessibility</h3>
-            <p className="bc-desc">Money shouldn't have borders. We provide seamless fiat on/off ramps to make crypto accessible to everyone, everywhere.</p>
+            <h3 className="about-title">Borderless Accessibility</h3>
+            <p className="about-desc">Money shouldn't have borders. We provide seamless fiat on/off ramps to make crypto accessible to everyone, everywhere.</p>
           </div>
-          <div className="card b-card">
+          <div className="about-card">
             <div className="bc-ic"><svg className="ic" aria-hidden="true"><use href="#i-layers" /></svg></div>
-            <h3 className="bc-title">Enterprise Scalability</h3>
-            <p className="bc-desc">From a personal crypto card to corporate treasury and OTC desks, our infrastructure is built to handle volume at any scale.</p>
+            <h3 className="about-title">Enterprise Scalability</h3>
+            <p className="about-desc">From a personal crypto card to corporate treasury and OTC desks, our infrastructure is built to handle volume at any scale.</p>
           </div>
         </div>
       </div>
@@ -210,41 +210,41 @@ export default function Home() {
           <h2 className="title">The Team Behind the Tech</h2>
           <p className="subtitle">Built by veterans from global finance, tech, and security.</p>
         </header>
-        <div className="b-grid b-grid-3">
-          <div className="card b-card" style={{ padding: '0', overflow: 'hidden' }}>
+        <div className="about-grid-3">
+          <div className="about-card" style={{ padding: '0', overflow: 'hidden' }}>
             <div style={{ height: '240px', background: 'var(--line)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <svg className="ic" style={{ width: '48px', height: '48px', opacity: 0.2 }} aria-hidden="true"><use href="#i-users" /></svg>
             </div>
             <div style={{ padding: '2rem' }}>
-              <h3 className="bc-title" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <h3 className="about-title" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 John Doe
                 <a href="#" style={{ color: 'var(--hi)' }}><svg className="ic" aria-hidden="true"><use href="#i-external-link" /></svg></a>
               </h3>
-              <p className="bc-desc" style={{ marginTop: '0.25rem', color: 'var(--hi)' }}>Chief Executive Officer</p>
+              <p className="about-desc" style={{ marginTop: '0.25rem', color: 'var(--hi)' }}>Chief Executive Officer</p>
             </div>
           </div>
-          <div className="card b-card" style={{ padding: '0', overflow: 'hidden' }}>
+          <div className="about-card" style={{ padding: '0', overflow: 'hidden' }}>
             <div style={{ height: '240px', background: 'var(--line)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <svg className="ic" style={{ width: '48px', height: '48px', opacity: 0.2 }} aria-hidden="true"><use href="#i-users" /></svg>
             </div>
             <div style={{ padding: '2rem' }}>
-              <h3 className="bc-title" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <h3 className="about-title" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 Jane Smith
                 <a href="#" style={{ color: 'var(--hi)' }}><svg className="ic" aria-hidden="true"><use href="#i-external-link" /></svg></a>
               </h3>
-              <p className="bc-desc" style={{ marginTop: '0.25rem', color: 'var(--hi)' }}>Chief Technology Officer</p>
+              <p className="about-desc" style={{ marginTop: '0.25rem', color: 'var(--hi)' }}>Chief Technology Officer</p>
             </div>
           </div>
-          <div className="card b-card" style={{ padding: '0', overflow: 'hidden' }}>
+          <div className="about-card" style={{ padding: '0', overflow: 'hidden' }}>
             <div style={{ height: '240px', background: 'var(--line)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <svg className="ic" style={{ width: '48px', height: '48px', opacity: 0.2 }} aria-hidden="true"><use href="#i-users" /></svg>
             </div>
             <div style={{ padding: '2rem' }}>
-              <h3 className="bc-title" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <h3 className="about-title" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 Alex Johnson
                 <a href="#" style={{ color: 'var(--hi)' }}><svg className="ic" aria-hidden="true"><use href="#i-external-link" /></svg></a>
               </h3>
-              <p className="bc-desc" style={{ marginTop: '0.25rem', color: 'var(--hi)' }}>Chief Operating Officer</p>
+              <p className="about-desc" style={{ marginTop: '0.25rem', color: 'var(--hi)' }}>Chief Operating Officer</p>
             </div>
           </div>
         </div>
