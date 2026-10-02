@@ -1162,4 +1162,11 @@
   if (document.fonts && document.fonts.ready) {
     document.fonts.ready.then(() => { if (first && !first.matches('main.page')) jump(first, false); flow.refresh(); });
   }
+  /* ---------- ticker ---------- */
+  $$('[data-close-ticker]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const ticker = document.getElementById('top-ticker');
+      if (ticker) ticker.style.display = 'none';
+    });
+  });
 })();
