@@ -253,7 +253,7 @@ export default function Home() {
 
     <section className="sec" id="cta-bottom" style={{ marginBottom: '4rem' }}>
       <div className="wrap">
-        <div className="card" style={{ textAlign: 'center', padding: '4rem 2rem', background: 'var(--glass)', border: '1px solid var(--line)', borderRadius: '24px' }}>
+        <div style={{ textAlign: 'center', padding: '4rem 2rem', background: 'var(--glass)', border: '1px solid var(--line)', borderRadius: '24px' }}>
           <h2 className="title" style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>We're building the financial rails of tomorrow.</h2>
           <p className="subtitle" style={{ marginBottom: '2rem' }}>Want to help us shape the future of money, or partner with us?</p>
           <div className="cta-row" style={{ justifyContent: 'center' }}>
