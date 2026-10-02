@@ -1167,7 +1167,7 @@
     const btn = e.target.closest('[data-close-ticker]');
     if (btn) {
       const ticker = btn.closest('.top-ticker');
-      if (ticker) ticker.style.display = 'none';
+      if (ticker) ticker.remove();
     }
   });
 })();
