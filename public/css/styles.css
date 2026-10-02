@@ -40,11 +40,11 @@
   --f-body:"Söhne","Inter","Helvetica Neue",Helvetica,Arial,system-ui,sans-serif;
   --f-label:var(--f-body);
   --f-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
-  --t-hero:clamp(2.6rem,5.6vw,5.2rem);
-  --t-h2:clamp(2rem,3.9vw,3.5rem);
-  --t-h3:clamp(1.3rem,1.9vw,1.75rem);
-  --t-lede:clamp(1.06rem,1.3vw,1.22rem);
-  --t-body:1rem;--t-small:.9rem;--t-fine:.8rem;--t-label:.7rem;
+  --t-hero:clamp(2rem,5.6vw,5.2rem);
+  --t-h2:clamp(1.5rem,3.9vw,3.5rem);
+  --t-h3:clamp(1.2rem,1.9vw,1.75rem);
+  --t-lede:clamp(1rem,1.3vw,1.22rem);
+  --t-body:.95rem;--t-small:.85rem;--t-fine:.75rem;--t-label:.7rem;
   /* shape and motion */
   --r-s:10px;--r-m:18px;--r-l:28px;--r-pill:999px;
   --gutter:clamp(16px,4vw,48px);
