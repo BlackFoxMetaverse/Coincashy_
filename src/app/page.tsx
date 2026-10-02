@@ -16,7 +16,7 @@ export default function Home() {
   <header className="nav" id="nav">
     <div className="nav-bar">
       <a className="brand" href="#home" aria-label="Coincashy home">
-        <img className="brand-logo logo-on-dark" src="media/logo-white.png" alt="Coincashy" width={1217} height={157} /><img className="brand-logo logo-on-paper" src="media/logo-black.png" alt="" width={1217} height={157} />
+        <img className="brand-logo logo-on-dark" src="media/logo-on-dark.png" alt="Coincashy" /><img className="brand-logo logo-on-paper" src="media/logo-on-paper.png" alt="" />
       </a>
       <nav className="nav-links" aria-label="Primary">
         <div className="nav-item has-menu">
@@ -51,13 +51,63 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <a className="nav-link" href="#developers">Developers</a>
-        <a className="nav-link" href="#compliance">Compliance</a>
+        <div className="nav-item has-menu">
+          <a className="nav-link" href="#solutions" data-nav="solutions">Solutions<svg className="ic" aria-hidden="true"><use href="#i-chevron-down" /></svg></a>
+          <div className="menu menu-wide">
+            <div className="menu-grid cols-2">
+              <div className="menu-col">
+                <h4>By Audience</h4>
+                <a className="menu-link" href="#personal">Individuals</a>
+                <a className="menu-link" href="#business">Fintechs &amp; Platforms</a>
+                <a className="menu-link" href="#business">Merchants &amp; PSPs</a>
+                <a className="menu-link" href="#otc">OTC Desks &amp; Brokers</a>
+              </div>
+              <div className="menu-col">
+                <h4>By Use Case</h4>
+                <a className="menu-link" href="#processing">Crypto Payment Processing</a>
+                <a className="menu-link" href="#ramp">On/Off Ramp Integration</a>
+                <a className="menu-link" href="#settlement">Treasury &amp; Settlement</a>
+                <a className="menu-link" href="#wallets">Wallet as a Service</a>
+              </div>
+            </div>
+            <div className="menu-feature">
+              <p>Tell us how your money needs to move.</p>
+              <small>Share your markets, currencies, volumes and settlement requirements.</small>
+              <a className="btn btn-solid btn-sm" href="#contact">Talk to our team</a>
+            </div>
+          </div>
+        </div>
+        <div className="nav-item has-menu">
+          <a className="nav-link" href="#company" data-nav="company">Company<svg className="ic" aria-hidden="true"><use href="#i-chevron-down" /></svg></a>
+          <div className="menu" style={{ width: '680px' }}>
+            <div className="menu-grid cols-3">
+              <div className="menu-col">
+                <h4>Discover Coincashy</h4>
+                <a className="menu-link" href="#home">About Us</a>
+                <a className="menu-link" href="#blog">Blog &amp; Insights</a>
+                <a className="menu-link" href="#compliance">Compliance &amp; Security</a>
+                <a className="menu-link" href="#media">Press &amp; Media</a>
+              </div>
+              <div className="menu-col">
+                <h4>Careers</h4>
+                <a className="menu-link" href="#careers">Open Roles</a>
+                <a className="menu-link" href="#culture">Life at Coincashy</a>
+                <a className="menu-link" href="#diversity">Diversity &amp; Inclusion</a>
+              </div>
+              <div className="menu-col">
+                <h4>Resources</h4>
+                <a className="menu-link" href="#help">Help Center</a>
+                <a className="menu-link" href="#developers">API Documentation</a>
+                <a className="menu-link" href="#legal">Legal &amp; Privacy</a>
+              </div>
+            </div>
+          </div>
+        </div>
       </nav>
       <div className="nav-actions">
-        <a className="nav-link nav-signin" href="https://coincashy.io" target="_blank" rel="noopener">Sign in</a>
+        <a className="nav-link nav-signin" href="https://trade.coincashy.io/auth/login" target="_blank" rel="noopener">Log in</a>
         <a className="btn btn-line btn-sm nav-contact" href="#contact">Talk to sales</a>
-        <a className="btn btn-solid btn-sm" id="nav-cta" href="#personal"><span className="l-long">Get started</span><span className="l-short">Get started</span></a>
+        <a className="btn btn-solid btn-sm" id="nav-cta" href="https://trade.coincashy.io/auth/signup" target="_blank" rel="noopener"><span className="l-long">Sign up</span><span className="l-short">Sign up</span></a>
         <button className="theme-btn" type="button" data-theme-toggle aria-label="Switch to light mode" title="Switch theme"><svg className="ic ic-sun" aria-hidden="true"><use href="#i-sun" /></svg><svg className="ic ic-moon" aria-hidden="true"><use href="#i-moon" /></svg></button>
         <button className="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mnav"><span /><span /></button>
       </div>
@@ -1038,7 +1088,7 @@ export default function Home() {
       <div className="f-top">
         <div className="f-brand">
           <a className="brand" href="#home" aria-label="Coincashy home">
-            <img className="brand-logo logo-on-dark" src="media/logo-white.png" alt="Coincashy" width={1217} height={157} /><img className="brand-logo logo-on-paper" src="media/logo-black.png" alt="" width={1217} height={157} />
+            <img className="brand-logo logo-on-dark" src="media/logo-on-dark.png" alt="Coincashy" /><img className="brand-logo logo-on-paper" src="media/logo-on-paper.png" alt="" />
           </a>
           <p className="f-desc">Crypto, stablecoins and fiat rails for people and businesses. Buy, sell and spend, or accept, convert and settle at scale.</p>
           <div className="f-social">
@@ -1052,7 +1102,7 @@ export default function Home() {
           <div className="f-col"><h4>Solutions</h4><a href="#personal">Individuals</a><a href="#models">Merchants &amp; PSPs</a><a href="#models">OTC desks &amp; brokers</a><a href="#models">Fintechs &amp; platforms</a><a href="#rails">Treasury &amp; accounts</a></div>
           <div className="f-col"><h4>Developers</h4><a href="#developers">API overview</a><a href="#developers">Payments API</a><a href="#developers">Wallet API</a><a href="#developers">Quotes API</a><a href="#developers">Webhooks</a></div>
           <div className="f-col"><h4>Resources</h4><a href="#how">How it works</a><a href="#pipeline">How value moves</a><a href="#trust">Technology ecosystem</a><a href="#faq-personal">Personal FAQ</a><a href="#faq-business">Business FAQ</a></div>
-          <div className="f-col"><h4>Company</h4><a href="#home">About Coincashy</a><a href="#compliance">Compliance</a><a href="#contact">Contact</a><a href="https://coincashy.io" target="_blank" rel="noopener">Coincashy.io</a></div>
+          <div className="f-col"><h4>Company</h4><a href="#home">About Coincashy</a><a href="#compliance">Compliance</a><a href="#contact">Contact</a><a href="https://trade.coincashy.io/auth/login" target="_blank" rel="noopener">Log in</a><a href="https://trade.coincashy.io/auth/signup" target="_blank" rel="noopener">Sign up</a></div>
         </div>
       </div>
       <div className="f-mid">
