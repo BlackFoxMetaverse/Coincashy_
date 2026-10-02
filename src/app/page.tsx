@@ -170,23 +170,31 @@ export default function Home() {
           <div className="marquee">
             <div className="marquee-content">
               <span style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--fg-faint)' }}>200+</span>
-              <span style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--fg-dim)', display: 'flex', alignItems: 'center', gap: 8 }}><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>WINTERMUTE</span>
-              <span style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--fg-dim)', display: 'flex', alignItems: 'center', gap: 6 }}><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l8 4.5v9L12 20l-8-4.5v-9L12 2z"/></svg>sumsub</span>
-              <span style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--fg-dim)', display: 'flex', alignItems: 'center', gap: 6 }}><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5L3.5 7.5v9L12 21.5l8.5-4.9v-9L12 2.5zM12 11L6 7.5l6-3.5 6 3.5L12 11z"/></svg>BCB GROUP</span>
-              <span style={{ fontSize: '1.4rem', fontWeight: 500, color: 'var(--fg-dim)' }}>mercuryo</span>
-              <span style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--fg-dim)', display: 'flex', alignItems: 'center', gap: 6 }}><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10zM12 6C8.686 6 6 8.686 6 12s2.686 6 6 6 6-2.686 6-6-2.686-6-6-6z"/></svg>Yellow Card</span>
-              <span style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--fg-dim)', lineHeight: 1, textAlign: 'center' }}>GLOBAL<br/>LEDGER</span>
-              <span style={{ fontSize: '1.4rem', fontWeight: 700, color: 'var(--fg-dim)' }}>payswix</span>
+              <img src="media/partners/wintermute.png" alt="Wintermute" className="partner-logo" style={{ height: 26, width: 'auto' }} />
+              <img src="media/partners/sumsub.png" alt="Sumsub" className="partner-logo" style={{ height: 26, width: 'auto' }} />
+              <img src="media/partners/bcb-group.png" alt="BCB Group" className="partner-logo" style={{ height: 26, width: 'auto' }} />
+              <img src="media/partners/mercuryo.png" alt="Mercuryo" className="partner-logo" style={{ height: 26, width: 'auto' }} />
+              <img src="media/partners/yellow-card.png" alt="Yellow Card" className="partner-logo" style={{ height: 26, width: 'auto' }} />
+              <img src="media/partners/global-ledger.png" alt="Global Ledger" className="partner-logo" style={{ height: 26, width: 'auto' }} />
+              <img src="media/partners/payswix.png" alt="Payswix" className="partner-logo" style={{ height: 26, width: 'auto' }} />
+              <img src="media/partners/bitgo.png" alt="BitGo" className="partner-logo" style={{ height: 26, width: 'auto' }} />
+              <img src="media/partners/bitliv.png" alt="Bitliv" className="partner-logo" style={{ height: 26, width: 'auto' }} />
+              <img src="media/partners/bybit.png" alt="Bybit" className="partner-logo" style={{ height: 26, width: 'auto' }} />
+              <img src="media/partners/utila.png" alt="Utila" className="partner-logo" style={{ height: 26, width: 'auto' }} />
             </div>
             <div className="marquee-content" aria-hidden="true">
               <span style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--fg-faint)' }}>200+</span>
-              <span style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--fg-dim)', display: 'flex', alignItems: 'center', gap: 8 }}><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>WINTERMUTE</span>
-              <span style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--fg-dim)', display: 'flex', alignItems: 'center', gap: 6 }}><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l8 4.5v9L12 20l-8-4.5v-9L12 2z"/></svg>sumsub</span>
-              <span style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--fg-dim)', display: 'flex', alignItems: 'center', gap: 6 }}><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5L3.5 7.5v9L12 21.5l8.5-4.9v-9L12 2.5zM12 11L6 7.5l6-3.5 6 3.5L12 11z"/></svg>BCB GROUP</span>
-              <span style={{ fontSize: '1.4rem', fontWeight: 500, color: 'var(--fg-dim)' }}>mercuryo</span>
-              <span style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--fg-dim)', display: 'flex', alignItems: 'center', gap: 6 }}><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10zM12 6C8.686 6 6 8.686 6 12s2.686 6 6 6 6-2.686 6-6-2.686-6-6-6z"/></svg>Yellow Card</span>
-              <span style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--fg-dim)', lineHeight: 1, textAlign: 'center' }}>GLOBAL<br/>LEDGER</span>
-              <span style={{ fontSize: '1.4rem', fontWeight: 700, color: 'var(--fg-dim)' }}>payswix</span>
+              <img src="media/partners/wintermute.png" alt="Wintermute" className="partner-logo" style={{ height: 26, width: 'auto' }} />
+              <img src="media/partners/sumsub.png" alt="Sumsub" className="partner-logo" style={{ height: 26, width: 'auto' }} />
+              <img src="media/partners/bcb-group.png" alt="BCB Group" className="partner-logo" style={{ height: 26, width: 'auto' }} />
+              <img src="media/partners/mercuryo.png" alt="Mercuryo" className="partner-logo" style={{ height: 26, width: 'auto' }} />
+              <img src="media/partners/yellow-card.png" alt="Yellow Card" className="partner-logo" style={{ height: 26, width: 'auto' }} />
+              <img src="media/partners/global-ledger.png" alt="Global Ledger" className="partner-logo" style={{ height: 26, width: 'auto' }} />
+              <img src="media/partners/payswix.png" alt="Payswix" className="partner-logo" style={{ height: 26, width: 'auto' }} />
+              <img src="media/partners/bitgo.png" alt="BitGo" className="partner-logo" style={{ height: 26, width: 'auto' }} />
+              <img src="media/partners/bitliv.png" alt="Bitliv" className="partner-logo" style={{ height: 26, width: 'auto' }} />
+              <img src="media/partners/bybit.png" alt="Bybit" className="partner-logo" style={{ height: 26, width: 'auto' }} />
+              <img src="media/partners/utila.png" alt="Utila" className="partner-logo" style={{ height: 26, width: 'auto' }} />
             </div>
           </div>
         </div>
