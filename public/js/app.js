@@ -1044,7 +1044,7 @@
   const burger = $('#burger');
   const mnav = $('#mnav');
   const pages = $$('main.page');
-  const CTA = { home: ['Get started', '#personal', 'Get started'], personal: ['Buy crypto', '#buy', 'Buy crypto'], business: ['Talk to our team', '#contact', 'Contact'] };
+  const CTA = { home: ['Get started', 'https://trade.coincashy.io/auth/signup', 'Get started'], personal: ['Buy crypto', '#buy', 'Buy crypto'], business: ['Talk to our team', '#contact', 'Contact'] };
   const HIGHLIGHT = new Set(['processing', 'otc', 'ramp', 'c2c', 'vibans', 'wallets', 'cards', 'settlement']);
   let currentPage = null;
 

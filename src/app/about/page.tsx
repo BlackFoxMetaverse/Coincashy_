@@ -86,8 +86,9 @@ export default function Home() {
               <p>Tell us how your money needs to move.</p>
               <small>Share your markets, currencies, volumes and settlement requirements.</small>
               <a className="btn btn-solid btn-sm" href="#contact">Talk to our team</a>
-            </div>
-          </div>
+              <p><strong>Disclaimer</strong><br/>Coincashy Sp. z o.o. only provides services to customers resident in the UK who fall within an exemption available under the UK financial promotion regime (Investment professionals, High net worth companies, unincorporated associations etc., Certified sophisticated investors, Communication to overseas recipients, etc).</p>
+      </div>
+    </div>
         </div>
         <div className="nav-item has-menu">
           <a className="nav-link" href="#company" data-nav="company">Company<svg className="ic" aria-hidden="true"><use href="#i-chevron-down" /></svg></a>
@@ -303,11 +304,12 @@ export default function Home() {
         <ul className="f-links"><li><a href="#">Terms of Service</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Cookie Policy</a></li><li><a href="#compliance">Complaints &amp; disclosures</a></li></ul>
       </div>
       <div className="f-legal">
-        <p>┬⌐ 2026 Coincashy. All rights reserved. Products and availability are subject to jurisdiction, onboarding and partner approval.</p>
+        <p>© 2026 Coincashy. All rights reserved. Products and availability are subject to jurisdiction, onboarding and partner approval.</p>
         <p>Crypto-assets are volatile and their value can go down as well as up. Card, account and vIBAN services are partner-enabled and subject to eligibility. Visa, Mastercard, Apple Pay, Google Pay, SEPA, Bitcoin, Ethereum and Tether are marks of their respective owners, shown as accepted methods.</p>
+        <p><strong>Disclaimer</strong><br/>Coincashy Sp. z o.o. only provides services to customers resident in the UK who fall within an exemption available under the UK financial promotion regime (Investment professionals, High net worth companies, unincorporated associations etc., Certified sophisticated investors, Communication to overseas recipients, etc).</p>
       </div>
-    </div>
-  </footer>
+          </div>
+    </footer>
   <dialog className="mail-dialog" id="mail-dialog" aria-labelledby="md-title">
     <div className="md-inner">
       <div className="md-top"><h2 id="md-title">Your message is ready</h2><button className="md-x" type="button" id="md-close" aria-label="Close"><svg className="ic" aria-hidden="true"><use href="#i-x" /></svg></button></div>

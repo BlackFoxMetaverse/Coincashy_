@@ -86,8 +86,9 @@ export default function Home() {
               <p>Tell us how your money needs to move.</p>
               <small>Share your markets, currencies, volumes and settlement requirements.</small>
               <a className="btn btn-solid btn-sm" href="#contact">Talk to our team</a>
-            </div>
-          </div>
+              <p><strong>Disclaimer</strong><br/>Coincashy Sp. z o.o. only provides services to customers resident in the UK who fall within an exemption available under the UK financial promotion regime (Investment professionals, High net worth companies, unincorporated associations etc., Certified sophisticated investors, Communication to overseas recipients, etc).</p>
+      </div>
+    </div>
         </div>
         <div className="nav-item has-menu">
           <a className="nav-link" href="#company" data-nav="company">Company<svg className="ic" aria-hidden="true"><use href="#i-chevron-down" /></svg></a>
@@ -149,7 +150,7 @@ export default function Home() {
   </div>
   {/* =========================================================== HOME */}
   <main className="page" id="home">
-    {/* Home ┬╖ Hero: simple statement with a quiet glow, proof row of accepted methods */}
+    {/* Home · Hero: simple statement with a quiet glow, proof row of accepted methods */}
     <section className="hero" id="top">
       <div className="hero-bg" aria-hidden="true">
         <span className="hero-orb" />
@@ -168,7 +169,8 @@ export default function Home() {
         <div className="hero-proof" aria-label="Trusted by clients and partners" style={{ display: 'flex', flexDirection: 'column', width: '100%', overflow: 'hidden' }}>
           <span className="hero-proof-label" style={{ marginBottom: 10 }}>TRUSTED BY CLIENTS AND PARTNERS</span>
           <div className="marquee">
-            <div className="marquee-content">
+            <div className="marquee-track" style={{ '--dur': '40s' } as React.CSSProperties}>
+              <div className="marquee-group">
               <span style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--fg-faint)' }}>200+</span>
               <img src="media/partners/wintermute.png" alt="Wintermute" className="partner-logo" style={{ height: 26, width: 'auto' }} />
               <img src="media/partners/sumsub.png" alt="Sumsub" className="partner-logo" style={{ height: 26, width: 'auto' }} />
@@ -181,8 +183,8 @@ export default function Home() {
               <img src="media/partners/bitliv.png" alt="Bitliv" className="partner-logo" style={{ height: 26, width: 'auto' }} />
               <img src="media/partners/bybit.png" alt="Bybit" className="partner-logo" style={{ height: 26, width: 'auto' }} />
               <img src="media/partners/utila.png" alt="Utila" className="partner-logo" style={{ height: 26, width: 'auto' }} />
-            </div>
-            <div className="marquee-content" aria-hidden="true">
+              </div>
+              <div className="marquee-group" aria-hidden="true">
               <span style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--fg-faint)' }}>200+</span>
               <img src="media/partners/wintermute.png" alt="Wintermute" className="partner-logo" style={{ height: 26, width: 'auto' }} />
               <img src="media/partners/sumsub.png" alt="Sumsub" className="partner-logo" style={{ height: 26, width: 'auto' }} />
@@ -195,12 +197,13 @@ export default function Home() {
               <img src="media/partners/bitliv.png" alt="Bitliv" className="partner-logo" style={{ height: 26, width: 'auto' }} />
               <img src="media/partners/bybit.png" alt="Bybit" className="partner-logo" style={{ height: 26, width: 'auto' }} />
               <img src="media/partners/utila.png" alt="Utila" className="partner-logo" style={{ height: 26, width: 'auto' }} />
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-    {/* Home ┬╖ The gateway: the Coincashy gateway wired into the client's ecosystem (canvas "gateway flow") */}
+    {/* Home · The gateway: the Coincashy gateway wired into the client's ecosystem (canvas "gateway flow") */}
     <section className="sec gw" id="gateway">
       <canvas className="flow-canvas" id="flow-canvas" aria-hidden="true" />
       <div className="wrap gw-inner">
@@ -215,7 +218,7 @@ export default function Home() {
           <div className="hub" id="hub">
             <svg className="hub-ring" viewBox="0 0 160 160" aria-hidden="true"><circle cx={80} cy={80} r={76} fill="none" stroke="currentColor" strokeWidth={1} opacity=".35" /><circle className="hub-orbit" cx={80} cy={80} r={70} fill="none" stroke="currentColor" strokeWidth="1.2" strokeDasharray="2 6" opacity=".6" /><circle className="hub-arc" cx={80} cy={80} r={76} fill="none" stroke="var(--jade)" strokeWidth="1.5" strokeDasharray="70 408" strokeLinecap="round" /></svg>
             <div className="hub-core"><img src="media/logo-mark-white.png" alt="" width={149} height={157} /></div>
-            <div className="hub-label"><span className="hub-word">Coincashy gateway</span><span className="hub-tick" id="hub-tick" aria-live="polite">Screen ┬╖ Convert ┬╖ Route ┬╖ Settle</span></div>
+            <div className="hub-label"><span className="hub-word">Coincashy gateway</span><span className="hub-tick" id="hub-tick" aria-live="polite">Screen · Convert · Route · Settle</span></div>
           </div>
           <nav className="fnodes" aria-label="How the gateway connects">
             <a className="fnode fn-l" href="#processing" style={{'--x': '6%', '--y': '13%'}} data-tick="Accept crypto at checkout, settle in EUR, GBP or USD"><span className="fn-ic"><svg className="ic" aria-hidden="true"><use href="#i-store" /></svg></span><span><b>Your checkout</b></span></a>
@@ -271,18 +274,18 @@ export default function Home() {
                 <div className="phone-status"><span>9:41</span><span className="sig"><span className="bars"><span /><span /><span /><span /></span><span className="batt" /></span></div>
                 <div className="screen is-active" data-screen={0}>
                   <div className="app-top"><span className="app-circ"><svg className="ic" aria-hidden="true"><use href="#i-chevron-left" /></svg></span><b>Buy BTC</b><span className="app-circ"><svg className="ic" aria-hidden="true"><use href="#i-clock" /></svg></span></div>
-                  <div className="app-hero"><small>You spend</small><div className="app-amt">$1,000<span>.00</span></div><span className="app-sub">Γëê 0.0118627 BTC</span></div>
+                  <div className="app-hero"><small>You spend</small><div className="app-amt">$1,000<span>.00</span></div><span className="app-sub">≈ 0.0118627 BTC</span></div>
                   <div className="app-list">
                     <div className="app-row is-sel"><span className="app-ic"><svg className="ic" aria-hidden="true"><use href="#i-smartphone" /></svg></span><span>Apple Pay</span><span className="app-radio" /></div>
-                    <div className="app-row"><span className="app-ic"><svg className="ic" aria-hidden="true"><use href="#i-credit-card" /></svg></span><span>Card<small>ΓÇóΓÇóΓÇóΓÇó 2049</small></span><span className="app-radio" /></div>
+                    <div className="app-row"><span className="app-ic"><svg className="ic" aria-hidden="true"><use href="#i-credit-card" /></svg></span><span>Card<small>•••• 2049</small></span><span className="app-radio" /></div>
                     <div className="app-row"><span className="app-ic"><svg className="ic" aria-hidden="true"><use href="#i-landmark" /></svg></span><span>Bank transfer</span><span className="app-radio" /></div>
                   </div>
-                  <div className="app-foot"><div className="app-note">Fees included in the quote ┬╖ 00:24</div><div className="app-btn">Buy BTC</div></div>
+                  <div className="app-foot"><div className="app-note">Fees included in the quote · 00:24</div><div className="app-btn">Buy BTC</div></div>
                 </div>
                 <div className="screen" data-screen={1}>
                   <div className="app-top"><span className="app-circ"><svg className="ic" aria-hidden="true"><use href="#i-chevron-left" /></svg></span><b>Sell ETH</b><span className="app-circ"><svg className="ic" aria-hidden="true"><use href="#i-clock" /></svg></span></div>
-                  <div className="app-hero"><small>You sell</small><div className="app-amt">0.75<span> ETH</span></div><span className="app-sub">Γëê Γé¼1,706.90</span></div>
-                  <div className="app-row is-sel"><span className="app-ic"><svg className="ic" aria-hidden="true"><use href="#i-landmark" /></svg></span><span>Bank account<small>EUR ┬╖ ΓÇóΓÇóΓÇóΓÇó 4821</small></span><span className="app-radio" /></div>
+                  <div className="app-hero"><small>You sell</small><div className="app-amt">0.75<span> ETH</span></div><span className="app-sub">≈ €1,706.90</span></div>
+                  <div className="app-row is-sel"><span className="app-ic"><svg className="ic" aria-hidden="true"><use href="#i-landmark" /></svg></span><span>Bank account<small>EUR · •••• 4821</small></span><span className="app-radio" /></div>
                   <div className="app-steps">
                     <div className="app-step"><i><svg className="ic" aria-hidden="true"><use href="#i-check" /></svg></i><span>Order placed</span><small>14:02</small></div>
                     <div className="app-step"><i><svg className="ic" aria-hidden="true"><use href="#i-check" /></svg></i><span>Converted to EUR</span><small>14:02</small></div>
@@ -292,11 +295,11 @@ export default function Home() {
                 </div>
                 <div className="screen" data-screen={2}>
                   <div className="app-top"><span className="app-circ"><svg className="ic" aria-hidden="true"><use href="#i-chevron-left" /></svg></span><b>Convert</b><span className="app-circ"><svg className="ic" aria-hidden="true"><use href="#i-clock" /></svg></span></div>
-                  <div className="app-box mt-s"><small>From</small><div className="v"><span>0.05</span><span className="tk"><span className="coin sm btc">Γé┐</span>BTC</span></div></div>
+                  <div className="app-box mt-s"><small>From</small><div className="v"><span>0.05</span><span className="tk"><span className="coin sm btc">₿</span>BTC</span></div></div>
                   <div className="app-swapico"><svg className="ic" aria-hidden="true"><use href="#i-arrow-down-up" /></svg></div>
                   <div className="app-box"><small>To</small><div className="v"><span>4,214.88</span><span className="tk"><span className="coin sm usdc">$</span>USDC</span></div></div>
                   <div className="app-list">
-                    <div className="app-row"><span className="app-ic"><svg className="ic" aria-hidden="true"><use href="#i-repeat" /></svg></span><span>Rate<small>1 BTC Γëê 84,297.67 USDC</small></span><span /></div>
+                    <div className="app-row"><span className="app-ic"><svg className="ic" aria-hidden="true"><use href="#i-repeat" /></svg></span><span>Rate<small>1 BTC ≈ 84,297.67 USDC</small></span><span /></div>
                     <div className="app-row"><span className="app-ic"><svg className="ic" aria-hidden="true"><use href="#i-clock" /></svg></span><span>Quote<small>Refreshes in 00:18</small></span><span /></div>
                   </div>
                   <div className="app-foot"><div className="app-btn">Convert to USDC</div></div>
@@ -309,16 +312,16 @@ export default function Home() {
                       <div className="card-body">
                         <div className="card-row"><span className="card-word"><img className="cw-dark" src="media/logo-white.png" alt="Coincashy" width={1217} height={157} /><img className="cw-light" src="media/logo-black.png" alt="" width={1217} height={157} /></span><span className="card-type">VIRTUAL</span></div>
                         <div className="card-mid"><span className="card-chip" /><svg className="ic card-nfc" aria-hidden="true"><use href="#i-nfc" /></svg></div>
-                        <div className="card-num">ΓÇóΓÇóΓÇóΓÇó 2049</div>
+                        <div className="card-num">•••• 2049</div>
                         <div className="card-foot"><span>Your name</span><span>09/29</span></div>
                       </div>
                     </div>
                   </div>
-                  <div className="app-bal"><small>Available to spend</small><b>Γé¼1,240.50</b></div>
+                  <div className="app-bal"><small>Available to spend</small><b>€1,240.50</b></div>
                   <div className="app-list">
-                    <div className="app-row"><span className="app-ic"><svg className="ic" aria-hidden="true"><use href="#i-shopping-bag" /></svg></span><span>Coffee shop<small>Today ┬╖ Contactless</small></span><span className="amt">ΓêÆΓé¼4.20</span></div>
-                    <div className="app-row"><span className="app-ic"><svg className="ic" aria-hidden="true"><use href="#i-send" /></svg></span><span>Metro top-up<small>Yesterday ┬╖ Online</small></span><span className="amt">ΓêÆΓé¼20.00</span></div>
-                    <div className="app-row"><span className="app-ic"><svg className="ic" aria-hidden="true"><use href="#i-store" /></svg></span><span>Grocery market<small>Mon ┬╖ Contactless</small></span><span className="amt">ΓêÆΓé¼36.80</span></div>
+                    <div className="app-row"><span className="app-ic"><svg className="ic" aria-hidden="true"><use href="#i-shopping-bag" /></svg></span><span>Coffee shop<small>Today · Contactless</small></span><span className="amt">−€4.20</span></div>
+                    <div className="app-row"><span className="app-ic"><svg className="ic" aria-hidden="true"><use href="#i-send" /></svg></span><span>Metro top-up<small>Yesterday · Online</small></span><span className="amt">−€20.00</span></div>
+                    <div className="app-row"><span className="app-ic"><svg className="ic" aria-hidden="true"><use href="#i-store" /></svg></span><span>Grocery market<small>Mon · Contactless</small></span><span className="amt">−€36.80</span></div>
                   </div>
                 </div>
               </div>
@@ -365,9 +368,9 @@ export default function Home() {
               <li><svg className="ic" aria-hidden="true"><use href="#i-check" /></svg>APIs, wallets and stablecoin settlement</li>
             </ul>
             <div className="path-vis">
-              <div className="pv-row"><span><span className="dot" />25,000 USDC ΓåÆ EUR</span><b>Completed</b></div>
-              <div className="pv-row"><span><span className="dot pending" />10.4 BTC ΓåÆ USD</span><b>Quoted</b></div>
-              <div className="pv-row"><span><span className="dot" />vIBAN collection</span><b>Γé¼16,820</b></div>
+              <div className="pv-row"><span><span className="dot" />25,000 USDC → EUR</span><b>Completed</b></div>
+              <div className="pv-row"><span><span className="dot pending" />10.4 BTC → USD</span><b>Quoted</b></div>
+              <div className="pv-row"><span><span className="dot" />vIBAN collection</span><b>€16,820</b></div>
             </div>
             <a className="btn btn-solid" href="#business">Explore Business<svg className="ic" aria-hidden="true"><use href="#i-arrow-right" /></svg></a>
           </article>
@@ -426,7 +429,7 @@ export default function Home() {
         <div className="cta-row mt-l"><a className="link-arrow" href="#compliance">How compliance works at Coincashy<svg className="ic" aria-hidden="true"><use href="#i-arrow-right" /></svg></a></div>
       </div>
     </section>
-    {/* Home ┬╖ Closing: sonar grid (dots answer taps with expanding rings) */}
+    {/* Home · Closing: sonar grid (dots answer taps with expanding rings) */}
     <section className="sec sonar" data-sonar>
       <canvas className="sonar-canvas" aria-hidden="true" />
       <div className="sonar-wash" aria-hidden="true" />
@@ -480,7 +483,7 @@ export default function Home() {
                   <label htmlFor="w-to">You receive</label>
                   <div className="w-row">
                     <input className="w-input" id="w-to" inputMode="decimal" autoComplete="off" defaultValue="0.0118627" />
-                    <span className="asset" id="w-to-chip"><span className="coin btc">Γé┐</span><span className="code scope-dark scope-dark">BTC</span><svg className="ic" aria-hidden="true"><use href="#i-chevron-down" /></svg><select id="w-to-asset" aria-label="Asset you receive"><option value="BTC">BTC</option><option value="ETH">ETH</option><option value="USDT">USDT</option><option value="USDC">USDC</option></select></span>
+                    <span className="asset" id="w-to-chip"><span className="coin btc">₿</span><span className="code scope-dark scope-dark">BTC</span><svg className="ic" aria-hidden="true"><use href="#i-chevron-down" /></svg><select id="w-to-asset" aria-label="Asset you receive"><option value="BTC">BTC</option><option value="ETH">ETH</option><option value="USDT">USDT</option><option value="USDC">USDC</option></select></span>
                   </div>
                 </div>
               </div>
@@ -491,14 +494,14 @@ export default function Home() {
                 <button type="button" className="w-method" role="radio" aria-checked="false" data-method="Bank transfer" tabIndex={-1}>Bank transfer</button>
               </div>
               <div className="w-dest" id="w-dest" hidden><svg className="ic" aria-hidden="true"><use href="#i-landmark" /></svg><span id="w-dest-txt">Payout to your bank account</span></div>
-              <div className="w-rate" id="w-rate"><span>Indicative rate <b id="w-rate-txt">1 BTC Γëê $84,297.67</b></span><span>Fees are included in the quote</span></div>
+              <div className="w-rate" id="w-rate"><span>Indicative rate <b id="w-rate-txt">1 BTC ≈ $84,297.67</b></span><span>Fees are included in the quote</span></div>
               <button className="btn btn-solid btn-block w-go" id="w-go" type="button">Buy BTC</button>
             </div>
             <div className="w-review" id="w-review" hidden>
               <h3 id="wr-title" tabIndex={-1}>Review your order</h3>
               <dl className="wr-list">
                 <div><dt id="wr-l1">You spend</dt><dd id="wr-v1">$1,000.00</dd></div>
-                <div><dt>You receive</dt><dd id="wr-v2">Γëê 0.0118627 BTC</dd></div>
+                <div><dt>You receive</dt><dd id="wr-v2">≈ 0.0118627 BTC</dd></div>
                 <div><dt id="wr-l3">Paid with</dt><dd id="wr-v3">Apple Pay</dd></div>
                 <div><dt>Quote</dt><dd>Fees included</dd></div>
               </dl>
@@ -559,7 +562,7 @@ export default function Home() {
           <article className="prod rv">
             <div className="prod-vis" aria-hidden="true">
               <div className="pm-stack">
-                <div className="pm-row"><svg className="ic" aria-hidden="true"><use href="#i-credit-card" /></svg>Card<em>Visa ┬╖ Mastercard</em></div>
+                <div className="pm-row"><svg className="ic" aria-hidden="true"><use href="#i-credit-card" /></svg>Card<em>Visa · Mastercard</em></div>
                 <div className="pm-row sel"><svg className="ic" aria-hidden="true"><use href="#i-smartphone" /></svg>Apple Pay<em>Selected</em></div>
                 <div className="pm-row"><svg className="ic" aria-hidden="true"><use href="#i-smartphone" /></svg>Google Pay</div>
                 <div className="pm-row"><svg className="ic" aria-hidden="true"><use href="#i-landmark" /></svg>Bank transfer</div>
@@ -574,9 +577,9 @@ export default function Home() {
               <div className="sellflow">
                 <div className="sf-node"><span className="ico"><span className="coin sm eth">╬₧</span></span><b>0.75 ETH</b>You sell</div>
                 <svg className="ic sf-arrow" aria-hidden="true"><use href="#i-arrow-right" /></svg>
-                <div className="sf-node"><span className="ico"><svg className="ic" aria-hidden="true"><use href="#i-repeat" /></svg></span><b>Γé¼1,706.90</b>Converted</div>
+                <div className="sf-node"><span className="ico"><svg className="ic" aria-hidden="true"><use href="#i-repeat" /></svg></span><b>€1,706.90</b>Converted</div>
                 <svg className="ic sf-arrow" aria-hidden="true"><use href="#i-arrow-right" /></svg>
-                <div className="sf-node"><span className="ico"><svg className="ic" aria-hidden="true"><use href="#i-landmark" /></svg></span><b>ΓÇóΓÇóΓÇóΓÇó 4821</b>Your bank</div>
+                <div className="sf-node"><span className="ico"><svg className="ic" aria-hidden="true"><use href="#i-landmark" /></svg></span><b>•••• 4821</b>Your bank</div>
               </div>
             </div>
             <h3 className="h3">Sell crypto</h3>
@@ -591,7 +594,7 @@ export default function Home() {
                   <div className="card-body">
                     <div className="card-row"><span className="card-word"><img className="cw-dark" src="media/logo-white.png" alt="Coincashy" width={1217} height={157} /><img className="cw-light" src="media/logo-black.png" alt="" width={1217} height={157} /></span><span className="card-type">PHYSICAL</span></div>
                     <div className="card-mid"><span className="card-chip" /><svg className="ic card-nfc" aria-hidden="true"><use href="#i-nfc" /></svg></div>
-                    <div className="card-num">ΓÇóΓÇóΓÇóΓÇó ΓÇóΓÇóΓÇóΓÇó ΓÇóΓÇóΓÇóΓÇó 2049</div>
+                    <div className="card-num">•••• •••• •••• 2049</div>
                     <div className="card-foot"><span>Your name</span><span>09/29</span></div>
                   </div>
                 </div>
@@ -622,7 +625,7 @@ export default function Home() {
                   <div className="card-body">
                     <div className="card-row"><span className="card-word"><img className="cw-dark" src="media/logo-white.png" alt="Coincashy" width={1217} height={157} /><img className="cw-light" src="media/logo-black.png" alt="" width={1217} height={157} /></span><span className="card-type" id="lab-type">VIRTUAL</span></div>
                     <div className="card-mid"><span className="card-chip" /><svg className="ic card-nfc" aria-hidden="true"><use href="#i-nfc" /></svg></div>
-                    <div className="card-num">ΓÇóΓÇóΓÇóΓÇó ΓÇóΓÇóΓÇóΓÇó ΓÇóΓÇóΓÇóΓÇó 2049</div>
+                    <div className="card-num">•••• •••• •••• 2049</div>
                     <div className="card-foot"><span><small>Cardholder</small>Your name</span><span><small>Valid thru</small>09/29</span></div>
                   </div>
                   <div className="card-frost"><span><svg className="ic" aria-hidden="true"><use href="#i-snowflake" /></svg>Card frozen</span></div>
@@ -662,16 +665,16 @@ export default function Home() {
               </div>
             </div>
             <div className="range-row">
-              <div className="top"><label className="lab-lbl" htmlFor="lab-limit">Monthly spending limit</label><output id="lab-limit-out" htmlFor="lab-limit">Γé¼1,500</output></div>
+              <div className="top"><label className="lab-lbl" htmlFor="lab-limit">Monthly spending limit</label><output id="lab-limit-out" htmlFor="lab-limit">€1,500</output></div>
               <input type="range" id="lab-limit" min={100} max={5000} step={100} defaultValue={1500} />
             </div>
             <div className="lab-banner" id="lab-banner" hidden><svg className="ic" aria-hidden="true"><use href="#i-snowflake" /></svg><span>Your card is frozen. New payments are declined until you unfreeze it.</span></div>
             <div className="lab-group">
               <span className="lab-lbl">Recent activity</span>
               <div className="lab-activity">
-                <div className="la-row"><span>Coffee shop<small>Today ┬╖ Contactless</small></span><b>ΓêÆΓé¼4.20</b></div>
-                <div className="la-row"><span>Metro top-up<small>Yesterday ┬╖ Online</small></span><b>ΓêÆΓé¼20.00</b></div>
-                <div className="la-row"><span>Available balance<small>Updated just now</small></span><b>Γé¼1,240.50</b></div>
+                <div className="la-row"><span>Coffee shop<small>Today · Contactless</small></span><b>−€4.20</b></div>
+                <div className="la-row"><span>Metro top-up<small>Yesterday · Online</small></span><b>−€20.00</b></div>
+                <div className="la-row"><span>Available balance<small>Updated just now</small></span><b>€1,240.50</b></div>
               </div>
             </div>
             <form className="waitlist" id="waitlist" noValidate>
@@ -701,16 +704,16 @@ export default function Home() {
             <div className="how-pane is-active" id="hp-0" role="tabpanel" aria-labelledby="hs-0">
               <div className="hp-card">
                 <div className="hp-title">Choose an asset<small>Step 1 of 4</small></div>
-                <div className="hp-row sel"><span className="coin sm btc">Γé┐</span>Bitcoin<em>BTC</em></div>
+                <div className="hp-row sel"><span className="coin sm btc">₿</span>Bitcoin<em>BTC</em></div>
                 <div className="hp-row"><span className="coin sm eth">╬₧</span>Ether<em>ETH</em></div>
-                <div className="hp-row"><span className="coin sm usdt">Γé«</span>Tether<em>USDT</em></div>
+                <div className="hp-row"><span className="coin sm usdt">₮</span>Tether<em>USDT</em></div>
                 <div className="hp-row"><span className="coin sm usdc">$</span>USD Coin<em>USDC</em></div>
-                <div className="hp-row sel"><svg className="ic" aria-hidden="true"><use href="#i-euro" /></svg>Amount<em>Γé¼250.00</em></div>
+                <div className="hp-row sel"><svg className="ic" aria-hidden="true"><use href="#i-euro" /></svg>Amount<em>€250.00</em></div>
               </div>
             </div>
             <div className="how-pane" id="hp-1" role="tabpanel" aria-labelledby="hs-1" aria-hidden="true">
               <div className="hp-card">
-                <div className="hp-title">Pay Γé¼250.00<small>Step 2 of 4</small></div>
+                <div className="hp-title">Pay €250.00<small>Step 2 of 4</small></div>
                 <div className="hp-grid">
                   <div className="hp-row"><svg className="ic" aria-hidden="true"><use href="#i-credit-card" /></svg>Card</div>
                   <div className="hp-row sel"><svg className="ic" aria-hidden="true"><use href="#i-smartphone" /></svg>Apple Pay</div>
@@ -733,7 +736,7 @@ export default function Home() {
                 <div className="hp-title">Received<small>Step 4 of 4</small></div>
                 <div className="hp-big">+0.0034402 <span className="small mono">BTC</span></div>
                 <div className="hp-row"><svg className="ic" aria-hidden="true"><use href="#i-wallet" /></svg>Your Coincashy wallet<em>Received</em></div>
-                <div className="hp-row"><svg className="ic" aria-hidden="true"><use href="#i-receipt" /></svg>You paid<em>Γé¼250.00</em></div>
+                <div className="hp-row"><svg className="ic" aria-hidden="true"><use href="#i-receipt" /></svg>You paid<em>€250.00</em></div>
               </div>
             </div>
           </div>
@@ -756,7 +759,7 @@ export default function Home() {
         </div>
       </div>
     </section>
-    {/* Personal ┬╖ Closing: sonar grid */}
+    {/* Personal · Closing: sonar grid */}
     <section className="sec sonar" data-sonar>
       <canvas className="sonar-canvas" aria-hidden="true" />
       <div className="sonar-wash" aria-hidden="true" />
@@ -882,9 +885,9 @@ export default function Home() {
             <p className="lede">Hold, convert and settle across currencies and assets from a single treasury view.</p>
           </div>
           <div className="rail-list">
-            <div className="rail"><span className="rail-ic">Γé¼</span><span><b>Multi-currency accounts</b></span></div>
-            <div className="rail"><span className="rail-ic">ΓùÄ</span><span><b>Digital-asset wallets</b></span></div>
-            <div className="rail"><span className="rail-ic">Γçä</span><span><b>Conversion and settlement</b></span></div>
+            <div className="rail"><span className="rail-ic">€</span><span><b>Multi-currency accounts</b></span></div>
+            <div className="rail"><span className="rail-ic">◎</span><span><b>Digital-asset wallets</b></span></div>
+            <div className="rail"><span className="rail-ic">⇄</span><span><b>Conversion and settlement</b></span></div>
           </div>
         </div>
         <div className="treasury" id="treasury">
@@ -904,15 +907,15 @@ export default function Home() {
             <path className="sp-area" d="M4 90 L316 90 Z" /><path className="sp-line" d="M4 90 L316 90" /><circle className="sp-end" r="3.5" cx={316} cy={90} /></svg>
           <div className="spark-axis" aria-hidden="true"><span>1 Sep</span><span>30 Sep</span></div>
           <div className="accts">
-            <div className="acct" data-row="EUR"><span className="coin sm fiat">Γé¼</span><span>EUR account</span><b>Γé¼804,220</b></div>
+            <div className="acct" data-row="EUR"><span className="coin sm fiat">€</span><span>EUR account</span><b>€804,220</b></div>
             <div className="acct" data-row="USD"><span className="coin sm fiat">$</span><span>USD account</span><b>$626,400</b></div>
             <div className="acct" data-row="USDC"><span className="coin sm usdc">$</span><span>USDC wallet</span><b>420,850 USDC</b></div>
           </div>
           <div className="t-act-h">Recent activity</div>
           <ul className="t-act">
-            <li data-ccy="USDC EUR"><span>USDC ΓåÆ EUR conversion</span><b>Γé¼92,400</b></li>
+            <li data-ccy="USDC EUR"><span>USDC → EUR conversion</span><b>€92,400</b></li>
             <li data-ccy="USD"><span>Merchant settlement</span><b>$48,000</b></li>
-            <li data-ccy="EUR"><span>vIBAN collection</span><b>Γé¼16,820</b></li>
+            <li data-ccy="EUR"><span>vIBAN collection</span><b>€16,820</b></li>
           </ul>
         </div>
       </div>
@@ -944,7 +947,7 @@ export default function Home() {
             <button className="copy-btn" type="button" id="code-copy"><svg className="ic" aria-hidden="true"><use href="#i-copy" /></svg><span>Copy</span></button>
           </div>
           <pre id="code-0" role="tabpanel" aria-labelledby="ct-0" tabIndex={0}><code><span className="tk-m">POST</span> /v1/payments{"\n"}{"{"}{"\n"}{"  "}<span className="tk-k">"amount"</span>: <span className="tk-s">"25000.00"</span>,{"\n"}{"  "}<span className="tk-k">"pay_currency"</span>: <span className="tk-s">"USDC"</span>,{"\n"}{"  "}<span className="tk-k">"settle_currency"</span>: <span className="tk-s">"EUR"</span>,{"\n"}{"  "}<span className="tk-k">"network"</span>: <span className="tk-s">"ethereum"</span>,{"\n"}{"  "}<span className="tk-k">"reference"</span>: <span className="tk-s">"INV-2049"</span>{"\n"}{"}"}{"\n"}{"\n"}<span className="tk-st">201</span> payment.created{"\n"}{"{"}{"\n"}{"  "}<span className="tk-k">"status"</span>: <span className="tk-s">"awaiting_payment"</span>,{"\n"}{"  "}<span className="tk-k">"expires_in"</span>: <span className="tk-n">900</span>{"\n"}{"}"}</code></pre>
-          <pre id="code-1" role="tabpanel" aria-labelledby="ct-1" tabIndex={0} hidden><code><span className="tk-m">POST</span> /v1/wallets/addresses{"\n"}{"{"}{"\n"}{"  "}<span className="tk-k">"asset"</span>: <span className="tk-s">"USDC"</span>,{"\n"}{"  "}<span className="tk-k">"network"</span>: <span className="tk-s">"ethereum"</span>,{"\n"}{"  "}<span className="tk-k">"label"</span>: <span className="tk-s">"customer-8841"</span>{"\n"}{"}"}{"\n"}{"\n"}<span className="tk-st">201</span> address.created{"\n"}{"{"}{"\n"}{"  "}<span className="tk-k">"address"</span>: <span className="tk-s">"0x7a3fΓÇªc91e"</span>,{"\n"}{"  "}<span className="tk-k">"asset"</span>: <span className="tk-s">"USDC"</span>,{"\n"}{"  "}<span className="tk-k">"status"</span>: <span className="tk-s">"active"</span>{"\n"}{"}"}</code></pre>
+          <pre id="code-1" role="tabpanel" aria-labelledby="ct-1" tabIndex={0} hidden><code><span className="tk-m">POST</span> /v1/wallets/addresses{"\n"}{"{"}{"\n"}{"  "}<span className="tk-k">"asset"</span>: <span className="tk-s">"USDC"</span>,{"\n"}{"  "}<span className="tk-k">"network"</span>: <span className="tk-s">"ethereum"</span>,{"\n"}{"  "}<span className="tk-k">"label"</span>: <span className="tk-s">"customer-8841"</span>{"\n"}{"}"}{"\n"}{"\n"}<span className="tk-st">201</span> address.created{"\n"}{"{"}{"\n"}{"  "}<span className="tk-k">"address"</span>: <span className="tk-s">"0x7a3f…c91e"</span>,{"\n"}{"  "}<span className="tk-k">"asset"</span>: <span className="tk-s">"USDC"</span>,{"\n"}{"  "}<span className="tk-k">"status"</span>: <span className="tk-s">"active"</span>{"\n"}{"}"}</code></pre>
           <pre id="code-2" role="tabpanel" aria-labelledby="ct-2" tabIndex={0} hidden><code><span className="tk-m">POST</span> /v1/quotes{"\n"}{"{"}{"\n"}{"  "}<span className="tk-k">"sell_currency"</span>: <span className="tk-s">"BTC"</span>,{"\n"}{"  "}<span className="tk-k">"buy_currency"</span>: <span className="tk-s">"USD"</span>,{"\n"}{"  "}<span className="tk-k">"sell_amount"</span>: <span className="tk-s">"10.4"</span>{"\n"}{"}"}{"\n"}{"\n"}<span className="tk-st">201</span> quote.created{"\n"}{"{"}{"\n"}{"  "}<span className="tk-k">"rate"</span>: <span className="tk-s">"84297.67"</span>,{"\n"}{"  "}<span className="tk-k">"buy_amount"</span>: <span className="tk-s">"876695.77"</span>,{"\n"}{"  "}<span className="tk-k">"expires_in"</span>: <span className="tk-n">30</span>{"\n"}{"}"}</code></pre>
           <pre id="code-3" role="tabpanel" aria-labelledby="ct-3" tabIndex={0} hidden><code><span className="tk-c"># Sent to your endpoint when a payment settles</span>{"\n"}<span className="tk-m">POST</span> https://your-app.example/webhooks{"\n"}{"{"}{"\n"}{"  "}<span className="tk-k">"type"</span>: <span className="tk-s">"payment.completed"</span>,{"\n"}{"  "}<span className="tk-k">"data"</span>: {"{"}{"\n"}{"    "}<span className="tk-k">"reference"</span>: <span className="tk-s">"INV-2049"</span>,{"\n"}{"    "}<span className="tk-k">"paid"</span>: <span className="tk-s">"25000.00 USDC"</span>,{"\n"}{"    "}<span className="tk-k">"settled"</span>: <span className="tk-s">"21551.72 EUR"</span>{"\n"}{"  "}{"}"}{"\n"}{"}"}{"\n"}{"\n"}<span className="tk-c"># Respond with 200 to acknowledge</span></code></pre>
         </div>
@@ -975,8 +978,8 @@ export default function Home() {
           <div className="m-flow">
             <p className="lbl">Example flow</p>
             <div className="m-step"><i>1</i><span><b>Customer pays</b></span><em>25,000 USDC</em></div>
-            <div className="m-step"><i>2</i><span><b>Auto-convert</b></span><em>USDC ΓåÆ EUR</em></div>
-            <div className="m-step"><i>3</i><span><b>Settle and reconcile</b></span><em>Γé¼21,551.72</em></div>
+            <div className="m-step"><i>2</i><span><b>Auto-convert</b></span><em>USDC → EUR</em></div>
+            <div className="m-step"><i>3</i><span><b>Settle and reconcile</b></span><em>€21,551.72</em></div>
           </div>
         </div>
         <div className="model-panel" id="mp-1" role="tabpanel" aria-labelledby="mt-1" hidden>
@@ -988,7 +991,7 @@ export default function Home() {
           <div className="m-flow">
             <p className="lbl">Example flow</p>
             <div className="m-step"><i>1</i><span><b>Request a quote</b></span><em>10.4 BTC</em></div>
-            <div className="m-step"><i>2</i><span><b>Execute</b></span><em>BTC ΓåÆ USD</em></div>
+            <div className="m-step"><i>2</i><span><b>Execute</b></span><em>BTC → USD</em></div>
             <div className="m-step"><i>3</i><span><b>Settle</b></span><em>$876,695.77</em></div>
           </div>
         </div>
@@ -1001,7 +1004,7 @@ export default function Home() {
           <div className="m-flow">
             <p className="lbl">Example flow</p>
             <div className="m-step"><i>1</i><span><b>Create a wallet</b></span><em>USDC</em></div>
-            <div className="m-step"><i>2</i><span><b>Fund it</b></span><em>Γé¼500.00</em></div>
+            <div className="m-step"><i>2</i><span><b>Fund it</b></span><em>€500.00</em></div>
             <div className="m-step"><i>3</i><span><b>Spend or settle</b></span><em>Webhook</em></div>
           </div>
         </div>
@@ -1148,11 +1151,12 @@ export default function Home() {
         <ul className="f-links"><li><a href="#">Terms of Service</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Cookie Policy</a></li><li><a href="#compliance">Complaints &amp; disclosures</a></li></ul>
       </div>
       <div className="f-legal">
-        <p>┬⌐ 2026 Coincashy. All rights reserved. Products and availability are subject to jurisdiction, onboarding and partner approval.</p>
+        <p>© 2026 Coincashy. All rights reserved. Products and availability are subject to jurisdiction, onboarding and partner approval.</p>
         <p>Crypto-assets are volatile and their value can go down as well as up. Card, account and vIBAN services are partner-enabled and subject to eligibility. Visa, Mastercard, Apple Pay, Google Pay, SEPA, Bitcoin, Ethereum and Tether are marks of their respective owners, shown as accepted methods.</p>
+        <p><strong>Disclaimer</strong><br/>Coincashy Sp. z o.o. only provides services to customers resident in the UK who fall within an exemption available under the UK financial promotion regime (Investment professionals, High net worth companies, unincorporated associations etc., Certified sophisticated investors, Communication to overseas recipients, etc).</p>
       </div>
-    </div>
-  </footer>
+          </div>
+    </footer>
   <dialog className="mail-dialog" id="mail-dialog" aria-labelledby="md-title">
     <div className="md-inner">
       <div className="md-top"><h2 id="md-title">Your message is ready</h2><button className="md-x" type="button" id="md-close" aria-label="Close"><svg className="ic" aria-hidden="true"><use href="#i-x" /></svg></button></div>
