@@ -20,7 +20,7 @@ export default function Home() {
           <span>TOKEN2049</span>
           <span className="ticker-logo-sub">SINGAPORE</span>
         </div>
-        <span className="ticker-text">See you at the event &middot; <strong>7-8 October</strong>, Singapore <a href="#" className="ticker-link">Meet us there ↗</a></span>
+        <span className="ticker-text">See you at the event &middot; <strong>7-8 October</strong>, Singapore <a href="https://token2049.com/singapore" target="_blank" rel="noopener" className="ticker-link">Meet us there ↗</a></span>
       </div>
       <button className="ticker-close" data-close-ticker aria-label="Close banner">
         <svg className="ic"><use href="#i-x" /></svg>
