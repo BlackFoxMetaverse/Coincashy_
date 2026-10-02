@@ -165,18 +165,30 @@ export default function Home() {
             <a className="btn btn-line" href="#personal">For individuals<svg className="ic" aria-hidden="true"><use href="#i-arrow-right" /></svg></a>
           </div>
         </div>
-        <div className="hero-proof" aria-label="Accepted payment methods and networks">
-          <span className="hero-proof-label">Pay your way</span>
-          <ul className="hero-marks">
-            <li title="Visa"><svg className="bm" aria-hidden="true"><use href="#b-visa" /></svg><span className="sr-only">Visa</span></li>
-            <li title="Mastercard"><svg className="bm" aria-hidden="true"><use href="#b-mastercard" /></svg><span className="sr-only">Mastercard</span></li>
-            <li title="Apple Pay"><svg className="bm" aria-hidden="true"><use href="#b-applepay" /></svg><span className="sr-only">Apple Pay</span></li>
-            <li title="Google Pay"><svg className="bm" aria-hidden="true"><use href="#b-googlepay" /></svg><span className="sr-only">Google Pay</span></li>
-            <li title="SEPA bank transfer"><svg className="bm" aria-hidden="true"><use href="#b-sepa" /></svg><span className="sr-only">SEPA</span></li>
-            <li className="hm-coin" title="Bitcoin"><svg className="bm" aria-hidden="true"><use href="#b-bitcoin" /></svg><span className="sr-only">Bitcoin</span></li>
-            <li className="hm-coin" title="Ethereum"><svg className="bm" aria-hidden="true"><use href="#b-ethereum" /></svg><span className="sr-only">Ethereum</span></li>
-            <li className="hm-coin" title="Tether"><svg className="bm" aria-hidden="true"><use href="#b-tether" /></svg><span className="sr-only">Tether</span></li>
-          </ul>
+        <div className="hero-proof" aria-label="Trusted by clients and partners" style={{ display: 'flex', flexDirection: 'column', width: '100%', overflow: 'hidden' }}>
+          <span className="hero-proof-label" style={{ marginBottom: 30 }}>TRUSTED BY CLIENTS AND PARTNERS</span>
+          <div className="marquee">
+            <div className="marquee-content">
+              <span style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--fg-faint)' }}>200+</span>
+              <span style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--fg-dim)', display: 'flex', alignItems: 'center', gap: 8 }}><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>WINTERMUTE</span>
+              <span style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--fg-dim)', display: 'flex', alignItems: 'center', gap: 6 }}><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l8 4.5v9L12 20l-8-4.5v-9L12 2z"/></svg>sumsub</span>
+              <span style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--fg-dim)', display: 'flex', alignItems: 'center', gap: 6 }}><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5L3.5 7.5v9L12 21.5l8.5-4.9v-9L12 2.5zM12 11L6 7.5l6-3.5 6 3.5L12 11z"/></svg>BCB GROUP</span>
+              <span style={{ fontSize: '1.4rem', fontWeight: 500, color: 'var(--fg-dim)' }}>mercuryo</span>
+              <span style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--fg-dim)', display: 'flex', alignItems: 'center', gap: 6 }}><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10zM12 6C8.686 6 6 8.686 6 12s2.686 6 6 6 6-2.686 6-6-2.686-6-6-6z"/></svg>Yellow Card</span>
+              <span style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--fg-dim)', lineHeight: 1, textAlign: 'center' }}>GLOBAL<br/>LEDGER</span>
+              <span style={{ fontSize: '1.4rem', fontWeight: 700, color: 'var(--fg-dim)' }}>payswix</span>
+            </div>
+            <div className="marquee-content" aria-hidden="true">
+              <span style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--fg-faint)' }}>200+</span>
+              <span style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--fg-dim)', display: 'flex', alignItems: 'center', gap: 8 }}><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>WINTERMUTE</span>
+              <span style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--fg-dim)', display: 'flex', alignItems: 'center', gap: 6 }}><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l8 4.5v9L12 20l-8-4.5v-9L12 2z"/></svg>sumsub</span>
+              <span style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--fg-dim)', display: 'flex', alignItems: 'center', gap: 6 }}><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5L3.5 7.5v9L12 21.5l8.5-4.9v-9L12 2.5zM12 11L6 7.5l6-3.5 6 3.5L12 11z"/></svg>BCB GROUP</span>
+              <span style={{ fontSize: '1.4rem', fontWeight: 500, color: 'var(--fg-dim)' }}>mercuryo</span>
+              <span style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--fg-dim)', display: 'flex', alignItems: 'center', gap: 6 }}><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10zM12 6C8.686 6 6 8.686 6 12s2.686 6 6 6 6-2.686 6-6-2.686-6-6-6z"/></svg>Yellow Card</span>
+              <span style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--fg-dim)', lineHeight: 1, textAlign: 'center' }}>GLOBAL<br/>LEDGER</span>
+              <span style={{ fontSize: '1.4rem', fontWeight: 700, color: 'var(--fg-dim)' }}>payswix</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>

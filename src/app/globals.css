@@ -75,6 +75,30 @@
 /* a component that stays dark in both themes (product panels) */
 .scope-dark{--fg:var(--chalk);--fg-dim:var(--dim-d);--fg-faint:var(--faint-d);--line:var(--line-d);--line-2:var(--line-d-2);--surface:var(--vault-2);--surface-2:var(--vault-3);--ground:var(--vault);--accent:var(--jade);--accent-text:var(--jade-text-d);--ok:var(--jade-text-d);--pending:var(--brass);--bad:var(--coral);--btn-bg:var(--chalk);--btn-fg:var(--vault);--shadow:var(--shadow-d);--glass:var(--glass-d);color:var(--chalk)}
 
+/* ============ Marquee ============ */
+.marquee {
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  gap: 40px;
+  width: 100%;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+.marquee-content {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  min-width: 100%;
+  gap: 40px;
+  animation: scroll 25s linear infinite;
+}
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-100% - 40px)); }
+}
+
 /* ============ Base ============ */
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-behavior:smooth;overflow-x:clip}
