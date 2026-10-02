@@ -295,7 +295,7 @@ export default function Home() {
           <div className="f-col"><h4>Solutions</h4><a href="#personal">Individuals</a><a href="#models">Merchants &amp; PSPs</a><a href="#models">OTC desks &amp; brokers</a><a href="#models">Fintechs &amp; platforms</a><a href="#rails">Treasury &amp; accounts</a></div>
           <div className="f-col"><h4>Developers</h4><a href="#developers">API overview</a><a href="#developers">Payments API</a><a href="#developers">Wallet API</a><a href="#developers">Quotes API</a><a href="#developers">Webhooks</a></div>
           <div className="f-col"><h4>Resources</h4><a href="#how">How it works</a><a href="#pipeline">How value moves</a><a href="#trust">Technology ecosystem</a><a href="#faq-personal">Personal FAQ</a><a href="#faq-business">Business FAQ</a></div>
-          <div className="f-col"><h4>Company</h4><a href="/about">About Coincashy</a><a href="#compliance">Compliance</a><a href="#contact">Contact</a><a href="https://trade.coincashy.io/auth/login" target="_blank" rel="noopener">Log in</a><a href="https://trade.coincashy.io/auth/signup" target="_blank" rel="noopener">Sign up</a></div>
+          <div className="f-col"><h4>Company</h4><a href="/about">About Coincashy</a><a href="#compliance">Compliance</a><a href="#contact">Contact</a><a href="https://trade.coincashy.io/auth/login" target="_blank" rel="noopener">Log in</a><a href="https://trade.coincashy.io/auth/signup" target="_blank" rel="noopener">Get started</a></div>
         </div>
       </div>
       <div className="f-mid">
