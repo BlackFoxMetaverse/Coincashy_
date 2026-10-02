@@ -1088,8 +1088,12 @@
     let token = String(raw || '').replace(/^#/, '').trim() || 'home';
     const mode = ['buy', 'sell', 'convert'].includes(token) ? token : null;
     let target = mode ? $('#widget') : document.getElementById(token);
-    if (!target || !target.closest('main.page')) { token = 'home'; target = $('#home'); }
-    const pageEl = target.closest('main.page');
+    if (!target || !target.closest('main.page')) { 
+      target = document.querySelector('main.page');
+      token = target ? target.id : 'home'; 
+    }
+    const pageEl = target ? target.closest('main.page') : null;
+    if (!pageEl) return null;
     const changed = showPage(pageEl.id);
     if (mode) widget.setMode(mode);
     const smooth = !changed && opts.smooth !== false && !reduceMotion;

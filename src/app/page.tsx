@@ -83,7 +83,7 @@ export default function Home() {
             <div className="menu-grid cols-3">
               <div className="menu-col">
                 <h4>Discover Coincashy</h4>
-                <a className="menu-link" href="#home">About Us</a>
+                <a className="menu-link" href="/about">About Us</a>
                 <a className="menu-link" href="#blog">Blog &amp; Insights</a>
                 <a className="menu-link" href="#compliance">Compliance &amp; Security</a>
                 <a className="menu-link" href="#media">Press &amp; Media</a>
@@ -124,8 +124,14 @@ export default function Home() {
         <summary>Business<svg className="ic" aria-hidden="true"><use href="#i-chevron-down" /></svg></summary>
         <div className="m-sub"><a href="#business">Overview</a><a href="#pipeline">How value moves</a><a href="#platform">Platform</a><a href="#rails">Accounts and treasury</a><a href="#models">Who it is for</a></div>
       </details>
-      <a className="m-link" href="#developers">Developers</a>
-      <a className="m-link" href="#compliance">Compliance</a>
+      <details>
+        <summary>Solutions<svg className="ic" aria-hidden="true"><use href="#i-chevron-down" /></svg></summary>
+        <div className="m-sub"><a href="#personal">Individuals</a><a href="#business">Fintechs &amp; Platforms</a><a href="#business">Merchants &amp; PSPs</a><a href="#otc">OTC Desks</a><a href="#processing">Payment Processing</a><a href="#ramp">On/Off Ramp</a><a href="#settlement">Treasury</a><a href="#wallets">Wallet as a Service</a></div>
+      </details>
+      <details>
+        <summary>Company<svg className="ic" aria-hidden="true"><use href="#i-chevron-down" /></svg></summary>
+        <div className="m-sub"><a href="/about">About Us</a><a href="#blog">Blog &amp; Insights</a><a href="#compliance">Security</a><a href="#media">Media</a><a href="#careers">Careers</a><a href="#culture">Culture</a><a href="#help">Help Center</a><a href="#developers">API Docs</a><a href="#legal">Legal</a></div>
+      </details>
       <div className="m-cta"><a className="btn btn-solid" href="#buy">Buy crypto</a><a className="btn btn-line" href="#contact">Talk to our team</a><button className="btn btn-line" type="button" data-theme-toggle><svg className="ic ic-sun" aria-hidden="true"><use href="#i-sun" /></svg><svg className="ic ic-moon" aria-hidden="true"><use href="#i-moon" /></svg><span data-theme-label>Light mode</span></button></div>
     </nav>
   </div>
@@ -1102,7 +1108,7 @@ export default function Home() {
           <div className="f-col"><h4>Solutions</h4><a href="#personal">Individuals</a><a href="#models">Merchants &amp; PSPs</a><a href="#models">OTC desks &amp; brokers</a><a href="#models">Fintechs &amp; platforms</a><a href="#rails">Treasury &amp; accounts</a></div>
           <div className="f-col"><h4>Developers</h4><a href="#developers">API overview</a><a href="#developers">Payments API</a><a href="#developers">Wallet API</a><a href="#developers">Quotes API</a><a href="#developers">Webhooks</a></div>
           <div className="f-col"><h4>Resources</h4><a href="#how">How it works</a><a href="#pipeline">How value moves</a><a href="#trust">Technology ecosystem</a><a href="#faq-personal">Personal FAQ</a><a href="#faq-business">Business FAQ</a></div>
-          <div className="f-col"><h4>Company</h4><a href="#home">About Coincashy</a><a href="#compliance">Compliance</a><a href="#contact">Contact</a><a href="https://trade.coincashy.io/auth/login" target="_blank" rel="noopener">Log in</a><a href="https://trade.coincashy.io/auth/signup" target="_blank" rel="noopener">Sign up</a></div>
+          <div className="f-col"><h4>Company</h4><a href="/about">About Coincashy</a><a href="#compliance">Compliance</a><a href="#contact">Contact</a><a href="https://trade.coincashy.io/auth/login" target="_blank" rel="noopener">Log in</a><a href="https://trade.coincashy.io/auth/signup" target="_blank" rel="noopener">Sign up</a></div>
         </div>
       </div>
       <div className="f-mid">
