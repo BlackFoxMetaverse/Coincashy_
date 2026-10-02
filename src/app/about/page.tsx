@@ -28,7 +28,7 @@ export default function Home() {
     </div>
     <div className="nav-bar">
       <a className="brand" href="/" aria-label="Coincashy home">
-        <img className="brand-logo logo-on-dark" src="media/logo-on-dark.png" alt="Coincashy" /><img className="brand-logo logo-on-paper" src="media/logo-on-paper.png" alt="" />
+        <img className="brand-logo logo-on-dark" src="media/logo-white.png" alt="Coincashy" /><img className="brand-logo logo-on-paper" src="media/logo-black.png" alt="" />
       </a>
       <nav className="nav-links" aria-label="Primary">
         <div className="nav-item has-menu">
@@ -119,7 +119,7 @@ export default function Home() {
       <div className="nav-actions">
         <a className="nav-link nav-signin" href="https://trade.coincashy.io/auth/login" target="_blank" rel="noopener">Log in</a>
         <a className="btn btn-line btn-sm nav-contact" href="#contact">Talk to sales</a>
-        <a className="btn btn-solid btn-sm" id="nav-cta" href="https://trade.coincashy.io/auth/signup" target="_blank" rel="noopener"><span className="l-long">Sign up</span><span className="l-short">Sign up</span></a>
+        <a className="btn btn-solid btn-sm" id="nav-cta" href="https://trade.coincashy.io/auth/signup" target="_blank" rel="noopener"><span className="l-long">Get started</span><span className="l-short">Get started</span></a>
         <button className="theme-btn" type="button" data-theme-toggle aria-label="Switch to light mode" title="Switch theme"><svg className="ic ic-sun" aria-hidden="true"><use href="#i-sun" /></svg><svg className="ic ic-moon" aria-hidden="true"><use href="#i-moon" /></svg></button>
         <button className="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mnav"><span /><span /></button>
       </div>

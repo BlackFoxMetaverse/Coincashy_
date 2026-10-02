@@ -28,7 +28,7 @@ export default function Home() {
     </div>
     <div className="nav-bar">
       <a className="brand" href="#home" aria-label="Coincashy home">
-        <img className="brand-logo logo-on-dark" src="media/logo-on-dark.png" alt="Coincashy" /><img className="brand-logo logo-on-paper" src="media/logo-on-paper.png" alt="" />
+        <img className="brand-logo logo-on-dark" src="media/logo-white.png" alt="Coincashy" /><img className="brand-logo logo-on-paper" src="media/logo-black.png" alt="" />
       </a>
       <nav className="nav-links" aria-label="Primary">
         <div className="nav-item has-menu">
