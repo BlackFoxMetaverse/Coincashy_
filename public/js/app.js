@@ -1163,10 +1163,11 @@
     document.fonts.ready.then(() => { if (first && !first.matches('main.page')) jump(first, false); flow.refresh(); });
   }
   /* ---------- ticker ---------- */
-  $$('[data-close-ticker]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const ticker = document.getElementById('top-ticker');
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-close-ticker]');
+    if (btn) {
+      const ticker = btn.closest('.top-ticker');
       if (ticker) ticker.style.display = 'none';
-    });
+    }
   });
 })();
