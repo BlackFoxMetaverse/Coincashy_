@@ -119,7 +119,7 @@ export default function Home() {
       <div className="nav-actions">
         <a className="nav-link nav-signin" href="https://trade.coincashy.io/auth/login" target="_blank" rel="noopener">Log in</a>
         <a className="btn btn-line btn-sm nav-contact" href="#contact">Talk to sales</a>
-        <a className="btn btn-solid btn-sm" id="nav-cta" href="https://trade.coincashy.io/auth/signup" target="_blank" rel="noopener"><span className="l-long">Sign up</span><span className="l-short">Sign up</span></a>
+        <a className="btn btn-solid btn-sm" id="nav-cta" href="https://trade.coincashy.io/auth/signup" target="_blank" rel="noopener"><span className="l-long">Get started</span><span className="l-short">Get started</span></a>
         <button className="theme-btn" type="button" data-theme-toggle aria-label="Switch to light mode" title="Switch theme"><svg className="ic ic-sun" aria-hidden="true"><use href="#i-sun" /></svg><svg className="ic ic-moon" aria-hidden="true"><use href="#i-moon" /></svg></button>
         <button className="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mnav"><span /><span /></button>
       </div>
@@ -158,7 +158,7 @@ export default function Home() {
       </div>
       <div className="wrap hero-inner">
         <div className="hero-copy hero-copy-center">
-          <h1 className="display" id="hero-title"><span className="rw" style={{'--i': 0}}><span>Move</span></span> <span className="rw" style={{'--i': 1}}><span>money</span></span> <span className="rw" style={{'--i': 2}}><span>between</span></span><br /><span className="rw" style={{'--i': 3}}><span><em>crypto and cash.</em></span></span></h1>
+          <h1 className="display" id="hero-title"><span className="rw" style={{'--i': 0}}><span>Move</span></span> <span className="rw" style={{'--i': 1}}><span>money</span></span> <span className="rw" style={{'--i': 2}}><span>between</span></span><br /><span className="rw" style={{'--i': 3}}><span><em>crypto and Fiat.</em></span></span></h1>
           <p className="lede">Buy, sell and spend crypto. Accept, convert and settle it at scale. One gateway, with compliance built in.</p>
           <div className="cta-row">
             <a className="btn btn-solid" href="#business">For business<svg className="ic" aria-hidden="true"><use href="#i-arrow-right" /></svg></a>
@@ -166,7 +166,7 @@ export default function Home() {
           </div>
         </div>
         <div className="hero-proof" aria-label="Trusted by clients and partners" style={{ display: 'flex', flexDirection: 'column', width: '100%', overflow: 'hidden' }}>
-          <span className="hero-proof-label" style={{ marginBottom: 30 }}>TRUSTED BY CLIENTS AND PARTNERS</span>
+          <span className="hero-proof-label" style={{ marginBottom: 10 }}>TRUSTED BY CLIENTS AND PARTNERS</span>
           <div className="marquee">
             <div className="marquee-content">
               <span style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--fg-faint)' }}>200+</span>
