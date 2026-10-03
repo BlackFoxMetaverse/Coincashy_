@@ -117,24 +117,24 @@ export default function Nav() {
   </header>
   <div className="mnav" id="mnav" inert>
     <nav className="mnav-list" aria-label="Mobile">
-      <a className="m-link" href="/#home">Home</a>
+      <a className="m-link" href="#home">Home</a>
       <details>
         <summary>Personal<svg className="ic" aria-hidden="true"><use href="#i-chevron-down" /></svg></summary>
-        <div className="m-sub"><a href="/#personal">Overview</a><a href="/#buy">Buy crypto</a><a href="/#sell">Sell crypto</a><a href="/#convert">Convert crypto</a><a href="/#card">Personal crypto card</a><a href="/#how">How it works</a></div>
+        <div className="m-sub"><a href="#personal">Overview</a><a href="#buy">Buy crypto</a><a href="#sell">Sell crypto</a><a href="#convert">Convert crypto</a><a href="#card">Personal crypto card</a><a href="#how">How it works</a></div>
       </details>
       <details>
         <summary>Business<svg className="ic" aria-hidden="true"><use href="#i-chevron-down" /></svg></summary>
-        <div className="m-sub"><a href="/#business">Overview</a><a href="/#pipeline">How value moves</a><a href="/#platform">Platform</a><a href="/#rails">Accounts and treasury</a><a href="/#models">Who it is for</a></div>
+        <div className="m-sub"><a href="#business">Overview</a><a href="#pipeline">How value moves</a><a href="#platform">Platform</a><a href="#rails">Accounts and treasury</a><a href="#models">Who it is for</a></div>
       </details>
       <details>
         <summary>Solutions<svg className="ic" aria-hidden="true"><use href="#i-chevron-down" /></svg></summary>
-        <div className="m-sub"><a href="/#personal">Individuals</a><a href="/#business">Fintechs &amp; Platforms</a><a href="/#business">Merchants &amp; PSPs</a><a href="/#otc">OTC Desks</a><a href="/#processing">Payment Processing</a><a href="/#ramp">On/Off Ramp</a><a href="/#settlement">Treasury</a><a href="/#wallets">Wallet as a Service</a></div>
+        <div className="m-sub"><a href="#personal">Individuals</a><a href="#business">Fintechs &amp; Platforms</a><a href="#business">Merchants &amp; PSPs</a><a href="#otc">OTC Desks</a><a href="#processing">Payment Processing</a><a href="#ramp">On/Off Ramp</a><a href="#settlement">Treasury</a><a href="#wallets">Wallet as a Service</a></div>
       </details>
       <details>
         <summary>Company<svg className="ic" aria-hidden="true"><use href="#i-chevron-down" /></svg></summary>
-        <div className="m-sub"><a href="/about">About Us</a><a href="/#blog">Blog &amp; Insights</a><a href="/#compliance">Security</a><a href="/#media">Media</a><a href="/#careers">Careers</a><a href="/#culture">Culture</a><a href="/#help">Help Center</a><a href="/#developers">API Docs</a><a href="/#legal">Legal</a></div>
+        <div className="m-sub"><a href="/about" data-mnav-close>About Us</a><a href="#blog">Blog &amp; Insights</a><a href="#compliance">Security</a><a href="#media">Media</a><a href="#careers">Careers</a><a href="#culture">Culture</a><a href="#help">Help Center</a><a href="#developers">API Docs</a><a href="#legal">Legal</a></div>
       </details>
-      <div className="m-cta"><a className="btn btn-solid" href="/#buy">Buy crypto</a><a className="btn btn-line" href="/#contact">Talk to our team</a><button className="btn btn-line" type="button" data-theme-toggle><svg className="ic ic-sun" aria-hidden="true"><use href="#i-sun" /></svg><svg className="ic ic-moon" aria-hidden="true"><use href="#i-moon" /></svg><span data-theme-label>Light mode</span></button></div>
+      <div className="m-cta"><a className="btn btn-solid" href="#buy">Buy crypto</a><a className="btn btn-line" href="#contact">Talk to our team</a><button className="btn btn-line" type="button" data-theme-toggle><svg className="ic ic-sun" aria-hidden="true"><use href="#i-sun" /></svg><svg className="ic ic-moon" aria-hidden="true"><use href="#i-moon" /></svg><span data-theme-label>Light mode</span></button></div>
     </nav>
   </div>
     </>

@@ -288,15 +288,20 @@ main.page{display:block}
 .burger span:last-child{top:26px}
 .burger[aria-expanded="true"] span:first-child{top:21px;transform:rotate(45deg)}
 .burger[aria-expanded="true"] span:last-child{top:21px;transform:rotate(-45deg)}
-.mnav{position:fixed;inset:0;z-index:45;background:var(--ground);color:var(--fg);padding:calc(env(safe-area-inset-top,0px) + 96px) var(--gutter) calc(env(safe-area-inset-bottom,0px) + 32px);overflow-y:auto;opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
-.mnav.open{opacity:1;visibility:visible}
+.mnav{position:fixed;inset:0;z-index:45;background:var(--ground);color:var(--fg);padding:calc(env(safe-area-inset-top,0px) + 96px) var(--gutter) calc(env(safe-area-inset-bottom,0px) + 32px);overflow-y:auto;opacity:0;visibility:hidden;transform:translateY(24px);transition:opacity .38s var(--ease),visibility .38s,transform .38s var(--ease)}
+.mnav.open{opacity:1;visibility:visible;transform:translateY(0)}
 .mnav-list{display:grid;max-width:560px;margin:0 auto}
-.m-link,.mnav summary{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid var(--line);font-family:var(--f-display);font-size:1.9rem;letter-spacing:-.02em;list-style:none;cursor:pointer}
+.m-link,.mnav summary{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid var(--line);font-family:var(--f-display);font-size:1.9rem;letter-spacing:-.02em;list-style:none;cursor:pointer;transition:opacity .18s}
+.m-link:active,.mnav summary:active{opacity:.55}
 .mnav summary::-webkit-details-marker{display:none}
-.mnav summary .ic{width:20px;height:20px;transition:transform .3s var(--ease)}
+.mnav summary .ic{width:20px;height:20px;transition:transform .32s var(--ease)}
 .mnav details[open] summary .ic{transform:rotate(180deg)}
-.m-sub{display:grid;padding:8px 0 14px;border-bottom:1px solid var(--line)}
-.m-sub a{padding:9px 0;color:var(--fg-dim);font-size:1.02rem}
+/* smooth accordion expand via max-height trick */
+.mnav details .m-sub{max-height:0;overflow:hidden;transition:max-height .35s var(--ease);padding:0;border-bottom:none}
+.mnav details[open] .m-sub{max-height:420px}
+.m-sub{padding:8px 0 14px;border-bottom:1px solid var(--line)}
+.m-sub a{display:block;padding:9px 4px;color:var(--fg-dim);font-size:1.02rem;border-radius:8px;transition:color .18s,background-color .18s}
+.m-sub a:active,.m-sub a:hover{color:var(--fg);background:var(--surface-2)}
 .m-cta{display:grid;gap:10px;margin-top:28px}
 @media (max-width:1060px){.nav-links,.nav-contact,.nav-signin{display:none}.burger{display:block}}
 #nav-cta .l-short{display:none}

@@ -1046,7 +1046,7 @@
   const burger = $('#burger');
   const mnav = $('#mnav');
   const pages = $$('main.page');
-  const CTA = { home: ['Get started', 'https://trade.coincashy.io/auth/signup', 'Get started'], personal: ['Buy crypto', '#buy', 'Buy crypto'], business: ['Talk to our team', '#contact', 'Contact'] };
+  const CTA_DEFAULT = ['Get started', 'https://trade.coincashy.io/auth/signup', 'Get started'];
   const HIGHLIGHT = new Set(['processing', 'otc', 'ramp', 'c2c', 'vibans', 'wallets', 'cards', 'settlement']);
   let currentPage = null;
 
@@ -1061,6 +1061,11 @@
   }
   const closeMobile = () => { if (mnav && mnav.classList.contains('open')) openMobile(false); };
   if (burger) burger.addEventListener('click', () => openMobile(!mnav.classList.contains('open')));
+  /* Close mobile menu on ANY link tap inside mnav (hash links + full-path links like /about) */
+  if (mnav) mnav.addEventListener('click', e => {
+    const a = e.target.closest('a');
+    if (a) closeMobile();
+  });
 
   function jump(el, smooth) {
     const html = document.documentElement;
@@ -1082,7 +1087,7 @@
     document.body.dataset.page = id;
     $$('[data-nav]').forEach(a => a.classList.toggle('is-current', a.dataset.nav === id));
     const cta = $('#nav-cta');
-    if (cta && CTA[id]) { cta.innerHTML = `<span class="l-long">${CTA[id][0]}</span><span class="l-short">${CTA[id][2]}</span>`; cta.setAttribute('href', CTA[id][1]); }
+    if (cta) { cta.innerHTML = `<span class="l-long">${CTA_DEFAULT[0]}</span><span class="l-short">${CTA_DEFAULT[2]}</span>`; cta.setAttribute('href', CTA_DEFAULT[1]); }
     if (id === 'home') requestAnimationFrame(() => flow.refresh());
     return true;
   }
