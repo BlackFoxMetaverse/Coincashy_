@@ -169,7 +169,7 @@ export default function Home() {
       </div>
       <div className="f-mid">
         <div className="f-contact"><span>Support</span><code>support@coincashy.io</code><button className="copy-btn" type="button" data-copy="support@coincashy.io"><svg className="ic" aria-hidden="true"><use href="#i-copy" /></svg><span>Copy</span></button></div>
-        <ul className="f-links"><li><a href="#">Terms of Service</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Cookie Policy</a></li><li><a href="#compliance">Complaints &amp; disclosures</a></li></ul>
+        <ul className="f-links"><li><a href="/terms">Terms of Service</a></li><li><a href="/privacy">Privacy Policy</a></li><li><a href="/cookies">Cookie Policy</a></li><li><a href="/complaints">Complaints &amp; disclosures</a></li></ul>
       </div>
       <div className="f-legal">
         <p>© 2026 Coincashy. All rights reserved. Products and availability are subject to jurisdiction, onboarding and partner approval.</p>
