@@ -641,15 +641,16 @@
   /* ---------- prepared email dialog ---------- */
   const dlg = $('#mail-dialog');
   function openMail(subject, body) {
-    $('#md-subject').textContent = subject;
-    $('#md-body').textContent = body;
-    $('#md-open').href = `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    try { dlg.showModal(); } catch (e) { dlg.setAttribute('open', ''); }
+    const mdSubject = $('#md-subject'), mdBody = $('#md-body'), mdOpen = $('#md-open');
+    if (mdSubject) mdSubject.textContent = subject;
+    if (mdBody) mdBody.textContent = body;
+    if (mdOpen) mdOpen.href = `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    if (dlg) { try { dlg.showModal(); } catch (e) { dlg.setAttribute('open', ''); } }
   }
-  function closeMail() { try { dlg.close(); } catch (e) { dlg.removeAttribute('open'); } }
-  $('#md-close').addEventListener('click', closeMail);
-  dlg.addEventListener('click', e => { if (e.target === dlg) closeMail(); });
-  $('#md-copy').addEventListener('click', () => {
+  function closeMail() { if (!dlg) return; try { dlg.close(); } catch (e) { dlg.removeAttribute('open'); } }
+  if ($('#md-close')) $('#md-close').addEventListener('click', closeMail);
+  if (dlg) dlg.addEventListener('click', e => { if (e.target === dlg) closeMail(); });
+  if ($('#md-copy')) $('#md-copy').addEventListener('click', () => {
     copyText(`To: ${EMAIL}\nSubject: ${$('#md-subject').textContent}\n\n${$('#md-body').textContent}`, $('#md-body'));
   });
   $$('[data-copy]').forEach(b => b.addEventListener('click', () => copyText(b.dataset.copy, b.parentElement.querySelector('code'))));
