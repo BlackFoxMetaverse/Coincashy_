@@ -228,15 +228,15 @@ main.page{display:block}
   color: var(--fg);
 }
 @media (max-width: 640px) {
-  .ticker-logo { display: none; }
-  .ticker-text { font-size: 0.75rem; }
-  .ticker-link { margin-left: 4px; }
+  .ticker-logo { font-size: 0.55rem; margin-right: 6px; }
+  .ticker-text { font-size: 0.7rem; }
+  .ticker-link { margin-left: 2px; }
 }
 
 /* ============ Nav ============ */
 .nav{position:fixed;inset:0 0 auto 0;z-index:50;padding-top:env(safe-area-inset-top,0px);border-bottom:1px solid transparent;transition:background-color .35s,border-color .35s}
 .nav-bar{max-width:1320px;margin:0 auto;height:64px;display:flex;align-items:center;gap:clamp(14px,2vw,28px);padding:0 var(--gutter);color:var(--fg)}
-.nav.is-scrolled:not(.menu-open){background:var(--glass);border-bottom-color:var(--line);-webkit-backdrop-filter:blur(18px) saturate(150%);backdrop-filter:blur(18px) saturate(150%)}
+.nav.is-scrolled:not(.menu-open){background:var(--surface);border-bottom-color:var(--line);-webkit-backdrop-filter:blur(18px) saturate(150%);backdrop-filter:blur(18px) saturate(150%)}
 .nav.menu-open{background:var(--ground)}
 .brand{display:inline-flex;align-items:center;gap:10px;flex:none}
 .brand-logo{height:22px;width:auto}

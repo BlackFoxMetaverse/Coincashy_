@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   },
 };
 
+import SvgSprite from "@/components/SvgSprite";
+import Nav from "@/components/Nav";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -18,8 +21,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <SvgSprite />
+        <Nav />
         {children}
-        <Script src="/js/app.js" strategy="afterInteractive" />
+        <Script src="/js/main.js" type="module" strategy="afterInteractive" />
       </body>
     </html>
   );
