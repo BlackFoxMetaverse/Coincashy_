@@ -1,5 +1,6 @@
 (() => {
   'use strict';
+  try {
 
   /* ---------- helpers ---------- */
   const $ = (s, r = document) => r.querySelector(s);
@@ -1050,6 +1051,7 @@
   let currentPage = null;
 
   function openMobile(open) {
+    if (!mnav || !burger || !nav) return;
     mnav.classList.toggle('open', open);
     mnav.inert = !open;
     burger.setAttribute('aria-expanded', String(open));
@@ -1057,8 +1059,8 @@
     document.documentElement.classList.toggle('no-scroll', open);
     nav.classList.toggle('menu-open', open);
   }
-  const closeMobile = () => { if (mnav.classList.contains('open')) openMobile(false); };
-  burger.addEventListener('click', () => openMobile(!mnav.classList.contains('open')));
+  const closeMobile = () => { if (mnav && mnav.classList.contains('open')) openMobile(false); };
+  if (burger) burger.addEventListener('click', () => openMobile(!mnav.classList.contains('open')));
 
   function jump(el, smooth) {
     const html = document.documentElement;
@@ -1171,4 +1173,7 @@
       if (ticker) ticker.remove();
     }
   });
+  } catch (err) {
+    console.warn('[Coincashy] app.js init error (page may be missing some elements):', err);
+  }
 })();
