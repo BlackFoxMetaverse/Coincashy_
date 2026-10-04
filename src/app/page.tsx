@@ -25,7 +25,7 @@ export default function Home() {
       </div>
       <div className="wrap hero-inner">
         <div className="hero-copy hero-copy-center">
-          <h1 className="display" id="hero-title"><span className="rw" style={{'--i': 0}}><span>Move</span></span> <span className="rw" style={{'--i': 1}}><span>money</span></span> <span className="rw" style={{'--i': 2}}><span>between</span></span><br /><span className="rw" style={{'--i': 3}}><span><em>crypto and Fiat.</em></span></span></h1>
+          <h1 className="display" id="hero-title"><span className="rw" style={{'--i': 0}}><span>Move</span></span> <span className="rw" style={{'--i': 1}}><span>money</span></span> <span className="rw" style={{'--i': 2}}><span>between</span></span><br /><span className="rw" style={{'--i': 3}}><span><em>crypto and fiat.</em></span></span></h1>
           <p className="lede">Buy, sell and spend crypto. Accept, convert and settle it at scale. One gateway, with compliance built in.</p>
           <div className="cta-row">
             <a className="btn btn-solid" href="#business">For business<svg className="ic" aria-hidden="true"><use href="#i-arrow-right" /></svg></a>

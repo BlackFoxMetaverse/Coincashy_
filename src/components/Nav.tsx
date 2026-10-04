@@ -122,7 +122,7 @@ export default function Nav() {
       </details>
       <details>
         <summary>Business<svg className="ic" aria-hidden="true"><use href="#i-chevron-down" /></svg></summary>
-        <div className="m-sub"><a href="#business">Overview</a><a href="#pipeline">How value moves</a><a href="#platform">Platform</a><a href="#rails">Accounts and treasury</a><a href="#models">Who it is for</a></div>
+        <div className="m-sub"><a href="/#processing">Crypto processing</a><a href="/#otc">OTC &amp; liquidity</a><a href="/#ramp">On/off-ramp</a><a href="/#vibans">vIBANs</a><a href="/#wallets">Wallet as a Service</a><a href="/#cards">Corporate cards</a><a href="/#settlement">Stablecoin settlement</a><a href="/#developers">APIs &amp; webhooks</a></div>
       </details>
       <details>
         <summary>Solutions<svg className="ic" aria-hidden="true"><use href="#i-chevron-down" /></svg></summary>
@@ -132,7 +132,7 @@ export default function Nav() {
         <summary>Company<svg className="ic" aria-hidden="true"><use href="#i-chevron-down" /></svg></summary>
         <div className="m-sub"><a href="/about" data-mnav-close>About Us</a><a href="#blog">Blog &amp; Insights</a><a href="#compliance">Security</a><a href="#media">Media</a><a href="#careers">Careers</a><a href="#culture">Culture</a><a href="#help">Help Center</a><a href="#developers">API Docs</a><a href="#legal">Legal</a></div>
       </details>
-      <div className="m-cta"><a className="btn btn-solid" href="#buy">Buy crypto</a><a className="btn btn-solid" href="https://trade.coincashy.io/auth/signup" target="_blank" rel="noopener">Get started</a><a className="btn btn-line" href="#contact">Talk to our team</a><button className="btn btn-line" type="button" data-theme-toggle><svg className="ic ic-sun" aria-hidden="true"><use href="#i-sun" /></svg><svg className="ic ic-moon" aria-hidden="true"><use href="#i-moon" /></svg><span data-theme-label>Light mode</span></button></div>
+      <div className="m-cta"><a className="btn btn-solid" href="#buy">Buy crypto</a><a className="btn btn-solid" href="https://trade.coincashy.io/auth/login" target="_blank" rel="noopener">Login</a><a className="btn btn-line" href="#contact">Talk to our team</a><button className="btn btn-line" type="button" data-theme-toggle><svg className="ic ic-sun" aria-hidden="true"><use href="#i-sun" /></svg><svg className="ic ic-moon" aria-hidden="true"><use href="#i-moon" /></svg><span data-theme-label>Light mode</span></button></div>
     </nav>
   </div>
     </>
