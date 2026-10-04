@@ -3,107 +3,87 @@ import LegalPage from '@/components/LegalPage';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Terms of Service – Coincashy',
-  description: 'Read the Coincashy Terms of Service governing your use of our crypto, stablecoin, and fiat financial services.',
+  title: 'Terms and Conditions – Coincashy',
+  description: 'Read the official Terms and Conditions governing the use of the Coincashy website and services.',
 };
 
 export default function TermsPage() {
   return (
     <LegalPage
-      title="Terms of Service"
-      subtitle="Please read these terms carefully before using Coincashy's products and services."
+      title="Terms and Conditions"
+      subtitle="Technical terms and conditions governing the use of the Coincashy website and services."
       effectiveDate="1 October 2025"
       sections={[
         {
-          title: 'Agreement to Terms',
+          title: 'General Provisions',
           content: [
-            'These Terms of Service ("Terms") form a legally binding agreement between you and Coincashy Sp. z o.o. ("Coincashy", "we", "us", or "our"), a company incorporated under the laws of Poland, with its registered office at Warsaw, Poland.',
-            'By accessing or using any Coincashy product, platform, API, or service (collectively, the "Services"), you agree to be bound by these Terms. If you do not agree, you must not use our Services.',
-            'We may update these Terms from time to time. Continued use of our Services after any changes constitutes your acceptance of the revised Terms. We will notify you of material changes via email or in-platform notice.',
+            <>1. These Terms and Conditions (hereinafter: “Terms and Conditions”) set out the technical terms and conditions for the use of the website managed by the Service Provider (hereinafter: “Website”). The Terms and Conditions are made available to the Service Recipient free of charge, via the website <a href="https://wheat-alpaca-977386.hostingersite.com" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--hi)' }}>https://wheat-alpaca-977386.hostingersite.com</a>.</>,
+            <>2. The Service Provider is Coincashy sp. z o.o. with the registered office in ul. Korytnicka, nr 46, lok. 52, miejsc. Warsaw, Poland 04-10, entered into the Register of Entrepreneurs of the National Court Register, VII Economic Division of the National Court Register under KRS no. 0001135823, share capital PLN 5,000 paid in full (hereinafter referred to as “Service Provider”), website address: <a href="https://wheat-alpaca-977386.hostingersite.com/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--hi)' }}>https://wheat-alpaca-977386.hostingersite.com/</a>, contact form: <a href="https://wheat-alpaca-977386.hostingersite.com/contact" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--hi)' }}>https://wheat-alpaca-977386.hostingersite.com/contact</a>.</>,
+            '3. The provision of services by electronic means, including the use of the Website, shall take place on the basis of the Regulations. The Regulations are the regulations referred to in Article 8 of the Act of 18 July 2002 on the provision of services by electronic means (Dz.U.2020.344 t.j. of 2020.03.03) (hereinafter: “Services”).',
+            '4. The Customer may be a natural person, a legal person or an organisational unit without legal personality who uses the Services provided by the Service Provider (hereinafter: “Customer”).',
+            '5. Any content made available on the Service is for informational or informational and educational purposes only. Any content made available on the Service does not constitute investment advice or investment recommendations within the meaning of Regulation (EU) No 596/2014 of the European Parliament and of the Council of 16 April 2014 on market abuse (Market Abuse Regulation) and repealing Directive 2003/6/EC of the European Parliament and of the Council and Commission Directives 2003/124/EC, 2003/125/EC and 2004/72/EC.',
+            '6. The Service Provider reserves the right to display advertisements and sponsored content on the Website.',
+            '7. The Service Provider is not responsible for the content of the advertisements posted on the Website, subject to mandatory provisions.',
           ],
         },
         {
-          title: 'Eligibility',
+          title: 'Technical Requirements & Website Access',
           content: [
-            'You must be at least 18 years of age to use our Services. By agreeing to these Terms, you confirm that you are of legal age in your jurisdiction to enter into a binding agreement.',
-            'Our Services are not available to persons who are subject to sanctions administered by the EU, OFAC, HMRC, or other relevant authorities. You confirm that you are not on any such sanctions list and that your use of the Services does not violate any applicable laws.',
-            'Coincashy reserves the right to refuse service, close accounts, or restrict access to anyone at its sole discretion, including based on jurisdiction or regulatory requirements.',
+            '1. The Website may be accessible to the Service Recipients in their web browser – at the address of the Website and on all subpages of this Website, as well as via third-party websites linking to the addresses or subpages of the Website.',
+            '2. The services are provided to customers who have access to the Internet and a web browser.',
           ],
         },
         {
-          title: 'Account Registration & Security',
+          title: 'Services Provided & Rules of Use',
           content: [
-            'To access certain features of the Services, you must register for an account. You agree to provide accurate, current, and complete information and to update it promptly if it changes.',
-            'You are solely responsible for maintaining the security of your account credentials. Coincashy will never ask for your password. You must notify us immediately at support@coincashy.io if you suspect any unauthorised access to your account.',
-            'You are responsible for all activity that occurs under your account. Coincashy is not liable for any loss or damage arising from your failure to comply with this security obligation.',
+            '1. As part of the provision of the Services, the Service Provider enables the Service Recipients:',
+            <ul key="services-ul" style={{ paddingLeft: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              <li><strong>a.</strong> to view the content of the Website free of charge,</li>
+              <li><strong>b.</strong> access to materials made available by the Service Provider on the Website (hereinafter referred to as “Content”). The Content may consist of text materials, photographs, graphics – according to the Service Provider’s offer presented on the pages of the Site dedicated to the Content,</li>
+              <li><strong>c.</strong> the sharing of Content or other materials from the Service Provider by sending them to the Client’s e-mail address (“Content Sharing”). The Content Sharing relates primarily to responses to requests from Service Recipients.</li>
+            </ul>,
+            '2. The use of the Service is voluntary and free of charge (except for the fee resulting from Internet access), however, it requires prior reading and acceptance of the Terms and Conditions. By using the Service, the User declares that he/she has read the Rules and Regulations and accepts their content.',
+            '3. The conclusion of the Contract for Provision of Services between the Service Provider and the User occurs when the User enters the relevant URL of the website in the Internet browser, while the termination of the Contract for Provision of Services occurs when the User closes the website in the browser.',
+            '4. The Service Provider will endeavour to make the Website available 24 hours a day, however, the Service Provider does not guarantee uninterrupted access to the Website.',
+            '5. The Service, including in particular all content, source code, logos are protected by copyright and any copying or use contrary to these Terms and Conditions is prohibited.',
+            '6. The Service Provider shall not be liable for any interruption in the provision of electronic services that occurs, where this is due to force majeure or is caused by the actions of third parties for which it is not responsible.',
+            '7. The Service Provider is not responsible for content originating from and distributed on the Website by other parties, subject to mandatory regulations.',
           ],
         },
         {
-          title: 'Know Your Customer (KYC) & AML',
+          title: 'Complaints Procedure',
           content: [
-            'As a regulated financial services provider, Coincashy is required to verify the identity of its users ("Know Your Customer" or KYC) and to conduct Anti-Money Laundering (AML) checks in accordance with applicable law.',
-            'You agree to provide any documentation or information we request for identity verification. Failure to complete verification may result in suspension or termination of your account.',
-            'Coincashy may file Suspicious Activity Reports (SARs) with relevant authorities where required by law. We are prohibited by law from notifying you that such a report has been made.',
-          ],
-        },
-        {
-          title: 'Permitted Use',
-          content: [
-            'You may only use the Services for lawful purposes and in accordance with these Terms. You agree not to use the Services to engage in money laundering, terrorist financing, fraud, market manipulation, or any other illegal activity.',
-            'You must not reverse engineer, scrape, decompile, or attempt to extract source code from any of our software, APIs, or systems.',
-            'You must not use the Services to transmit unsolicited communications, malware, or otherwise interfere with the operation of our platform or the experience of other users.',
-          ],
-        },
-        {
-          title: 'Crypto-Asset Risks',
-          content: [
-            'Crypto-assets are highly volatile. The value of any crypto-asset can decrease significantly, and you may lose all of the money you invest. Past performance is not indicative of future results.',
-            'Crypto-asset transactions are irreversible. Once a transaction is confirmed on the blockchain, it cannot be undone. You are solely responsible for verifying recipient addresses and transaction details before confirming.',
-            'Coincashy is not responsible for blockchain network delays, forks, or failures that may affect your transactions. We do not provide investment advice and nothing on our platform constitutes a recommendation to buy or sell any asset.',
-          ],
-        },
-        {
-          title: 'Fees',
-          content: [
-            'Coincashy charges fees for certain transactions and services. Current fees are displayed within the platform before you confirm any transaction. Fees may vary depending on the product, transaction type, volume, and jurisdiction.',
-            'We reserve the right to change our fee schedule at any time. We will provide reasonable notice of any fee changes through our website or by email.',
-            'Third-party services (including blockchain network fees, banking fees, or partner card fees) may apply in addition to Coincashy fees. These are outside our control and may change without notice.',
-          ],
-        },
-        {
-          title: 'Intellectual Property',
-          content: [
-            'All content, software, trademarks, logos, and other intellectual property on the Coincashy platform are owned by or licensed to Coincashy and protected under applicable intellectual property laws.',
-            'You are granted a limited, non-exclusive, non-transferable licence to use the Services for personal or business purposes as permitted under these Terms. You may not copy, modify, distribute, or create derivative works without our express written consent.',
+            '1. The Service Recipient has the right to lodge a complaint with the Service Provider regarding the operation of the Service provided.',
+            <>2. The Service Provider accepts complaints by e-mail via the contact form: <a href="https://wheat-alpaca-977386.hostingersite.com/contact" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--hi)' }}>https://wheat-alpaca-977386.hostingersite.com/contact</a>.</>,
+            '3. When submitting a complaint, the User shall provide his/her name and surname, as complete a description as possible of the subject of the complaint, the demand related to the handling of the complaint and the manner in which the User is to provide a response to the complaint. If the User requests that the complaint be sent in writing, the User is obliged to provide the address to which the complaint should be sent in writing.',
+            '4. The Service Provider is obliged to respond to the Client’s complaint within 14 days of receipt. The Service Provider shall send the response to the complaint on paper to the address provided by the User or electronically, depending on the form of the complaint or the User’s choice.',
+            <>5. The user is entitled under Regulation 524/2013 of the European Parliament and of the Council of 21 May 2013 on online dispute resolution for consumer disputes and amending Regulation EC No 2006/2004 and Directive 2009/22/EC (Regulation on ODR in consumer disputes) to use the online dispute resolution platform (ODR platform). The ODR platform can be accessed at: <a href="http://webgate.ec.europa.eu/odr/main/index.cfm?event=main.home.show&lng=PL" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--hi)' }}>http://webgate.ec.europa.eu/odr/main/index.cfm?event=main.home.show&lng=PL</a>.</>,
           ],
         },
         {
           title: 'Limitation of Liability',
           content: [
-            'To the maximum extent permitted by applicable law, Coincashy and its directors, officers, employees, partners, and licensors shall not be liable for any indirect, incidental, consequential, exemplary, or punitive damages arising from your use of, or inability to use, the Services.',
-            'Our total aggregate liability for any claim arising from or related to these Terms or the Services shall not exceed the greater of (a) the fees you paid to Coincashy in the twelve (12) months prior to the event giving rise to the claim, or (b) EUR 100.',
-            'Some jurisdictions do not allow the exclusion or limitation of certain warranties or liabilities, so some of the above limitations may not apply to you.',
+            '1. Under no circumstances shall the Service Provider be liable for:',
+            <ul key="liability-ul" style={{ paddingLeft: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              <li><strong>a.</strong> any incidental, consequential or indirect damages (in particular, damages in the form of lost profits, business interruption, loss of programmes or information, etc.) resulting from the use or inability to use the site or any information or transactions made available on or downloaded from the site, even if the Service Provider or its authorised representatives have been informed of the possibility of such damages,</li>
+              <li><strong>b.</strong> any claims relating to errors, omissions or other irregularities within the Service and/or materials or information downloaded through the Service.</li>
+            </ul>,
           ],
         },
         {
-          title: 'Termination',
+          title: 'Final Provisions',
           content: [
-            'You may close your Coincashy account at any time by contacting support@coincashy.io, provided there are no outstanding transactions, balances, or obligations on your account.',
-            'Coincashy may suspend or terminate your account and access to the Services at any time, with or without notice, if we believe you have violated these Terms or if required to do so by applicable law or regulatory authority.',
-            'Upon termination, your right to use the Services ceases immediately. Sections of these Terms that by their nature should survive termination (including intellectual property, limitation of liability, and governing law) shall do so.',
+            '1. The Service Provider processes the User’s personal data in accordance with the processing rules set out in the Privacy Policy.',
+            '2. The Service Provider reserves the right to amend the Terms and Conditions. In such case, the Service Provider will inform the Users of the validity of the amended version of the Terms and Conditions via the Website.',
+            '3. In all matters not covered by these Terms and Conditions, the provisions of generally applicable Polish law shall apply.',
+            '4. Unless otherwise stipulated by mandatory provisions of law, the entire agreement for the provision of services by electronic means under the terms and conditions specified in these Terms and Conditions shall be governed by Polish law. The Service Provider may transfer its rights and obligations under this Agreement to any person at any time without notifying the Service Recipient.',
           ],
         },
         {
-          title: 'Governing Law & Dispute Resolution',
+          title: 'Third-Party Access and Representation',
           content: [
-            'These Terms are governed by and construed in accordance with the laws of Poland, without regard to conflict of law principles.',
-            'Any dispute arising from or relating to these Terms or your use of the Services shall first be subject to an informal resolution process. You must contact us at legal@coincashy.io and give us 30 days to resolve the issue before pursuing any formal proceeding.',
-            'If a dispute cannot be resolved informally, it shall be resolved by arbitration in Warsaw, Poland, under the rules of the Court of Arbitration at the Polish Chamber of Commerce, unless applicable consumer protection laws in your jurisdiction require otherwise.',
+            '1. By creating an account, you confirm that you are acting on your own behalf or, where applicable, on behalf of an entity you are duly authorised to represent. You confirm that no third party has opened the account on your behalf and that you will not permit any unauthorised third party to access or operate your account.',
           ],
-        },
-        {
-          title: 'Contact',
-          content: 'If you have questions about these Terms, please contact us at legal@coincashy.io or write to Coincashy Sp. z o.o., Warsaw, Poland. We aim to respond to all legal enquiries within 10 business days.',
         },
       ]}
     />

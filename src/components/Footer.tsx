@@ -33,7 +33,7 @@ export default function Footer() {
           <ul className="f-links">
             <li><a href="/terms">Terms of Service</a></li>
             <li><a href="/privacy">Privacy Policy</a></li>
-            <li><a href="/cookies">Cookie Policy</a></li>
+            <li><a href="/aml">AML Policy</a></li>
             <li><a href="/complaints">Complaints &amp; disclosures</a></li>
           </ul>
         </div>
