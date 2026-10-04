@@ -707,7 +707,7 @@ export default function Home() {
           <div><h3 className="h3">Screen customers, businesses and wallets.</h3><p className="body">Customer and business checks scale with product, geography, transaction size and risk profile, before any value moves on.</p></div>
           <div><p className="lbl">Controls at this stage</p><div className="tags"><span className="tag"><svg className="ic" aria-hidden="true"><use href="#i-user-check" /></svg>KYC and KYB verification</span><span className="tag"><svg className="ic" aria-hidden="true"><use href="#i-scan-search" /></svg>Sanctions and PEP screening</span><span className="tag"><svg className="ic" aria-hidden="true"><use href="#i-radar" /></svg>Wallet risk screening</span></div></div>
         </div>
-        <div className="flow-panel" id="fp-2" role="tabpanel" aria-labelledby="ft-2" hidden>
+        <div className="flow-panel" id="fp-2" role="tabpanel" aria-labelledby="ft-2" hidden>  
           <div><h3 className="h3">Convert through OTC and liquidity.</h3><p className="body">Execute fiat, stablecoin and crypto conversions through quote-driven workflows, with clear quotes, execution status and records.</p></div>
           <div><p className="lbl">Controls at this stage</p><div className="tags"><span className="tag"><svg className="ic" aria-hidden="true"><use href="#i-activity" /></svg>Transaction monitoring</span><span className="tag"><svg className="ic" aria-hidden="true"><use href="#i-file-check" /></svg>Audit-ready records</span></div></div>
         </div>
