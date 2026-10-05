@@ -1,4 +1,6 @@
 // @ts-nocheck
+import TreasuryWidget from './TreasuryWidget';
+
 export default function BusinessView() {
   return (
   <main className="page" id="business" hidden>
@@ -119,34 +121,7 @@ export default function BusinessView() {
             <div className="rail"><span className="rail-ic">⇄</span><span><b>Conversion and settlement</b></span></div>
           </div>
         </div>
-        <div className="treasury" id="treasury">
-          <div className="t-head"><b>Business treasury</b></div>
-          <div><div className="t-lbl" id="t-lbl">Total balance</div><div className="t-total" id="t-total">$2,481,904.28</div></div>
-          <div className="t-seg">
-            <div className="seg" role="radiogroup" aria-label="Account" id="t-accts">
-              <button type="button" role="radio" aria-checked="true" data-acct="all">All</button>
-              <button type="button" role="radio" aria-checked="false" data-acct="EUR" tabIndex={-1}>EUR</button>
-              <button type="button" role="radio" aria-checked="false" data-acct="USD" tabIndex={-1}>USD</button>
-              <button type="button" role="radio" aria-checked="false" data-acct="USDC" tabIndex={-1}>USDC</button>
-            </div>
-          </div>
-          <svg className="spark" id="spark" viewBox="0 0 320 96" role="img" aria-label="Balance trend across September">
-            <defs><linearGradient id="spFill" x1={0} y1={0} x2={0} y2={1}><stop offset={0} className="sp-stop-a" /><stop offset={1} className="sp-stop-b" /></linearGradient></defs>
-            <line className="grid" x1={0} x2={320} y1={12} y2={12} /><line className="grid" x1={0} x2={320} y1={51} y2={51} /><line className="grid" x1={0} x2={320} y1={90} y2={90} />
-            <path className="sp-area" d="M4 90 L316 90 Z" /><path className="sp-line" d="M4 90 L316 90" /><circle className="sp-end" r="3.5" cx={316} cy={90} /></svg>
-          <div className="spark-axis" aria-hidden="true"><span>1 Sep</span><span>30 Sep</span></div>
-          <div className="accts">
-            <div className="acct" data-row="EUR"><span className="coin sm fiat">€</span><span>EUR account</span><b>€804,220</b></div>
-            <div className="acct" data-row="USD"><span className="coin sm fiat">$</span><span>USD account</span><b>$626,400</b></div>
-            <div className="acct" data-row="USDC"><span className="coin sm usdc">$</span><span>USDC wallet</span><b>420,850 USDC</b></div>
-          </div>
-          <div className="t-act-h">Recent activity</div>
-          <ul className="t-act">
-            <li data-ccy="USDC EUR"><span>USDC → EUR conversion</span><b>€92,400</b></li>
-            <li data-ccy="USD"><span>Merchant settlement</span><b>$48,000</b></li>
-            <li data-ccy="EUR"><span>vIBAN collection</span><b>€16,820</b></li>
-          </ul>
-        </div>
+        <TreasuryWidget />
       </div>
     </section>
     <section className="sec" id="developers">

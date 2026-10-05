@@ -84,64 +84,7 @@ import { radioGroup, openMail } from './ui.js';
   })();
 
   
-/* ---------- business: treasury ---------- */
-
-  (() => {
-    const root = $('#treasury');
-    if (!root) return;
-    const D = {
-      all: { lbl: 'Total balance', val: 2481904.28, pre: '$', suf: '', dp: 2, seed: 7 },
-      EUR: { lbl: 'EUR account', val: 804220, pre: '€', suf: '', dp: 0, seed: 3 },
-      USD: { lbl: 'USD account', val: 626400, pre: '$', suf: '', dp: 0, seed: 11 },
-      USDC: { lbl: 'USDC wallet', val: 420850, pre: '', suf: ' USDC', dp: 0, seed: 5 }
-    };
-    function series(seed, end) {
-      let x = seed * 9301 + 49297;
-      const rnd = () => { x = (x * 9301 + 49297) % 233280; return x / 233280; };
-      const pts = [];
-      let v = end * .82;
-      for (let i = 0; i < 30; i++) { v += end * (.012 + (rnd() - .45) * .03); pts.push(v); }
-      const k = end / pts[pts.length - 1];
-      return pts.map(p => p * k);
-    }
-    const svg = $('#spark');
-    const W = 320, TOP = 12, BOTTOM = 90;
-    function draw(pts) {
-      const min = Math.min(...pts), max = Math.max(...pts), n = pts.length;
-      const x = i => 4 + (i * (W - 8)) / (n - 1);
-      const y = v => BOTTOM - ((v - min) / ((max - min) || 1)) * (BOTTOM - TOP);
-      const d = pts.map((v, i) => `${i ? 'L' : 'M'}${x(i).toFixed(1)} ${y(v).toFixed(1)}`).join(' ');
-      $('.sp-line', svg).setAttribute('d', d);
-      $('.sp-area', svg).setAttribute('d', `${d} L${x(n - 1).toFixed(1)} ${BOTTOM} L${x(0).toFixed(1)} ${BOTTOM} Z`);
-      const end = $('.sp-end', svg);
-      end.setAttribute('cx', x(n - 1).toFixed(1));
-      end.setAttribute('cy', y(pts[n - 1]).toFixed(1));
-    }
-    const total = $('#t-total'), lbl = $('#t-lbl');
-    let shown = D.all.val, anim = 0;
-    function tween(d) {
-      cancelAnimationFrame(anim);
-      const from = shown, to = d.val, t0 = performance.now(), dur = reduceMotion ? 0 : 650;
-      const step = now => {
-        const p = dur ? clamp((now - t0) / dur, 0, 1) : 1;
-        const e = 1 - Math.pow(1 - p, 3);
-        shown = from + (to - from) * e;
-        total.textContent = d.pre + fmt(p === 1 ? to : shown, d.dp) + d.suf;
-        if (p < 1) anim = requestAnimationFrame(step);
-      };
-      anim = requestAnimationFrame(step);
-    }
-    function select(key) {
-      const d = D[key];
-      lbl.textContent = d.lbl;
-      tween(d);
-      draw(series(d.seed, d.val));
-      $$('.acct', root).forEach(r => r.classList.toggle('dim', key !== 'all' && r.dataset.row !== key));
-      $$('.t-act li', root).forEach(li => li.classList.toggle('dim', key !== 'all' && !li.dataset.ccy.split(' ').includes(key)));
-    }
-    radioGroup($('#t-accts'), b => select(b.dataset.acct));
-    draw(series(D.all.seed, D.all.val));
-  })();
+/* ---------- business: treasury (Moved to TreasuryWidget.tsx) ---------- */
 
 // window.widget = widget;
 window.cardPref = cardPref;
