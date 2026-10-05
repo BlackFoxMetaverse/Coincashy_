@@ -35,9 +35,9 @@ function formatNumber(n: number, dp: number) {
 
 export default function TreasuryWidget() {
   const [selectedId, setSelectedId] = useState<AccountId>('all');
-  const [displayVal, setDisplayVal] = useState(ACCOUNTS.all.val);
+  const [displayVal, setDisplayVal] = useState<number>(ACCOUNTS.all.val);
   const animRef = useRef<number>(0);
-  const valRef = useRef(ACCOUNTS.all.val);
+  const valRef = useRef<number>(ACCOUNTS.all.val);
 
   const selectedAcct = ACCOUNTS[selectedId];
 
