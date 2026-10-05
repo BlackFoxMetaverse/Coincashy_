@@ -24,7 +24,7 @@ export default function RootLayout({
         <SvgSprite />
         <Nav />
         {children}
-        <Script src="/js/main.js?v=2" type="module" strategy="afterInteractive" />
+        <Script src="/js/main.js?v=3" type="module" strategy="afterInteractive" />
       </body>
     </html>
   );

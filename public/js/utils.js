@@ -20,7 +20,7 @@
   function currentTheme() { return document.documentElement.dataset.theme === 'light' ? 'light' : 'dark'; }
   function applyTheme(t, persist) {
     document.documentElement.dataset.theme = t;
-    themeBtns.forEach(b => {
+    $$('[data-theme-toggle]').forEach(b => {
       b.setAttribute('aria-label', t === 'light' ? 'Switch to dark mode' : 'Switch to light mode');
       const l = b.querySelector('[data-theme-label]');
       if (l) l.textContent = t === 'light' ? 'Dark mode' : 'Light mode';
@@ -32,7 +32,11 @@
   let savedTheme = null;
   try { savedTheme = localStorage.getItem('coincashy-theme'); } catch (e) { /* ignore */ }
   applyTheme(savedTheme === 'light' ? 'light' : 'dark', false);
-  themeBtns.forEach(b => b.addEventListener('click', () => applyTheme(currentTheme() === 'light' ? 'dark' : 'light', true)));
+  document.addEventListener('click', e => {
+    if (e.target.closest('[data-theme-toggle]')) {
+      applyTheme(currentTheme() === 'light' ? 'dark' : 'light', true);
+    }
+  });
   const cssRGB = (el, name, fallback) => {
     const v = getComputedStyle(el).getPropertyValue(name).trim();
     const m = v.match(/(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/);
