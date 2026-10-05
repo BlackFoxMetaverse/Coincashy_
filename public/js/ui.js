@@ -479,22 +479,11 @@ window.flow = flow;
   const HIGHLIGHT = new Set(['processing', 'otc', 'ramp', 'c2c', 'vibans', 'wallets', 'cards', 'settlement']);
   let currentPage = null;
 
-  function openMobile(open) {
-    if (!mnav || !burger || !nav) return;
-    mnav.classList.toggle('open', open);
-    mnav.inert = !open;
-    burger.setAttribute('aria-expanded', String(open));
-    burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-    document.documentElement.classList.toggle('no-scroll', open);
-    nav.classList.toggle('menu-open', open);
-  }
-  const closeMobile = () => { if (mnav && mnav.classList.contains('open')) openMobile(false); };
-  if (burger) burger.addEventListener('click', () => openMobile(!mnav.classList.contains('open')));
+  /* openMobile removed */
+  /* closeMobile removed */
+  /* burger click removed */
   /* Close mobile menu on ANY link tap inside mnav (hash links + full-path links like /about) */
-  if (mnav) mnav.addEventListener('click', e => {
-    const a = e.target.closest('a');
-    if (a) closeMobile();
-  });
+  /* mnav click removed */
 
   function jump(el, smooth) {
     const html = document.documentElement;
@@ -581,7 +570,7 @@ window.flow = flow;
     ticking = true;
     requestAnimationFrame(() => {
       ticking = false;
-      nav.classList.toggle('is-scrolled', window.scrollY > 8);
+      /* nav is-scrolled removed */
       if (window.statement && typeof window.statement.update === 'function') window.statement.update();
     });
   }

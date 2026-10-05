@@ -33,10 +33,13 @@
   try { savedTheme = localStorage.getItem('coincashy-theme'); } catch (e) { /* ignore */ }
   applyTheme(savedTheme === 'light' ? 'light' : 'dark', false);
   document.addEventListener('click', e => {
-    if (e.target.closest('[data-theme-toggle]')) {
-      applyTheme(currentTheme() === 'light' ? 'dark' : 'light', true);
+    if (e.target && typeof e.target.closest === 'function') {
+      if (e.target.closest('[data-theme-toggle]')) {
+        applyTheme(currentTheme() === 'light' ? 'dark' : 'light', true);
+      }
     }
   });
+  window.__toggleTheme = () => applyTheme(currentTheme() === 'light' ? 'dark' : 'light', true);
   const cssRGB = (el, name, fallback) => {
     const v = getComputedStyle(el).getPropertyValue(name).trim();
     const m = v.match(/(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/);

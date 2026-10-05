@@ -139,7 +139,7 @@ export default function Nav() {
             <a className="nav-link nav-signin" href="https://trade.coincashy.io/auth/login" target="_blank" rel="noopener">Log in</a>
             <a className="btn btn-line btn-sm nav-contact" href="/#contact">Talk to sales</a>
             <a className="btn btn-solid btn-sm" id="nav-cta" href="https://trade.coincashy.io/auth/signup" target="_blank" rel="noopener"><span className="l-long">Get started</span><span className="l-short">Get started</span></a>
-            <button className="theme-btn" type="button" data-theme-toggle aria-label="Switch to light mode" title="Switch theme"><svg className="ic ic-sun" aria-hidden="true"><use href="#i-sun" /></svg><svg className="ic ic-moon" aria-hidden="true"><use href="#i-moon" /></svg></button>
+            <button className="theme-btn" type="button" data-theme-toggle aria-label="Switch to light mode" title="Switch theme" onClick={() => { if (typeof window !== 'undefined' && (window as any).__toggleTheme) (window as any).__toggleTheme(); }}><svg className="ic ic-sun" aria-hidden="true"><use href="#i-sun" /></svg><svg className="ic ic-moon" aria-hidden="true"><use href="#i-moon" /></svg></button>
             <button className="burger" id="burger" type="button" aria-label={isMobileOpen ? 'Close menu' : 'Open menu'} aria-expanded={isMobileOpen} aria-controls="mnav" onClick={toggleMobile}><span /><span /></button>
           </div>
         </div>
@@ -165,7 +165,7 @@ export default function Nav() {
             <summary>Company<svg className="ic" aria-hidden="true"><use href="#i-chevron-down" /></svg></summary>
             <div className="m-sub"><a href="/about" data-mnav-close>About Us</a><a href="#blog">Blog &amp; Insights</a><a href="#compliance">Security</a><a href="#media">Media</a><a href="#careers">Careers</a><a href="#culture">Culture</a><a href="#help">Help Center</a><a href="#developers">API Docs</a><a href="#legal">Legal</a></div>
           </details>
-          <div className="m-cta"><a className="btn btn-solid" href="#buy">Buy crypto</a><a className="btn btn-solid" href="https://trade.coincashy.io/auth/login" target="_blank" rel="noopener">Login</a><a className="btn btn-line" href="#contact">Talk to our team</a><button className="btn btn-line" type="button" data-theme-toggle><svg className="ic ic-sun" aria-hidden="true"><use href="#i-sun" /></svg><svg className="ic ic-moon" aria-hidden="true"><use href="#i-moon" /></svg><span data-theme-label>Light mode</span></button></div>
+          <div className="m-cta"><a className="btn btn-solid" href="#buy">Buy crypto</a><a className="btn btn-solid" href="https://trade.coincashy.io/auth/login" target="_blank" rel="noopener">Login</a><a className="btn btn-line" href="#contact">Talk to our team</a><button className="btn btn-line" type="button" data-theme-toggle onClick={() => { if (typeof window !== 'undefined' && (window as any).__toggleTheme) (window as any).__toggleTheme(); }}><svg className="ic ic-sun" aria-hidden="true"><use href="#i-sun" /></svg><svg className="ic ic-moon" aria-hidden="true"><use href="#i-moon" /></svg><span data-theme-label>Light mode</span></button></div>
         </nav>
       </div>
     </>
