@@ -582,7 +582,7 @@ window.flow = flow;
     requestAnimationFrame(() => {
       ticking = false;
       nav.classList.toggle('is-scrolled', window.scrollY > 8);
-      if (window.statement) window.statement.update();
+      if (window.statement && typeof window.statement.update === 'function') window.statement.update();
     });
   }
   window.addEventListener('scroll', onScroll, { passive: true });
