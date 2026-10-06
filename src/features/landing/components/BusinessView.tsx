@@ -322,7 +322,7 @@ export default function BusinessView() {
           <div className="field"><label htmlFor="cf-notes">Settlement requirements</label><textarea className="input" id="cf-notes" rows={4} placeholder="What do you need to accept, convert and settle, and how often?" defaultValue={""} /></div>
           <div className="form-foot">
             <p className="fine">Products and availability are subject to jurisdiction, onboarding and partner approval.</p>
-            <button className="btn btn-solid" type="submit">Prepare email<svg className="ic" aria-hidden="true"><use href="#i-arrow-right" /></svg></button>
+            <button className="btn btn-solid" type="submit">Send inquiry<svg className="ic" aria-hidden="true"><use href="#i-arrow-right" /></svg></button>
           </div>
         </form>
       </div>

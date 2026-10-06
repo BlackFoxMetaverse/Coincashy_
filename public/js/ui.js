@@ -91,7 +91,7 @@ import { $, $$, clamp, reduceMotion, canHover, hasIO, fmt, icon, EMAIL, EMAIL_RE
   }
 
   const contactForm = $('#contact-form');
-  if (contactForm) contactForm.addEventListener('submit', e => {
+  if (contactForm) contactForm.addEventListener('submit', async e => {
     e.preventDefault();
     const name = $('#cf-name'), email = $('#cf-email'), company = $('#cf-company');
     const results = [
@@ -101,20 +101,53 @@ import { $, $$, clamp, reduceMotion, canHover, hasIO, fmt, icon, EMAIL, EMAIL_RE
     ];
     const bad = results.find(r => !r[1]);
     if (bad) { bad[0].focus(); return; }
+    
     const pick = n => $$(`input[name="${n}"]:checked`, contactForm).map(i => i.value);
-    const lines = [
-      `Name: ${name.value.trim()}`,
-      `Company: ${company.value.trim()}`,
-      `Work email: ${email.value.trim()}`,
-      `Markets: ${$('#cf-markets').value.trim() || 'Not specified'}`,
-      `Currencies: ${pick('ccy').join(', ') || 'Not specified'}`,
-      `Monthly volume: ${$('#cf-volume').value}`,
-      `Products of interest: ${pick('product').join(', ') || 'Not specified'}`,
-      '',
-      'Settlement requirements:',
-      $('#cf-notes').value.trim() || 'Not specified'
-    ];
-    openMail(`Business inquiry from ${company.value.trim()}`, lines.join('\n'));
+    
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = 'Sending...';
+    submitBtn.disabled = true;
+
+    try {
+      const payload = {
+        name: name.value.trim(),
+        company: company.value.trim(),
+        email: email.value.trim(),
+        markets: $('#cf-markets').value.trim() || 'Not specified',
+        currencies: pick('ccy').join(', ') || 'Not specified',
+        monthlyVolume: $('#cf-volume').value,
+        products: pick('product').join(', ') || 'Not specified',
+        notes: $('#cf-notes').value.trim() || 'Not specified'
+      };
+
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      if (res.ok) {
+        toast('Message sent successfully! Our team will contact you soon.');
+        contactForm.reset();
+        
+        // UI Fix: Change button to green and show success message
+        submitBtn.innerHTML = 'Successfully sent <svg class="ic" aria-hidden="true"><use href="#i-check" /></svg>';
+        submitBtn.style.backgroundColor = '#10B981';
+        submitBtn.style.borderColor = '#10B981';
+        submitBtn.style.color = '#fff';
+        // Intentionally NOT re-enabling the button to prevent multiple submissions
+      } else {
+        throw new Error('Failed to send');
+      }
+    } catch (err) {
+      toast('Failed to send message. Please check your connection or try again later.');
+      console.error(err);
+      
+      // Revert the button to its original state only on error
+      submitBtn.innerHTML = originalText;
+      submitBtn.disabled = false;
+    }
   });
 
   const waitlist = $('#waitlist');
@@ -542,7 +575,7 @@ window.flow = flow;
     const href = a.getAttribute('href');
     if (href.length < 2) return;
     e.preventDefault();
-    closeMobile();
+    // closeMobile removed
     if (a.closest('.menu')) nav.classList.add('menus-off');
     if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
     route(href, { push: true });
