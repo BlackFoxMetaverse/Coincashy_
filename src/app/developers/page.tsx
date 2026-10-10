@@ -93,9 +93,56 @@ export default function DevelopersPage() {
   return (
     <>
       <main className="page" style={{ paddingTop: '100px', background: 'var(--ground)' }}>
-        <div className="wrap" style={{ display: 'flex', alignItems: 'flex-start', maxWidth: '1200px', gap: '3rem' }}>
+        <style>{`
+          .api-layout {
+            display: flex;
+            align-items: flex-start;
+            max-width: 1200px;
+            gap: 3rem;
+          }
+          .api-sidebar {
+            position: sticky;
+            top: 100px;
+            width: 260px;
+            flex-shrink: 0;
+            height: calc(100vh - 120px);
+            overflow-y: auto;
+            padding-right: 1rem;
+          }
+          .api-content {
+            flex-grow: 1;
+            padding-bottom: 6rem;
+            max-width: 800px;
+            color: var(--fg);
+          }
+          @media (max-width: 900px) {
+            .api-layout {
+              flex-direction: column;
+              gap: 2rem;
+            }
+            .api-sidebar {
+              position: static;
+              width: 100%;
+              height: auto;
+              max-height: 250px;
+              padding-right: 0;
+              margin-bottom: 1rem;
+              border-bottom: 1px solid var(--line);
+              padding-bottom: 1rem;
+            }
+            .api-content {
+              max-width: 100%;
+            }
+          }
+          @media (max-width: 480px) {
+            .api-content pre, .api-content table {
+              font-size: 0.75rem !important;
+            }
+          }
+        `}</style>
+        <div className="wrap api-layout">
           
-          <aside style={{ position: 'sticky', top: '100px', width: '260px', flexShrink: 0, height: 'calc(100vh - 120px)', overflowY: 'auto', paddingRight: '1rem' }}>
+          <aside className="api-sidebar">
             <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
               {navItems.map(item => (
                 <a 
@@ -128,7 +175,7 @@ export default function DevelopersPage() {
             </nav>
           </aside>
 
-          <div style={{ flexGrow: 1, paddingBottom: '6rem', maxWidth: '800px', color: 'var(--fg)' }}>
+          <div className="api-content">
              
              <section id="00" style={{ marginBottom: '4rem' }}>
                 <h1 style={{ fontSize: '2.5rem', marginBottom: '1.5rem', color: 'var(--fg)' }}>Overview</h1>
