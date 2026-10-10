@@ -1,6 +1,6 @@
 "use client";
 import React from 'react';
-import { useOrderWidget, OrderMode, PaymentMethod } from '../hooks/useOrderWidget';
+import { useOrderWidget, PaymentMethod } from '../hooks/useOrderWidget';
 import { FIAT_RATES, CRYPTO_RATES, Currency, OrderCalculator } from '../domain/OrderCalculator';
 
 export default function CryptoExchangeWidget() {
@@ -22,7 +22,7 @@ export default function CryptoExchangeWidget() {
   const toChipUI = getChipUI(to);
 
   return (
-    <div className="widget scope-dark scope-dark" id="widget" role="group" aria-label="Buy, sell or convert crypto">
+    <div className="widget scope-dark scope-dark" id="widget" role="group" aria-label="Buy, sell or convert crypto" suppressHydrationWarning>
       {!isReview ? (
         <div id="w-form">
           <div className="w-head">

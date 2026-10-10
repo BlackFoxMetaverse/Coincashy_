@@ -554,7 +554,7 @@ window.flow = flow;
     const pageEl = target ? target.closest('main.page') : null;
     if (!pageEl) return null;
     const changed = showPage(pageEl.id);
-    if (mode && window.widget) window.widget.setMode(mode);
+    if (mode && window.widget && typeof window.widget.setMode === 'function') window.widget.setMode(mode);
     const smooth = !changed && opts.smooth !== false && !reduceMotion;
     requestAnimationFrame(() => {
       jump(target === pageEl ? null : target, smooth);

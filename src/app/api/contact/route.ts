@@ -1,34 +1,59 @@
 import { NextResponse } from 'next/server';
 
+const isValidEmail = (value: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+
 export async function POST(request: Request) {
   try {
-    const data = await request.json();
+    const data = await request.json().catch(() => null);
 
-    const webhookUrl = process.env.GOOGLE_SHEETS_WEBHOOK_URL || 'https://script.google.com/macros/s/AKfycbxkMv8V_zvNKcnybsFWP-jKAZgbvgHaheLdoK7L-LrFK0cfhZbg-bCEMsaDdGyDQ4G1Qg/exec';
-    
-    if (!webhookUrl) {
-      console.warn('GOOGLE_SHEETS_WEBHOOK_URL is not set. Data received:', data);
-      // We return success to the frontend anyway to test the flow, but log the warning.
-      return NextResponse.json({ success: true, message: 'Simulated success: Webhook URL missing' });
+    if (!data || typeof data !== 'object') {
+      return NextResponse.json({ success: false, message: 'Request body is required.' }, { status: 400 });
     }
 
-    // Send to Google Sheets Webhook
+    const name = typeof data.name === 'string' ? data.name.trim() : '';
+    const company = typeof data.company === 'string' ? data.company.trim() : '';
+    const email = typeof data.email === 'string' ? data.email.trim() : '';
+
+    if (!name || !company || !email) {
+      return NextResponse.json({ success: false, message: 'Name, company and email are required.' }, { status: 400 });
+    }
+
+    if (!isValidEmail(email)) {
+      return NextResponse.json({ success: false, message: 'A valid work email is required.' }, { status: 400 });
+    }
+
+    const cleanedData = {
+      name,
+      company,
+      email,
+      markets: typeof data.markets === 'string' ? data.markets.trim() : 'Not specified',
+      currencies: typeof data.currencies === 'string' ? data.currencies : 'Not specified',
+      monthlyVolume: typeof data.monthlyVolume === 'string' ? data.monthlyVolume : 'Not specified',
+      products: typeof data.products === 'string' ? data.products : 'Not specified',
+      notes: typeof data.notes === 'string' ? data.notes.trim() : 'Not specified',
+      createdAt: new Date().toISOString(),
+    };
+
+    const webhookUrl = process.env.GOOGLE_SHEETS_WEBHOOK_URL;
+
+    if (!webhookUrl) {
+      console.warn('GOOGLE_SHEETS_WEBHOOK_URL is not set. Local simulation accepted for:', cleanedData.email);
+      return NextResponse.json({ success: true, message: 'Simulated success: webhook URL not configured in this environment.' });
+    }
+
     const res = await fetch(webhookUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(data),
-      redirect: 'follow'
+      body: JSON.stringify(cleanedData),
+      redirect: 'follow',
     });
 
     const text = await res.text();
-    
-    // Google Apps Script can sometimes return an HTML error page even on success (due to redirect issues). 
-    // We check if the response is completely an error.
-    if (!res.ok && !text.includes('success')) {
+
+    if (!res.ok && !text.toLowerCase().includes('success')) {
       console.error('Google Sheets Webhook Error:', text);
-      // Don't throw 500 immediately, let the user know it failed gracefully
       return NextResponse.json({ success: false, message: 'Google Sheets integration failed', error: text }, { status: 500 });
     }
 

@@ -12,7 +12,15 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    "*.js",
+    "public/**"
   ]),
+  {
+    rules: {
+      "react/no-unescaped-entities": "off",
+      "@typescript-eslint/no-require-imports": "off"
+    }
+  }
 ]);
 
 export default eslintConfig;

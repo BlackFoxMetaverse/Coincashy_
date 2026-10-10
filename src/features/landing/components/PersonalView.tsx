@@ -1,9 +1,9 @@
-// @ts-nocheck
+import Image from 'next/image';
 import CryptoExchangeWidget from '../../crypto-exchange/components/CryptoExchangeWidget';
 
 export default function PersonalView() {
   return (
-  <main className="page" id="personal" hidden>
+  <main className="page" id="personal" hidden suppressHydrationWarning>
     <section className="p-hero" id="p-hero">
       <div className="p-hero-glow" aria-hidden="true" />
       <div className="wrap p-hero-grid">
@@ -27,7 +27,7 @@ export default function PersonalView() {
       <div className="wrap">
         <div className="strip">
           <span className="strip-label">One connected experience</span>
-          <div className="marquee" style={{'--dur': '36s'}}>
+          <div className="marquee" style={{'--dur': '36s'} as React.CSSProperties}>
             <div className="marquee-track">
               <div className="marquee-group">
                 <span className="m-item"><svg className="ic" aria-hidden="true"><use href="#i-credit-card" /></svg>Buy with card</span><span className="m-sep" />
@@ -101,7 +101,7 @@ export default function PersonalView() {
                 <div className="card finish-paper is-physical">
                   <div className="card-tex" /><div className="card-foil" /><div className="card-sheen" />
                   <div className="card-body">
-                    <div className="card-row"><span className="card-word"><img className="cw-dark" src="media/logo-white.png" alt="Coincashy" width={1217} height={157} /><img className="cw-light" src="media/logo-black.png" alt="" width={1217} height={157} /></span><span className="card-type">PHYSICAL</span></div>
+                    <div className="card-row"><span className="card-word"><Image className="cw-dark" src="/media/logo-white.png" alt="Coincashy" width={1217} height={157} /><Image className="cw-light" src="/media/logo-black.png" alt="" width={1217} height={157} /></span><span className="card-type">PHYSICAL</span></div>
                     <div className="card-mid"><span className="card-chip" /><svg className="ic card-nfc" aria-hidden="true"><use href="#i-nfc" /></svg></div>
                     <div className="card-num">•••• •••• •••• 2049</div>
                     <div className="card-foot"><span>Your name</span><span>09/29</span></div>
@@ -132,7 +132,7 @@ export default function PersonalView() {
                 <div className="card finish-vault" id="lab-card">
                   <div className="card-tex" /><div className="card-foil" /><div className="card-sheen" />
                   <div className="card-body">
-                    <div className="card-row"><span className="card-word"><img className="cw-dark" src="media/logo-white.png" alt="Coincashy" width={1217} height={157} /><img className="cw-light" src="media/logo-black.png" alt="" width={1217} height={157} /></span><span className="card-type" id="lab-type">VIRTUAL</span></div>
+                    <div className="card-row"><span className="card-word"><Image className="cw-dark" src="/media/logo-white.png" alt="Coincashy" width={1217} height={157} /><Image className="cw-light" src="/media/logo-black.png" alt="" width={1217} height={157} /></span><span className="card-type" id="lab-type">VIRTUAL</span></div>
                     <div className="card-mid"><span className="card-chip" /><svg className="ic card-nfc" aria-hidden="true"><use href="#i-nfc" /></svg></div>
                     <div className="card-num">•••• •••• •••• 2049</div>
                     <div className="card-foot"><span><small>Cardholder</small>Your name</span><span><small>Valid thru</small>09/29</span></div>
@@ -204,13 +204,13 @@ export default function PersonalView() {
         </div>
         <div className="how-grid" id="how-grid">
           <div className="how-steps" role="tablist" aria-label="Steps to buy crypto" aria-orientation="vertical">
-            <button className="how-step is-active" type="button" role="tab" aria-selected="true" aria-controls="hp-0" id="hs-0"><span className="n">01</span><span><span className="hs-t h3">Choose</span><span className="hs-d">Select an asset and enter the amount.</span></span><span className="bar" /></button>
-            <button className="how-step" type="button" role="tab" aria-selected="false" aria-controls="hp-1" id="hs-1" tabIndex={-1}><span className="n">02</span><span><span className="hs-t h3">Pay</span><span className="hs-d">Use an available card, wallet or bank rail.</span></span><span className="bar" /></button>
-            <button className="how-step" type="button" role="tab" aria-selected="false" aria-controls="hp-2" id="hs-2" tabIndex={-1}><span className="n">03</span><span><span className="hs-t h3">Verify</span><span className="hs-d">Complete the required identity and payment checks.</span></span><span className="bar" /></button>
-            <button className="how-step" type="button" role="tab" aria-selected="false" aria-controls="hp-3" id="hs-3" tabIndex={-1}><span className="n">04</span><span><span className="hs-t h3">Receive</span><span className="hs-d">Your crypto moves to the supported destination.</span></span><span className="bar" /></button>
+            <button className="how-step is-active" type="button" role="tab" aria-selected="true" aria-controls="hp-0" id="hs-0" suppressHydrationWarning><span className="n">01</span><span><span className="hs-t h3">Choose</span><span className="hs-d">Select an asset and enter the amount.</span></span><span className="bar" /></button>
+            <button className="how-step" type="button" role="tab" aria-selected="false" aria-controls="hp-1" id="hs-1" tabIndex={-1} suppressHydrationWarning><span className="n">02</span><span><span className="hs-t h3">Pay</span><span className="hs-d">Use an available card, wallet or bank rail.</span></span><span className="bar" /></button>
+            <button className="how-step" type="button" role="tab" aria-selected="false" aria-controls="hp-2" id="hs-2" tabIndex={-1} suppressHydrationWarning><span className="n">03</span><span><span className="hs-t h3">Verify</span><span className="hs-d">Complete the required identity and payment checks.</span></span><span className="bar" /></button>
+            <button className="how-step" type="button" role="tab" aria-selected="false" aria-controls="hp-3" id="hs-3" tabIndex={-1} suppressHydrationWarning><span className="n">04</span><span><span className="hs-t h3">Receive</span><span className="hs-d">Your crypto moves to the supported destination.</span></span><span className="bar" /></button>
           </div>
           <div className="how-vis">
-            <div className="how-pane is-active" id="hp-0" role="tabpanel" aria-labelledby="hs-0">
+            <div className="how-pane is-active" id="hp-0" role="tabpanel" aria-labelledby="hs-0" suppressHydrationWarning>
               <div className="hp-card">
                 <div className="hp-title">Choose an asset<small>Step 1 of 4</small></div>
                 <div className="hp-row sel"><span className="coin sm btc">₿</span>Bitcoin<em>BTC</em></div>
@@ -220,7 +220,7 @@ export default function PersonalView() {
                 <div className="hp-row sel"><svg className="ic" aria-hidden="true"><use href="#i-euro" /></svg>Amount<em>€250.00</em></div>
               </div>
             </div>
-            <div className="how-pane" id="hp-1" role="tabpanel" aria-labelledby="hs-1" aria-hidden="true">
+            <div className="how-pane" id="hp-1" role="tabpanel" aria-labelledby="hs-1" aria-hidden="true" suppressHydrationWarning>
               <div className="hp-card">
                 <div className="hp-title">Pay €250.00<small>Step 2 of 4</small></div>
                 <div className="hp-grid">
@@ -232,7 +232,7 @@ export default function PersonalView() {
                 <div className="hp-row"><svg className="ic" aria-hidden="true"><use href="#i-clock" /></svg>Quote held<em>00:30</em></div>
               </div>
             </div>
-            <div className="how-pane" id="hp-2" role="tabpanel" aria-labelledby="hs-2" aria-hidden="true">
+            <div className="how-pane" id="hp-2" role="tabpanel" aria-labelledby="hs-2" aria-hidden="true" suppressHydrationWarning>
               <div className="hp-card">
                 <div className="hp-title">Verify<small>Step 3 of 4</small></div>
                 <div className="hp-check"><i><svg className="ic" aria-hidden="true"><use href="#i-check" /></svg></i>Identity check<em>Done</em></div>
@@ -240,7 +240,7 @@ export default function PersonalView() {
                 <div className="hp-check wait"><i />Wallet screening<em>In progress</em></div>
               </div>
             </div>
-            <div className="how-pane" id="hp-3" role="tabpanel" aria-labelledby="hs-3" aria-hidden="true">
+            <div className="how-pane" id="hp-3" role="tabpanel" aria-labelledby="hs-3" aria-hidden="true" suppressHydrationWarning>
               <div className="hp-card">
                 <div className="hp-title">Received<small>Step 4 of 4</small></div>
                 <div className="hp-big">+0.0034402 <span className="small mono">BTC</span></div>
@@ -270,7 +270,7 @@ export default function PersonalView() {
     </section>
     {/* Personal · Closing: sonar grid */}
     <section className="sec sonar" data-sonar>
-      <canvas className="sonar-canvas" aria-hidden="true" />
+      <canvas className="sonar-canvas" aria-hidden="true" suppressHydrationWarning />
       <div className="sonar-wash" aria-hidden="true" />
       <div className="wrap sonar-inner">
         <p className="eyebrow">Get started</p>

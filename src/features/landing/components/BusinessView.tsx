@@ -1,9 +1,8 @@
-// @ts-nocheck
 import TreasuryWidget from './TreasuryWidget';
 
 export default function BusinessView() {
   return (
-  <main className="page" id="business" hidden>
+  <main className="page" id="business" hidden suppressHydrationWarning>
     <section className="p-hero" id="b-hero">
       <div className="p-hero-glow" aria-hidden="true" />
       <div className="wrap">
@@ -25,7 +24,7 @@ export default function BusinessView() {
                 <div className="kpi"><span>Settlement</span><b id="k-set">$946,000</b></div>
                 <div className="kpi"><span>Wallets</span><b id="k-wal">248</b></div>
               </div>
-              <div className="bars" id="ops-bars" aria-hidden="true" />
+              <div className="bars" id="ops-bars" aria-hidden="true" suppressHydrationWarning dangerouslySetInnerHTML={{ __html: '' }} />
               <div className="bars-axis" aria-hidden="true"><span>00:00</span><span>Now</span></div>
               <ul className="feed" id="ops-feed">
                 <li><span className="f-ic"><svg className="ic" aria-hidden="true"><use href="#i-store" /></svg></span><span className="f-txt"><b>Merchant payment</b></span><span className="pill">Completed</span></li>
@@ -233,7 +232,7 @@ export default function BusinessView() {
         </div>
         <div className="strip mt-xl">
           <span className="strip-label">Technology and service ecosystem</span>
-          <div className="marquee" style={{'--dur': '44s'}}>
+          <div className="marquee" style={{'--dur': '44s'} as React.CSSProperties}>
             <div className="marquee-track">
               <div className="marquee-group">
                 <span className="eco-item">BITGO</span><span className="m-sep" /><span className="eco-item">SUMSUB</span><span className="m-sep" /><span className="eco-item">GLOBAL LEDGER</span><span className="m-sep" /><span className="eco-item">UTILA</span><span className="m-sep" /><span className="eco-item">MERCURYO</span><span className="m-sep" /><span className="eco-item">YELLOW CARD</span><span className="m-sep" />

@@ -47,8 +47,9 @@ export default function TreasuryWidget() {
     cancelAnimationFrame(animRef.current);
     
     if (prefersReduced) {
-      setDisplayVal(selectedAcct.val);
-      valRef.current = selectedAcct.val;
+      const v = selectedAcct.val;
+      valRef.current = v;
+      animRef.current = requestAnimationFrame(() => setDisplayVal(v));
       return;
     }
 

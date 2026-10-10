@@ -1,6 +1,6 @@
 "use client";
-import { useState, useEffect, useCallback } from 'react';
-import { OrderCalculator, Currency, FiatCurrency, CryptoCurrency, FIAT_RATES, CRYPTO_RATES } from '../domain/OrderCalculator';
+import { useState, useEffect } from 'react';
+import { OrderCalculator, Currency, FiatCurrency, FIAT_RATES, CRYPTO_RATES } from '../domain/OrderCalculator';
 
 export type OrderMode = 'buy' | 'sell' | 'convert';
 export type PaymentMethod = 'Card' | 'Apple Pay' | 'Google Pay' | 'Bank transfer';
@@ -26,13 +26,16 @@ export function useOrderWidget() {
     const fromVal = parseNum(fromAmt);
     const toVal = parseNum(toAmt);
     
-    if (side === 'from') {
-      const calculatedTo = OrderCalculator.convert(from, to, fromVal, jitter);
-      setToAmt(OrderCalculator.formatValue(to, calculatedTo));
-    } else {
-      const calculatedFrom = OrderCalculator.convert(to, from, toVal, jitter);
-      setFromAmt(OrderCalculator.formatValue(from, calculatedFrom));
-    }
+    const t = setTimeout(() => {
+      if (side === 'from') {
+        const calculatedTo = OrderCalculator.convert(from, to, fromVal, jitter);
+        setToAmt(OrderCalculator.formatValue(to, calculatedTo));
+      } else {
+        const calculatedFrom = OrderCalculator.convert(to, from, toVal, jitter);
+        setFromAmt(OrderCalculator.formatValue(from, calculatedFrom));
+      }
+    }, 0);
+    return () => clearTimeout(t);
   }, [from, to, fromAmt, toAmt, side, jitter, mode]);
 
   useEffect(() => {

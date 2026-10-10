@@ -1,4 +1,3 @@
-// @ts-nocheck
 import LegalPage from '@/components/LegalPage';
 import type { Metadata } from 'next';
 

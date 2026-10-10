@@ -1,4 +1,6 @@
 "use client";
+import Image from 'next/image';
+import Link from 'next/link';
 
 import React, { useState, useEffect } from 'react';
 
@@ -47,7 +49,7 @@ export default function Nav() {
         </div>
         <div className="nav-bar">
           <a className="brand" href="/#home" aria-label="Coincashy home" onClick={closeMobile}>
-            <img className="brand-logo logo-on-dark" src="media/logo-white.png" alt="Coincashy" /><img className="brand-logo logo-on-paper" src="media/logo-black.png" alt="" />
+            <Image className="brand-logo logo-on-dark" src="/media/logo-white.png" alt="Coincashy"  height={100} width={100} /><Image className="brand-logo logo-on-paper" src="/media/logo-black.png" alt=""  height={100} width={100} />
           </a>
           <nav className="nav-links" aria-label="Primary">
             <div className="nav-item has-menu">
@@ -78,7 +80,7 @@ export default function Nav() {
                 <div className="menu-feature">
                   <p>Tell us how your money needs to move.</p>
                   <small>Share your markets, currencies, volumes and settlement requirements.</small>
-                  <a className="btn btn-solid btn-sm" href="/#contact">Talk to our team</a>
+                  <a className="btn btn-solid btn-sm" href="/contact">Talk to our team</a>
                 </div>
               </div>
             </div>
@@ -104,7 +106,7 @@ export default function Nav() {
                 <div className="menu-feature">
                   <p>Tell us how your money needs to move.</p>
                   <small>Share your markets, currencies, volumes and settlement requirements.</small>
-                  <a className="btn btn-solid btn-sm" href="/#contact">Talk to our team</a>
+                  <a className="btn btn-solid btn-sm" href="/contact">Talk to our team</a>
                 </div>
               </div>
             </div>
@@ -115,21 +117,22 @@ export default function Nav() {
                   <div className="menu-col">
                     <h4>Discover Coincashy</h4>
                     <a className="menu-link" href="/about">About Us</a>
-                    <a className="menu-link" href="/#blog">Blog &amp; Insights</a>
-                    <a className="menu-link" href="/#compliance">Compliance &amp; Security</a>
-                    <a className="menu-link" href="/#media">Press &amp; Media</a>
+                    <a className="menu-link" href="/compliance">Compliance &amp; Security</a>
+                    <a className="menu-link" href="/about#culture">Life at Coincashy</a>
+                    <a className="menu-link" href="/contact">Contact</a>
                   </div>
                   <div className="menu-col">
                     <h4>Careers</h4>
-                    <a className="menu-link" href="/#careers">Open Roles</a>
-                    <a className="menu-link" href="/#culture">Life at Coincashy</a>
-                    <a className="menu-link" href="/#diversity">Diversity &amp; Inclusion</a>
+                    <a className="menu-link" href="/careers">Open Roles</a>
+                    <a className="menu-link" href="/about#culture">Culture</a>
+                    <a className="menu-link" href="/contact">Join our team</a>
                   </div>
                   <div className="menu-col">
                     <h4>Resources</h4>
-                    <a className="menu-link" href="/#help">Help Center</a>
-                    <a className="menu-link" href="/#developers">API Documentation</a>
-                    <a className="menu-link" href="/#legal">Legal &amp; Privacy</a>
+                    <a className="menu-link" href="/help">Help Center</a>
+                    <a className="menu-link" href="/developers">API Documentation</a>
+                    <a className="menu-link" href="/privacy">Privacy Policy</a>
+                    <a className="menu-link" href="/terms">Terms</a>
                   </div>
                 </div>
               </div>
@@ -137,7 +140,7 @@ export default function Nav() {
           </nav>
           <div className="nav-actions">
             <a className="nav-link nav-signin" href="https://trade.coincashy.io/auth/login" target="_blank" rel="noopener">Log in</a>
-            <a className="btn btn-line btn-sm nav-contact" href="/#contact">Talk to sales</a>
+            <a className="btn btn-line btn-sm nav-contact" href="/contact">Talk to sales</a>
             <a className="btn btn-solid btn-sm" id="nav-cta" href="https://trade.coincashy.io/auth/signup" target="_blank" rel="noopener"><span className="l-long">Get started</span><span className="l-short">Get started</span></a>
             <button className="theme-btn" type="button" data-theme-toggle aria-label="Switch to light mode" title="Switch theme" onClick={() => { if (typeof window !== 'undefined' && (window as any).__toggleTheme) (window as any).__toggleTheme(); }}><svg className="ic ic-sun" aria-hidden="true"><use href="#i-sun" /></svg><svg className="ic ic-moon" aria-hidden="true"><use href="#i-moon" /></svg></button>
             <button className="burger" id="burger" type="button" aria-label={isMobileOpen ? 'Close menu' : 'Open menu'} aria-expanded={isMobileOpen} aria-controls="mnav" onClick={toggleMobile}><span /><span /></button>
@@ -148,10 +151,10 @@ export default function Nav() {
         <nav className="mnav-list" aria-label="Mobile" onClick={(e) => {
           if ((e.target as HTMLElement).closest('a')) closeMobile();
         }}>
-          <a className="m-link" href="#home">Home</a>
+          <Link className="m-link" href="/">Home</Link>
           <details>
             <summary>Personal<svg className="ic" aria-hidden="true"><use href="#i-chevron-down" /></svg></summary>
-            <div className="m-sub"><a href="#personal">Overview</a><a href="#buy">Buy crypto</a><a href="#sell">Sell crypto</a><a href="#convert">Convert crypto</a><a href="#card">Personal crypto card</a><a href="#how">How it works</a></div>
+            <div className="m-sub"><a href="/#personal">Overview</a><a href="/#buy">Buy crypto</a><a href="/#sell">Sell crypto</a><a href="/#convert">Convert crypto</a><a href="/#card">Personal crypto card</a><a href="/#how">How it works</a></div>
           </details>
           <details>
             <summary>Business<svg className="ic" aria-hidden="true"><use href="#i-chevron-down" /></svg></summary>
@@ -159,13 +162,13 @@ export default function Nav() {
           </details>
           <details>
             <summary>Solutions<svg className="ic" aria-hidden="true"><use href="#i-chevron-down" /></svg></summary>
-            <div className="m-sub"><a href="#personal">Individuals</a><a href="#business">Fintechs &amp; Platforms</a><a href="#business">Merchants &amp; PSPs</a><a href="#otc">OTC Desks</a><a href="#processing">Payment Processing</a><a href="#ramp">On/Off Ramp</a><a href="#settlement">Treasury</a><a href="#wallets">Wallet as a Service</a></div>
+            <div className="m-sub"><a href="/#personal">Individuals</a><a href="/#business">Fintechs &amp; Platforms</a><a href="/#business">Merchants &amp; PSPs</a><a href="/#otc">OTC Desks</a><a href="/#processing">Payment Processing</a><a href="/#ramp">On/Off Ramp</a><a href="/#settlement">Treasury</a><a href="/#wallets">Wallet as a Service</a></div>
           </details>
           <details>
             <summary>Company<svg className="ic" aria-hidden="true"><use href="#i-chevron-down" /></svg></summary>
-            <div className="m-sub"><a href="/about" data-mnav-close>About Us</a><a href="#blog">Blog &amp; Insights</a><a href="#compliance">Security</a><a href="#media">Media</a><a href="#careers">Careers</a><a href="#culture">Culture</a><a href="#help">Help Center</a><a href="#developers">API Docs</a><a href="#legal">Legal</a></div>
+            <div className="m-sub"><a href="/about" data-mnav-close>About Us</a><a href="/compliance">Security</a><a href="/careers">Careers</a><a href="/help">Help Center</a><a href="/developers">API Docs</a><a href="/privacy">Privacy</a></div>
           </details>
-          <div className="m-cta"><a className="btn btn-solid" href="#buy">Buy crypto</a><a className="btn btn-solid" href="https://trade.coincashy.io/auth/login" target="_blank" rel="noopener">Login</a><a className="btn btn-line" href="#contact">Talk to our team</a><button className="btn btn-line" type="button" data-theme-toggle onClick={() => { if (typeof window !== 'undefined' && (window as any).__toggleTheme) (window as any).__toggleTheme(); }}><svg className="ic ic-sun" aria-hidden="true"><use href="#i-sun" /></svg><svg className="ic ic-moon" aria-hidden="true"><use href="#i-moon" /></svg><span data-theme-label>Light mode</span></button></div>
+          <div className="m-cta"><a className="btn btn-solid" href="/#buy">Buy crypto</a><a className="btn btn-solid" href="https://trade.coincashy.io/auth/login" target="_blank" rel="noopener">Login</a><a className="btn btn-line" href="/contact">Talk to our team</a><button className="btn btn-line" type="button" data-theme-toggle onClick={() => { if (typeof window !== 'undefined' && (window as any).__toggleTheme) (window as any).__toggleTheme(); }}><svg className="ic ic-sun" aria-hidden="true"><use href="#i-sun" /></svg><svg className="ic ic-moon" aria-hidden="true"><use href="#i-moon" /></svg><span data-theme-label>Light mode</span></button></div>
         </nav>
       </div>
     </>

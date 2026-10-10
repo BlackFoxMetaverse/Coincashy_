@@ -1,3 +1,5 @@
+import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 export default function Footer() {
@@ -7,10 +9,10 @@ export default function Footer() {
       <div className="wrap">
         <div className="f-top">
           <div className="f-brand">
-            <a className="brand" href="/" aria-label="Coincashy home">
-              <img className="brand-logo logo-on-dark" src="/media/logo-on-dark.png" alt="Coincashy" />
-              <img className="brand-logo logo-on-paper" src="/media/logo-on-paper.png" alt="" />
-            </a>
+            <Link className="brand" href="/" aria-label="Coincashy home">
+              <Image className="brand-logo logo-on-dark" src="/media/logo-on-dark.png" alt="Coincashy"  height={100} width={100} />
+              <Image className="brand-logo logo-on-paper" src="/media/logo-on-paper.png" alt=""  height={100} width={100} />
+            </Link>
             <p className="f-desc">Crypto, stablecoins and fiat rails for people and businesses. Buy, sell and spend, or accept, convert and settle at scale.</p>
             <div className="f-social">
               <a href="https://x.com/coincashy" target="_blank" rel="noopener" aria-label="Coincashy on X"><svg className="bm" aria-hidden="true"><use href="#b-x" /></svg></a>
@@ -24,9 +26,9 @@ export default function Footer() {
           <div className="f-cols">
             <div className="f-col"><h4>Products</h4><a href="/#buy">Buy crypto</a><a href="/#sell">Sell crypto</a><a href="/#convert">Convert crypto</a><a href="/#card">Crypto card</a><a href="/#processing">Crypto processing</a><a href="/#otc">OTC &amp; liquidity</a><a href="/#ramp">On/off-ramp</a><a href="/#vibans">vIBANs</a><a href="/#wallets">Wallet as a Service</a><a href="/#cards">Corporate cards</a><a href="/#settlement">Stablecoin settlement</a></div>
             <div className="f-col"><h4>Solutions</h4><a href="/#personal">Individuals</a><a href="/#models">Merchants &amp; PSPs</a><a href="/#models">OTC desks &amp; brokers</a><a href="/#models">Fintechs &amp; platforms</a><a href="/#rails">Treasury &amp; accounts</a></div>
-            <div className="f-col"><h4>Developers</h4><a href="/#developers">API overview</a><a href="/#developers">Payments API</a><a href="/#developers">Wallet API</a><a href="/#developers">Quotes API</a><a href="/#developers">Webhooks</a></div>
-            <div className="f-col"><h4>Resources</h4><a href="/#how">How it works</a><a href="/#pipeline">How value moves</a><a href="/#trust">Technology ecosystem</a><a href="/#faq-personal">Personal FAQ</a><a href="/#faq-business">Business FAQ</a></div>
-            <div className="f-col"><h4>Company</h4><a href="/about">About Coincashy</a><a href="/#compliance">Compliance</a><a href="/#contact">Contact</a><a href="https://trade.coincashy.io/auth/login" target="_blank" rel="noopener">Log in</a><a href="https://trade.coincashy.io/auth/signup" target="_blank" rel="noopener">Get started</a></div>
+            <div className="f-col"><h4>Developers</h4><a href="/developers">API overview</a><a href="/developers">Payments API</a><a href="/developers">Wallet API</a><a href="/developers">Quotes API</a><a href="/developers">Webhooks</a></div>
+            <div className="f-col"><h4>Resources</h4><a href="/#how">How it works</a><a href="/help">Help center</a><a href="/fees">Fees &amp; limits</a><a href="/status">System status</a><a href="/help">FAQ</a></div>
+            <div className="f-col"><h4>Company</h4><a href="/about">About Coincashy</a><a href="/compliance">Compliance</a><a href="/contact">Contact</a><a href="https://trade.coincashy.io/auth/login" target="_blank" rel="noopener">Log in</a><a href="https://trade.coincashy.io/auth/signup" target="_blank" rel="noopener">Get started</a></div>
           </div>
         </div>
         <div className="f-mid">
@@ -36,6 +38,7 @@ export default function Footer() {
             <li><a href="/privacy">Privacy Policy</a></li>
             <li><a href="/aml">AML Policy</a></li>
             <li><a href="/complaints">Complaints &amp; disclosures</a></li>
+            <li><a href="/disclaimer">Disclaimer</a></li>
           </ul>
         </div>
         <div className="f-legal">
