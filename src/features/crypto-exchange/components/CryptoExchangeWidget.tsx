@@ -108,7 +108,7 @@ export default function CryptoExchangeWidget() {
           <ol className="wr-steps" aria-label="Order progress"><li className="done">Choose</li><li className="now">Pay</li><li>Verify</li><li>Receive</li></ol>
           <p className="w-note">Identity and payment checks are required before your first order. The exact steps depend on your country and the product you choose.</p>
           <div className="cta-row">
-            <a className="btn btn-solid" href="https://coincashy.io" target="_blank" rel="noopener">Continue on Coincashy.io<svg className="ic" aria-hidden="true"><use href="#i-external-link" /></svg></a>
+            <a className="btn btn-solid" href="https://trade.coincashy.io/auth/signup" target="_blank" rel="noopener">Continue on Coincashy.io<svg className="ic" aria-hidden="true"><use href="#i-external-link" /></svg></a>
             <button className="btn btn-line" type="button" id="wr-back" onClick={() => setIsReview(false)}>Edit order</button>
           </div>
         </div>
