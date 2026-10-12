@@ -620,9 +620,13 @@ export { radioGroup, tabList, openMail };
 
 /* ---------- boot ---------- */
 
-  const first = route(location.hash, { smooth: false });
-  if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(() => { if (first && !first.matches('main.page')) jump(first, false); flow.refresh(); });
+  if (typeof window !== 'undefined') {
+    setTimeout(() => {
+      const first = route(location.hash, { smooth: false });
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(() => { if (first && !first.matches('main.page')) jump(first, false); flow.refresh(); });
+      }
+    }, 100);
   }
   
 /* ---------- ticker ---------- */

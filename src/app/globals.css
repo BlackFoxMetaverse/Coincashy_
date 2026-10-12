@@ -230,6 +230,7 @@ main.page{display:block}
   color: var(--fg);
 }
 @media (max-width: 640px) {
+  .top-ticker { padding-right: 36px; }
   .ticker-logo { font-size: 0.55rem; margin-right: 6px; }
   .ticker-text { font-size: 0.7rem; }
   .ticker-link { margin-left: 2px; }
@@ -944,6 +945,81 @@ textarea.input{height:auto;min-height:110px;padding:14px 16px;resize:vertical;li
 .form-foot .fine{max-width:30em}
 @media (max-width:980px){.contact-grid{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:620px){.f-row{grid-template-columns:minmax(0,1fr)}.form-foot .btn{width:100%}}
+
+/* ============ Contact Page Responsive Layout ============ */
+.contact-page-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: start;
+  width: 100%;
+}
+@media (max-width: 980px) {
+  .contact-page-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.5rem;
+  }
+}
+.contact-info-card {
+  padding: clamp(1.75rem, 5vw, 3rem);
+  border: 1px solid var(--line);
+  border-radius: clamp(20px, 3.5vw, 32px);
+  background: linear-gradient(180deg, var(--surface), var(--ground));
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.contact-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+  gap: 1.1rem;
+  min-width: 0;
+}
+@media (max-width: 540px) {
+  .contact-meta-grid {
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+  }
+}
+.contact-meta-item {
+  padding: 1.15rem 1.25rem;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  min-width: 0;
+  overflow: hidden;
+}
+.contact-meta-item a,
+.contact-meta-item div {
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+.contact-perks {
+  display: grid;
+  gap: 1rem;
+  color: var(--fg-dim);
+  font-size: 0.95rem;
+  border-top: 1px solid var(--line);
+  padding-top: 1.5rem;
+}
+.contact-perk {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.contact-perk-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
+  color: var(--accent);
+  display: inline-grid;
+  place-items: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
 
 /* ============ Dialog & toast ============ */
 .mail-dialog{border:0;padding:0;background:transparent;color:var(--fg);width:min(580px,calc(100% - 32px));max-height:calc(100% - 32px);margin:auto}
