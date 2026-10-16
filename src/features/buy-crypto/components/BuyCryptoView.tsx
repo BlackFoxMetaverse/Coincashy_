@@ -9,6 +9,7 @@ import {
   formatCryptoPrice,
   compute24hChange,
 } from '../services/diaPriceService';
+import CryptoLogo from '@/components/CryptoLogo';
 
 interface PaymentRail {
   id: string;
@@ -285,10 +286,8 @@ export default function BuyCryptoView() {
                   }}
                 >
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                      <span className={`coin sm ${asset.cls}`} style={{ width: '32px', height: '32px', fontSize: '1rem' }}>
-                        {asset.icon}
-                      </span>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '11px' }}>
+                      <CryptoLogo symbol={sym} size={34} />
                       <div>
                         <b style={{ display: 'block', fontSize: '0.95rem' }}>{sym}</b>
                         <span style={{ fontSize: '0.78rem', color: 'var(--fg-dim)' }}>{asset.name}</span>
