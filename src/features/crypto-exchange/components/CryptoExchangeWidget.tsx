@@ -100,15 +100,15 @@ export default function CryptoExchangeWidget({ defaultMode = 'buy' }: { defaultM
         <div className="w-review" id="w-review">
           <h3 id="wr-title" tabIndex={-1}>Review your order</h3>
           <dl className="wr-list">
-            <div><dt id="wr-l1">{mode === 'buy' ? 'You spend' : mode === 'sell' ? 'You sell' : 'You convert'}</dt><dd id="wr-v1">{OrderCalculator.formatMoney(from, parseFloat(fromAmt) || 0)}</dd></div>
-            <div><dt>You receive</dt><dd id="wr-v2">≈ {OrderCalculator.formatMoney(to, parseFloat(toAmt) || 0)}</dd></div>
+            <div><dt id="wr-l1">{mode === 'buy' ? 'You spend' : mode === 'sell' ? 'You sell' : 'You convert'}</dt><dd id="wr-v1">{OrderCalculator.formatMoney(from, fromAmt)}</dd></div>
+            <div><dt>You receive</dt><dd id="wr-v2">≈ {OrderCalculator.formatMoney(to, toAmt)}</dd></div>
             <div><dt id="wr-l3">{mode === 'buy' ? 'Paid with' : mode === 'sell' ? 'Paid to' : 'Held in'}</dt><dd id="wr-v3">{mode === 'buy' ? method : mode === 'sell' ? 'Your bank account' : 'Your Coincashy wallet'}</dd></div>
             <div><dt>Quote</dt><dd>Fees included</dd></div>
           </dl>
           <ol className="wr-steps" aria-label="Order progress"><li className="done">Choose</li><li className="now">Pay</li><li>Verify</li><li>Receive</li></ol>
           <p className="w-note">Identity and payment checks are required before your first order. The exact steps depend on your country and the product you choose.</p>
           <div className="cta-row">
-            <a className="btn btn-solid" href={`https://trade.coincashy.io/auth/signup?flow=${mode}&from=${from}&to=${to}&amount=${encodeURIComponent(fromAmt)}&method=${encodeURIComponent(method)}`} target="_blank" rel="noopener">Continue on Coincashy.io<svg className="ic" aria-hidden="true"><use href="#i-external-link" /></svg></a>
+            <a className="btn btn-solid" href={`https://trade.coincashy.io/auth/signup?flow=${mode}&from=${from}&to=${to}&amount=${encodeURIComponent(String(fromAmt).replace(/,/g, ''))}&method=${encodeURIComponent(method)}`} target="_blank" rel="noopener">Continue on Coincashy.io<svg className="ic" aria-hidden="true"><use href="#i-external-link" /></svg></a>
             <button className="btn btn-line" type="button" id="wr-back" onClick={() => setIsReview(false)}>Edit order</button>
           </div>
         </div>

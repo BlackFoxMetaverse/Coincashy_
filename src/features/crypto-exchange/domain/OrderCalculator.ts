@@ -35,16 +35,25 @@ export class OrderCalculator {
     return amount * rate;
   }
 
+  static parseNum(val: string | number): number {
+    if (typeof val === 'number') return isNaN(val) ? 0 : val;
+    if (!val) return 0;
+    const cleaned = String(val).replace(/,/g, '').replace(/[^0-9.]/g, '');
+    const n = parseFloat(cleaned);
+    return Number.isFinite(n) ? n : 0;
+  }
+
   static formatValue(c: Currency, v: number): string {
     const dp = this.getDecimals(c);
-    const minDp = this.isFiat(c) ? 2 : 0;
+    const minDp = this.isFiat(c) ? 2 : (c === 'USDC' || c === 'USDT' ? 2 : 0);
     return Number(v).toLocaleString('en-US', { minimumFractionDigits: minDp, maximumFractionDigits: dp });
   }
 
-  static formatMoney(c: Currency, v: number): string {
+  static formatMoney(c: Currency, v: number | string): string {
+    const num = this.parseNum(v);
     if (this.isFiat(c)) {
-      return FIAT_RATES[c as FiatCurrency].sym + this.formatValue(c, v);
+      return FIAT_RATES[c as FiatCurrency].sym + this.formatValue(c, num);
     }
-    return `${this.formatValue(c, v)} ${c}`;
+    return `${this.formatValue(c, num)} ${c}`;
   }
 }

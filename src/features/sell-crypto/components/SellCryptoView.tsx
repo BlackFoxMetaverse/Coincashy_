@@ -95,7 +95,7 @@ export default function SellCryptoView() {
     USDT: 0.92
   };
 
-  const parsedAmt = parseFloat(simAmount) || 0;
+  const parsedAmt = parseFloat(String(simAmount).replace(/,/g, '')) || 0;
   const calculatedPayout = (parsedAmt * assetPrices[simAsset]).toLocaleString('en-US', {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2
