@@ -168,7 +168,6 @@ export default function Nav() {
                   <div className="menu-col">
                     <h4>Careers</h4>
                     <Link className="menu-link" href="/careers">Open Roles</Link>
-                    <Link className="menu-link" href="/about#culture">Culture</Link>
                     <Link className="menu-link" href="/contact">Join our team</Link>
                   </div>
                   <div className="menu-col">
