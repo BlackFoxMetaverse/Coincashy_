@@ -22,8 +22,8 @@ export default function HomeView() {
             <Link className="btn btn-line" href="/personal">For individuals<svg className="ic" aria-hidden="true"><use href="#i-arrow-right" /></svg></Link>
           </div>
         </div>
-        <div className="hero-proof" aria-label="Trusted by clients and partners" style={{ display: 'flex', flexDirection: 'column', width: '100%', overflow: 'hidden' }}>
-          <span className="hero-proof-label" style={{ marginBottom: 10 }}>TRUSTED BY CLIENTS AND PARTNERS</span>
+        <div className="hero-proof" aria-label="Trusted by clients and partners">
+          <span className="hero-proof-label">TRUSTED BY CLIENTS AND PARTNERS</span>
           <div className="marquee">
             <div className="marquee-track" style={{ '--dur': '40s' } as React.CSSProperties}>
               <div className="marquee-group">
