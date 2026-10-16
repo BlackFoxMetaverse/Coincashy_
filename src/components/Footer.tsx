@@ -24,21 +24,22 @@ export default function Footer() {
             </div>
           </div>
           <div className="f-cols">
-            <div className="f-col"><h4>Products</h4><a href="/#buy">Buy crypto</a><a href="/#sell">Sell crypto</a><a href="/#convert">Convert crypto</a><a href="/#card">Crypto card</a><a href="/#processing">Crypto processing</a><a href="/#otc">OTC &amp; liquidity</a><a href="/#ramp">On/off-ramp</a><a href="/#vibans">vIBANs</a><a href="/#wallets">Wallet as a Service</a><a href="/#cards">Corporate cards</a><a href="/#settlement">Stablecoin settlement</a></div>
-            <div className="f-col"><h4>Solutions</h4><a href="/#personal">Individuals</a><a href="/#models">Merchants &amp; PSPs</a><a href="/#models">OTC desks &amp; brokers</a><a href="/#models">Fintechs &amp; platforms</a><a href="/#rails">Treasury &amp; accounts</a></div>
-            <div className="f-col"><h4>Developers</h4><a href="/developers">API overview</a><a href="/developers">Payments API</a><a href="/developers">Wallet API</a><a href="/developers">Quotes API</a><a href="/developers">Webhooks</a></div>
-            <div className="f-col"><h4>Resources</h4><a href="/#how">How it works</a><a href="/help">Help center</a><a href="/fees">Fees &amp; limits</a><a href="/status">System status</a><a href="/help">FAQ</a></div>
-            <div className="f-col"><h4>Company</h4><a href="/about">About Coincashy</a><a href="/compliance">Compliance</a><a href="/contact">Contact</a><a href="https://trade.coincashy.io/auth/login" target="_blank" rel="noopener">Log in</a><a href="https://trade.coincashy.io/auth/signup" target="_blank" rel="noopener">Get started</a></div>
+            <div className="f-col"><h4>Products</h4><Link href="/personal">Buy crypto</Link><Link href="/personal">Sell crypto</Link><Link href="/personal">Convert crypto</Link><Link href="/cards">Crypto card</Link><Link href="/processing">Crypto processing</Link><Link href="/otc">OTC &amp; liquidity</Link><Link href="/ramp">On/off-ramp</Link><Link href="/vibans">vIBANs</Link><Link href="/business#wallets">Wallet as a Service</Link><Link href="/cards">Corporate cards</Link><Link href="/settlement">Stablecoin settlement</Link></div>
+            <div className="f-col"><h4>Solutions</h4><Link href="/personal">Individuals</Link><Link href="/processing">Merchants &amp; PSPs</Link><Link href="/otc">OTC desks &amp; brokers</Link><Link href="/business">Fintechs &amp; platforms</Link><Link href="/settlement">Treasury &amp; accounts</Link></div>
+            <div className="f-col"><h4>Developers</h4><Link href="/developers#00">API overview</Link><Link href="/developers#04">Payments API</Link><Link href="/developers#07">Wallet API</Link><Link href="/developers#05">Quotes API</Link><Link href="/developers#06">Webhooks</Link></div>
+            <div className="f-col"><h4>Resources</h4><Link href="/personal#how">How it works</Link><Link href="/help">Help center</Link><Link href="/fees">Fees &amp; limits</Link><Link href="/status">System status</Link><Link href="/help">FAQ</Link></div>
+            <div className="f-col"><h4>Company</h4><Link href="/about">About Coincashy</Link><Link href="/compliance">Compliance</Link><Link href="/contact">Contact</Link><a href="https://trade.coincashy.io/auth/login" target="_blank" rel="noopener">Log in</a><a href="https://trade.coincashy.io/auth/signup" target="_blank" rel="noopener">Get started</a></div>
           </div>
         </div>
         <div className="f-mid">
           <div className="f-contact"><span>Support</span><code>support@coincashy.io</code></div>
           <ul className="f-links">
-            <li><a href="/terms">Terms of Service</a></li>
-            <li><a href="/privacy">Privacy Policy</a></li>
-            <li><a href="/aml">AML Policy</a></li>
-            <li><a href="/complaints">Complaints &amp; disclosures</a></li>
-            <li><a href="/disclaimer">Disclaimer</a></li>
+            <li><Link href="/terms">Terms of Service</Link></li>
+            <li><Link href="/privacy">Privacy Policy</Link></li>
+            <li><Link href="/cookies">Cookie Policy</Link></li>
+            <li><Link href="/aml">AML Policy</Link></li>
+            <li><Link href="/complaints">Complaints &amp; disclosures</Link></li>
+            <li><Link href="/disclaimer">Disclaimer</Link></li>
           </ul>
         </div>
         <div className="f-legal">

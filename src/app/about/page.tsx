@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Footer from '@/components/Footer';
 
 export default function About() {
@@ -151,7 +152,7 @@ export default function About() {
                 <p className="body" style={{ marginBottom: '2rem', color: 'var(--low)', fontSize: 'clamp(1rem, 2.5vw, 1.125rem)' }}>Reach out to our experts and let's build the future together.</p>
                 <div className="cta-row" style={{ justifyContent: 'center', display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
                   <a className="btn btn-solid" href="tel:+447452022306" style={{ flex: '1 1 auto', maxWidth: '100%' }}><svg className="ic" aria-hidden="true"><use href="#i-smartphone" /></svg>+44 7452 022306</a>
-                  <a className="btn btn-line" href="/#contact" style={{ flex: '1 1 auto', maxWidth: '100%' }}>Integrate our API<svg className="ic" aria-hidden="true"><use href="#i-arrow-right" /></svg></a>
+                  <Link className="btn btn-line" href="/contact" style={{ flex: '1 1 auto', maxWidth: '100%' }}>Integrate our API<svg className="ic" aria-hidden="true"><use href="#i-arrow-right" /></svg></Link>
                 </div>
               </div>
             </div>

@@ -9,8 +9,8 @@ export function useOrderWidget() {
   const [mode, setMode] = useState<OrderMode>('buy');
   const [from, setFrom] = useState<Currency>('USD');
   const [to, setTo] = useState<Currency>('BTC');
-  const [fromAmt, setFromAmt] = useState<string>('1000.00');
-  const [toAmt, setToAmt] = useState<string>('0.0118627');
+  const [fromInput, setFromInput] = useState<string>('1000.00');
+  const [toInput, setToInput] = useState<string>('');
   const [side, setSide] = useState<'from' | 'to'>('from');
   const [method, setMethod] = useState<PaymentMethod>('Apple Pay');
   const [isReview, setIsReview] = useState(false);
@@ -18,25 +18,41 @@ export function useOrderWidget() {
   const [jitter, setJitter] = useState(1);
 
   const parseNum = (val: string) => {
-    const n = parseFloat(val.replace(/,/g, '').replace(/[^0-9.]/g, ''));
+    const cleaned = val.replace(/,/g, '').replace(/[^0-9.]/g, '');
+    const n = parseFloat(cleaned);
     return Number.isFinite(n) ? n : 0;
   };
 
-  useEffect(() => {
-    const fromVal = parseNum(fromAmt);
-    const toVal = parseNum(toAmt);
-    
-    const t = setTimeout(() => {
-      if (side === 'from') {
-        const calculatedTo = OrderCalculator.convert(from, to, fromVal, jitter);
-        setToAmt(OrderCalculator.formatValue(to, calculatedTo));
-      } else {
-        const calculatedFrom = OrderCalculator.convert(to, from, toVal, jitter);
-        setFromAmt(OrderCalculator.formatValue(from, calculatedFrom));
-      }
-    }, 0);
-    return () => clearTimeout(t);
-  }, [from, to, fromAmt, toAmt, side, jitter, mode]);
+  const handleSetFromAmt = (val: string) => {
+    setSide('from');
+    setFromInput(val);
+  };
+
+  const handleSetToAmt = (val: string) => {
+    setSide('to');
+    setToInput(val);
+  };
+
+  let fromAmt = fromInput;
+  let toAmt = toInput;
+
+  if (side === 'from') {
+    const fromVal = parseNum(fromInput);
+    if (!fromInput || fromInput === '.' || fromVal === 0) {
+      toAmt = '';
+    } else {
+      const calculatedTo = OrderCalculator.convert(from, to, fromVal, jitter);
+      toAmt = OrderCalculator.formatValue(to, calculatedTo);
+    }
+  } else {
+    const toVal = parseNum(toInput);
+    if (!toInput || toInput === '.' || toVal === 0) {
+      fromAmt = '';
+    } else {
+      const calculatedFrom = OrderCalculator.convert(to, from, toVal, jitter);
+      fromAmt = OrderCalculator.formatValue(from, calculatedFrom);
+    }
+  }
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -54,23 +70,43 @@ export function useOrderWidget() {
   const handleModeChange = (newMode: OrderMode) => {
     setMode(newMode);
     setIsReview(false);
+    setSide('from');
     if (newMode === 'buy') {
-      setFrom('USD'); setTo('BTC'); setFromAmt('1000'); setSide('from');
+      setFrom('USD'); setTo('BTC'); setFromInput('1000');
     } else if (newMode === 'sell') {
-      setFrom('BTC'); setTo('USD'); setFromAmt('0.025'); setSide('from');
+      setFrom('BTC'); setTo('USD'); setFromInput('0.025');
     } else if (newMode === 'convert') {
-      setFrom('BTC'); setTo('USDC'); setFromAmt('0.05'); setSide('from');
+      setFrom('BTC'); setTo('USDC'); setFromInput('0.05');
     }
   };
+
+  useEffect(() => {
+    const syncHash = () => {
+      if (typeof window === 'undefined') return;
+      const h = window.location.hash.toLowerCase();
+      if (h === '#sell') {
+        handleModeChange('sell');
+      } else if (h === '#convert') {
+        handleModeChange('convert');
+      } else if (h === '#buy') {
+        handleModeChange('buy');
+      }
+    };
+    syncHash();
+    window.addEventListener('hashchange', syncHash);
+    return () => window.removeEventListener('hashchange', syncHash);
+  }, []);
 
   const handleSwap = () => {
     const nextMode = mode === 'buy' ? 'sell' : mode === 'sell' ? 'buy' : mode;
     if (mode !== nextMode) setMode(nextMode);
     
-    setFrom(to);
-    setTo(from);
-    setFromAmt(toAmt);
-    setToAmt(fromAmt);
+    const prevTo = to;
+    const prevFrom = from;
+    const prevToAmt = toAmt;
+    setFrom(prevTo);
+    setTo(prevFrom);
+    setFromInput(prevToAmt);
     setSide('from');
   };
 
@@ -81,7 +117,7 @@ export function useOrderWidget() {
 
   return {
     mode, from, to, fromAmt, toAmt, method, isReview, timeLeft, rateText,
-    setFrom, setTo, setFromAmt, setToAmt, setSide, setMethod, setIsReview,
+    setFrom, setTo, setFromAmt: handleSetFromAmt, setToAmt: handleSetToAmt, setSide, setMethod, setIsReview,
     handleModeChange, handleSwap,
     fromOptions: (mode === 'buy' ? Object.keys(FIAT_RATES) : mode === 'sell' ? Object.keys(CRYPTO_RATES) : Object.keys(CRYPTO_RATES)) as Currency[],
     toOptions: (mode === 'sell' ? Object.keys(FIAT_RATES) : Object.keys(CRYPTO_RATES)) as Currency[]

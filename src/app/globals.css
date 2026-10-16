@@ -1346,3 +1346,18 @@ textarea.input{height:auto;min-height:110px;padding:14px 16px;resize:vertical;li
   }
 }
 
+/* ============ Subpage Hero ============ */
+.subpage-hero {
+  min-height: auto !important;
+  padding-top: calc(env(safe-area-inset-top, 0px) + clamp(88px, 10vw, 128px)) !important;
+  padding-bottom: clamp(36px, 5vw, 64px) !important;
+}
+.subpage-hero .hero-inner {
+  min-height: auto !important;
+  flex: none !important;
+  gap: 0 !important;
+}
+.subpage-hero .hero-copy-center {
+  margin: 0 auto !important;
+}
+

@@ -6,7 +6,7 @@ import { FIAT_RATES, CRYPTO_RATES, Currency, OrderCalculator } from '../domain/O
 export default function CryptoExchangeWidget() {
   const {
     mode, from, to, fromAmt, toAmt, method, isReview, timeLeft, rateText,
-    setFrom, setTo, setFromAmt, setToAmt, setSide, setMethod, setIsReview,
+    setFrom, setTo, setFromAmt, setToAmt, setMethod, setIsReview,
     handleModeChange, handleSwap,
     fromOptions, toOptions
   } = useOrderWidget();
@@ -44,7 +44,7 @@ export default function CryptoExchangeWidget() {
             <div className="w-box">
               <label htmlFor="w-from" id="w-from-label">{mode === 'buy' ? 'You spend' : mode === 'sell' ? 'You sell' : 'You convert'}</label>
               <div className="w-row">
-                <input className="w-input" id="w-from" inputMode="decimal" autoComplete="off" value={fromAmt} onChange={(e) => { setFromAmt(e.target.value); setSide('from'); }} />
+                <input className="w-input" id="w-from" inputMode="decimal" autoComplete="off" value={fromAmt} onChange={(e) => setFromAmt(e.target.value)} />
                 <span className="asset" id="w-from-chip">
                   <span className={`coin ${fromChipUI.cls}`}>{fromChipUI.glyph}</span>
                   <span className="code scope-dark scope-dark">{from}</span>
@@ -63,7 +63,7 @@ export default function CryptoExchangeWidget() {
             <div className="w-box">
               <label htmlFor="w-to">You receive</label>
               <div className="w-row">
-                <input className="w-input" id="w-to" inputMode="decimal" autoComplete="off" value={toAmt} onChange={(e) => { setToAmt(e.target.value); setSide('to'); }} />
+                <input className="w-input" id="w-to" inputMode="decimal" autoComplete="off" value={toAmt} onChange={(e) => setToAmt(e.target.value)} />
                 <span className="asset" id="w-to-chip">
                   <span className={`coin ${toChipUI.cls}`}>{toChipUI.glyph}</span>
                   <span className="code scope-dark scope-dark">{to}</span>
@@ -108,7 +108,7 @@ export default function CryptoExchangeWidget() {
           <ol className="wr-steps" aria-label="Order progress"><li className="done">Choose</li><li className="now">Pay</li><li>Verify</li><li>Receive</li></ol>
           <p className="w-note">Identity and payment checks are required before your first order. The exact steps depend on your country and the product you choose.</p>
           <div className="cta-row">
-            <a className="btn btn-solid" href="https://trade.coincashy.io/auth/signup" target="_blank" rel="noopener">Continue on Coincashy.io<svg className="ic" aria-hidden="true"><use href="#i-external-link" /></svg></a>
+            <a className="btn btn-solid" href={`https://trade.coincashy.io/auth/signup?flow=${mode}&from=${from}&to=${to}&amount=${encodeURIComponent(fromAmt)}&method=${encodeURIComponent(method)}`} target="_blank" rel="noopener">Continue on Coincashy.io<svg className="ic" aria-hidden="true"><use href="#i-external-link" /></svg></a>
             <button className="btn btn-line" type="button" id="wr-back" onClick={() => setIsReview(false)}>Edit order</button>
           </div>
         </div>

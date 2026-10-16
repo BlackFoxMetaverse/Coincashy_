@@ -16,7 +16,7 @@ export default function PrivacyPage() {
         {
           title: 'Introduction',
           content: [
-            <>We welcome you to the Privacy Policy of the Coincashy sp zoo (<a href="https://wheat-alpaca-977386.hostingersite.com" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--hi)' }}>wheat-alpaca-977386.hostingersite.com</a>) website (hereinafter: the “Service”). The privacy policy we implement, as described in this document, is based on the following principles:</>,
+            <>We welcome you to the Privacy Policy of the Coincashy sp zoo (<a href="https://coincashy.io" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--hi)' }}>coincashy.io</a>) website (hereinafter: the “Service”). The privacy policy we implement, as described in this document, is based on the following principles:</>,
             <ul key="intro-ul" style={{ paddingLeft: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
               <li><strong>a.</strong> personal data is processed lawfully, fairly and in a transparent manner for you;</li>
               <li><strong>b.</strong> personal data is collected for specific, explicit and legitimate purposes and not further processed in a way incompatible with those purposes;</li>
@@ -27,7 +27,7 @@ export default function PrivacyPage() {
             </ul>,
             <>Your personal data is processed in accordance with: <strong>(i.)</strong> Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data and repealing Directive 95/46/EC (General Data Protection Regulation) (OJ EU. L. 2016, No. 119, p. 1 as amended), hereinafter referred to as “RODO”, <strong>(ii.)</strong> the Act of 10 May 2018 on the protection of personal data (i.e. Journal of Laws of 2019, item 1781), <strong>(iii.)</strong> the Act of 18 July 2002 on the provision of services by electronic means (Journal of Laws of 2020, item 344), <strong>(iv.)</strong> the Act of 16 July 2004 Telecommunications Law (Journal of Laws of 2022, item 1648).</>,
             'The Administrator of the Website is Coincashy sp. z o.o. with the registered office in ul. Korytnicka, nr 46, lok. 52, miejsc. Warsaw, Poland 04-10, entered into the Register of Entrepreneurs of the National Court Register, VII Economic Division of the National Court Register under KRS no. 0001135823, share capital PLN 5,000 paid in full (hereinafter referred to as the Administrator).',
-            <>If you have any questions about the operation of the Service, please contact us via the form on the website <a href="https://wheat-alpaca-977386.hostingersite.com/contact" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--hi)' }}>https://wheat-alpaca-977386.hostingersite.com/contact</a>.</>
+            <>If you have any questions about the operation of the Service, please contact us via the form on the website <a href="/contact" style={{ color: 'var(--hi)' }}>https://coincashy.io/contact</a>.</>
           ],
         },
         {
@@ -35,7 +35,7 @@ export default function PrivacyPage() {
           content: [
             '1. We process your data for the following purpose and on the following basis:',
             <ul key="purpose-ul-1" style={{ paddingLeft: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-              <li><strong>a.</strong> In order to provide services electronically through wheat-alpaca-977386.hostingersite.com website, in accordance with the Terms of Service available at: <a href="https://wheat-alpaca-977386.hostingersite.com/terms-conditions/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--hi)' }}>https://wheat-alpaca-977386.hostingersite.com/terms-conditions/</a> including for the handling of complaints concerning the services provided, as well as for the provision of services within the Service and contacting you – Article 6(1)(b) RODO;</li>
+              <li><strong>a.</strong> In order to provide services electronically through coincashy.io website, in accordance with the Terms of Service available at: <a href="/terms" style={{ color: 'var(--hi)' }}>https://coincashy.io/terms</a> including for the handling of complaints concerning the services provided, as well as for the provision of services within the Service and contacting you – Article 6(1)(b) RODO;</li>
               <li><strong>b.</strong> for web traffic analysis, direct marketing, including direct marketing of third parties, for the display of behavioural advertising on the basis of Article 6(1)(f) RODO.</li>
             </ul>,
             '2. If:',

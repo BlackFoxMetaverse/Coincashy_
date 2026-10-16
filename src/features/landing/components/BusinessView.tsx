@@ -1,8 +1,10 @@
+import Link from 'next/link';
 import TreasuryWidget from './TreasuryWidget';
+import BusinessPipeline from './BusinessPipeline';
 
-export default function BusinessView() {
+export default function BusinessView({ standalone = false }: { standalone?: boolean } = {}) {
   return (
-  <main className="page" id="business" hidden suppressHydrationWarning>
+  <main className="page" id="business" hidden={!standalone ? true : undefined} suppressHydrationWarning>
     <section className="p-hero" id="b-hero">
       <div className="p-hero-glow" aria-hidden="true" />
       <div className="wrap">
@@ -13,7 +15,7 @@ export default function BusinessView() {
             <p className="lede">Accept crypto, convert fiat and digital assets, access liquidity, manage wallets, collect through vIBANs and settle through one connected operating layer.</p>
             <div className="cta-row">
               <a className="btn btn-solid" href="#contact">Talk to our team<svg className="ic" aria-hidden="true"><use href="#i-arrow-right" /></svg></a>
-              <a className="btn btn-line" href="#developers">Explore APIs<svg className="ic" aria-hidden="true"><use href="#i-arrow-right" /></svg></a>
+              <Link className="btn btn-line" href="/developers">Explore APIs<svg className="ic" aria-hidden="true"><use href="#i-arrow-right" /></svg></Link>
             </div>
           </div>
           <div className="w-col">
@@ -46,45 +48,7 @@ export default function BusinessView() {
         </div>
       </div>
     </section>
-    <section className="sec" id="pipeline">
-      <div className="wrap">
-        <div className="sec-split">
-          <div className="sec-head rv">
-            <p className="eyebrow">How value moves</p>
-            <h2 className="h2">From pay-in to settlement in five stages.</h2>
-          </div>
-          <p className="body rv">Every flow passes through the same stages, with checks built into each one. Select a stage to see what happens there.</p>
-        </div>
-        <div className="flow" role="tablist" aria-label="Payment stages" data-tabs id="flow-tabs">
-          <div className="flow-track" aria-hidden="true"><span className="flow-packet" /><span className="flow-packet" /><span className="flow-packet" /></div>
-          <button className="flow-node" type="button" role="tab" aria-selected="true" aria-controls="fp-0" id="ft-0"><span className="flow-dot"><svg className="ic" aria-hidden="true"><use href="#i-arrow-down-left" /></svg></span><b>Pay in</b></button>
-          <button className="flow-node" type="button" role="tab" aria-selected="false" aria-controls="fp-1" id="ft-1" tabIndex={-1}><span className="flow-dot"><svg className="ic" aria-hidden="true"><use href="#i-scan-search" /></svg></span><b>Screen</b></button>
-          <button className="flow-node" type="button" role="tab" aria-selected="false" aria-controls="fp-2" id="ft-2" tabIndex={-1}><span className="flow-dot"><svg className="ic" aria-hidden="true"><use href="#i-repeat" /></svg></span><b>Convert</b></button>
-          <button className="flow-node" type="button" role="tab" aria-selected="false" aria-controls="fp-3" id="ft-3" tabIndex={-1}><span className="flow-dot"><svg className="ic" aria-hidden="true"><use href="#i-git-merge" /></svg></span><b>Route</b></button>
-          <button className="flow-node" type="button" role="tab" aria-selected="false" aria-controls="fp-4" id="ft-4" tabIndex={-1}><span className="flow-dot"><svg className="ic" aria-hidden="true"><use href="#i-landmark" /></svg></span><b>Settle</b></button>
-        </div>
-        <div className="flow-panel" id="fp-0" role="tabpanel" aria-labelledby="ft-0">
-          <div><h3 className="h3">Pay in with fiat or crypto.</h3><p className="body">Collect through hosted checkout, payment links or API, connect card and bank-payment rails, or receive funds into named vIBANs.</p></div>
-          <div><p className="lbl">Controls at this stage</p><div className="tags"><span className="tag"><svg className="ic" aria-hidden="true"><use href="#i-radar" /></svg>Wallet risk screening</span><span className="tag"><svg className="ic" aria-hidden="true"><use href="#i-activity" /></svg>Transaction monitoring</span></div></div>
-        </div>
-        <div className="flow-panel" id="fp-1" role="tabpanel" aria-labelledby="ft-1" hidden>
-          <div><h3 className="h3">Screen customers, businesses and wallets.</h3><p className="body">Customer and business checks scale with product, geography, transaction size and risk profile, before any value moves on.</p></div>
-          <div><p className="lbl">Controls at this stage</p><div className="tags"><span className="tag"><svg className="ic" aria-hidden="true"><use href="#i-user-check" /></svg>KYC and KYB verification</span><span className="tag"><svg className="ic" aria-hidden="true"><use href="#i-scan-search" /></svg>Sanctions and PEP screening</span><span className="tag"><svg className="ic" aria-hidden="true"><use href="#i-radar" /></svg>Wallet risk screening</span></div></div>
-        </div>
-        <div className="flow-panel" id="fp-2" role="tabpanel" aria-labelledby="ft-2" hidden>  
-          <div><h3 className="h3">Convert through OTC and liquidity.</h3><p className="body">Execute fiat, stablecoin and crypto conversions through quote-driven workflows, with clear quotes, execution status and records.</p></div>
-          <div><p className="lbl">Controls at this stage</p><div className="tags"><span className="tag"><svg className="ic" aria-hidden="true"><use href="#i-activity" /></svg>Transaction monitoring</span><span className="tag"><svg className="ic" aria-hidden="true"><use href="#i-file-check" /></svg>Audit-ready records</span></div></div>
-        </div>
-        <div className="flow-panel" id="fp-3" role="tabpanel" aria-labelledby="ft-3" hidden>
-          <div><h3 className="h3">Route to a wallet or account.</h3><p className="body">Send value to a digital-asset wallet or a multi-currency account, depending on how the flow needs to settle.</p></div>
-          <div><p className="lbl">Controls at this stage</p><div className="tags"><span className="tag"><svg className="ic" aria-hidden="true"><use href="#i-radar" /></svg>Wallet risk screening</span><span className="tag"><svg className="ic" aria-hidden="true"><use href="#i-git-merge" /></svg>Operational reconciliation</span></div></div>
-        </div>
-        <div className="flow-panel" id="fp-4" role="tabpanel" aria-labelledby="ft-4" hidden>
-          <div><h3 className="h3">Settle in fiat or stablecoin.</h3><p className="body">Settle through EUR, GBP, USD and supported local rails, or coordinate treasury, supplier and cross-border settlement in stablecoins.</p></div>
-          <div><p className="lbl">Controls at this stage</p><div className="tags"><span className="tag"><svg className="ic" aria-hidden="true"><use href="#i-git-merge" /></svg>Operational reconciliation</span><span className="tag"><svg className="ic" aria-hidden="true"><use href="#i-file-check" /></svg>Audit-ready records</span></div></div>
-        </div>
-      </div>
-    </section>
+    <BusinessPipeline />
     <section className="sec" id="platform">
       <div className="wrap">
         <div className="sec-split">
@@ -137,7 +101,10 @@ export default function BusinessView() {
             <span className="tag"><svg className="ic" aria-hidden="true"><use href="#i-repeat" /></svg>Quotes API</span>
             <span className="tag"><svg className="ic" aria-hidden="true"><use href="#i-webhook" /></svg>Webhooks</span>
           </div>
-          <a className="btn btn-solid" href="#contact" data-interest-link="APIs & webhooks">Request API access<svg className="ic" aria-hidden="true"><use href="#i-arrow-right" /></svg></a>
+          <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+            <a className="btn btn-solid" href="#contact" data-interest-link="APIs & webhooks">Request API access<svg className="ic" aria-hidden="true"><use href="#i-arrow-right" /></svg></a>
+            <Link className="btn btn-line" href="/developers">View API docs<svg className="ic" aria-hidden="true"><use href="#i-arrow-right" /></svg></Link>
+          </div>
         </div>
         <div className="code scope-dark scope-dark">
           <div className="code-head">

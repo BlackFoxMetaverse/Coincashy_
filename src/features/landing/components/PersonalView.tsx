@@ -1,9 +1,11 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import CryptoExchangeWidget from '../../crypto-exchange/components/CryptoExchangeWidget';
 
-export default function PersonalView() {
+export default function PersonalView({ standalone = false }: { standalone?: boolean } = {}) {
   return (
-  <main className="page" id="personal" hidden suppressHydrationWarning>
+  <main className="page" id="personal" hidden={!standalone ? true : undefined} suppressHydrationWarning>
+    {/* ============ Hero Section with Exchange Widget ============ */}
     <section className="p-hero" id="p-hero">
       <div className="p-hero-glow" aria-hidden="true" />
       <div className="wrap p-hero-grid">
@@ -11,19 +13,23 @@ export default function PersonalView() {
           <p className="eyebrow">Crypto for everyday life</p>
           <h1 className="display"><span className="nw">Buy it.</span> <span className="nw">Move it.</span> <em className="nw">Spend it.</em></h1>
           <p className="lede">A simple way to buy and sell crypto, fund your wallet and use a personal crypto card, all from one connected experience.</p>
-          <div className="cta-row">
+          <div className="cta-row" style={{ flexWrap: 'wrap', gap: '10px' }}>
             <a className="btn btn-solid" href="#buy">Buy crypto<svg className="ic" aria-hidden="true"><use href="#i-arrow-right" /></svg></a>
-            <a className="btn btn-line" href="#card">Explore the card<svg className="ic" aria-hidden="true"><use href="#i-arrow-right" /></svg></a>
+            <a className="btn btn-line" href="#sell">Sell crypto</a>
+            <a className="btn btn-line" href="#convert">Convert crypto</a>
+            <Link className="btn btn-line" href="/cards">Explore the card<svg className="ic" aria-hidden="true"><use href="#i-arrow-right" /></svg></Link>
           </div>
           <p className="fine">Product availability depends on country, eligibility and partner approval.</p>
         </div>
-        <div className="w-col">
+        <div className="w-col" id="exchange-widget">
           <CryptoExchangeWidget />
           <p className="p-caption">Indicative rates for illustration. Your final quote is shown before you pay.</p>
         </div>
       </div>
     </section>
-    <section className=" strip-sec">
+
+    {/* ============ Marquee Strip ============ */}
+    <section className="strip-sec">
       <div className="wrap">
         <div className="strip">
           <span className="strip-label">One connected experience</span>
@@ -58,16 +64,19 @@ export default function PersonalView() {
         </div>
       </div>
     </section>
+
+    {/* ============ One Account Grid (Buy, Sell, Convert, Spend) ============ */}
     <section className="sec" id="account">
       <div className="wrap">
         <div className="sec-split">
           <div className="sec-head rv">
             <p className="eyebrow">One account</p>
-            <h2 className="h2">Buy, sell and spend from one place.</h2>
+            <h2 className="h2">Buy, sell, convert and spend from one place.</h2>
           </div>
           <p className="body rv">Start with familiar payment methods, follow clear transaction steps and manage your digital value without unnecessary complexity.</p>
         </div>
-        <div className="prod-grid">
+        <div className="prod-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))' }}>
+          {/* Card 1: Buy */}
           <article className="prod rv">
             <div className="prod-vis" aria-hidden="true">
               <div className="pm-stack">
@@ -81,10 +90,12 @@ export default function PersonalView() {
             <p className="body">Purchase supported assets using card, Apple Pay, Google Pay or bank transfer.</p>
             <a className="link-arrow" href="#buy">Start buying<svg className="ic" aria-hidden="true"><use href="#i-arrow-right" /></svg></a>
           </article>
+
+          {/* Card 2: Sell */}
           <article className="prod rv">
             <div className="prod-vis" aria-hidden="true">
               <div className="sellflow">
-                <div className="sf-node"><span className="ico"><span className="coin sm eth">╬₧</span></span><b>0.75 ETH</b>You sell</div>
+                <div className="sf-node"><span className="ico"><span className="coin sm eth">Ξ</span></span><b>0.75 ETH</b>You sell</div>
                 <svg className="ic sf-arrow" aria-hidden="true"><use href="#i-arrow-right" /></svg>
                 <div className="sf-node"><span className="ico"><svg className="ic" aria-hidden="true"><use href="#i-repeat" /></svg></span><b>€1,706.90</b>Converted</div>
                 <svg className="ic sf-arrow" aria-hidden="true"><use href="#i-arrow-right" /></svg>
@@ -95,6 +106,22 @@ export default function PersonalView() {
             <p className="body">Convert supported digital assets and receive funds through available payout methods.</p>
             <a className="link-arrow" href="#sell">Start selling<svg className="ic" aria-hidden="true"><use href="#i-arrow-right" /></svg></a>
           </article>
+
+          {/* Card 3: Convert */}
+          <article className="prod rv">
+            <div className="prod-vis" aria-hidden="true">
+              <div className="sellflow" style={{ justifyContent: 'center' }}>
+                <div className="sf-node"><span className="ico"><span className="coin sm btc">₿</span></span><b>0.05 BTC</b>From</div>
+                <svg className="ic sf-arrow" aria-hidden="true"><use href="#i-arrow-left-right" /></svg>
+                <div className="sf-node"><span className="ico"><span className="coin sm usdc">$</span></span><b>4,215 USDC</b>To</div>
+              </div>
+            </div>
+            <h3 className="h3">Convert crypto</h3>
+            <p className="body">Move between supported assets with clear quotes, zero slippage, and instant delivery.</p>
+            <a className="link-arrow" href="#convert">Try a conversion<svg className="ic" aria-hidden="true"><use href="#i-arrow-right" /></svg></a>
+          </article>
+
+          {/* Card 4: Spend with card */}
           <article className="prod rv">
             <div className="prod-vis" aria-hidden="true">
               <div className="prod-card">
@@ -109,21 +136,238 @@ export default function PersonalView() {
                 </div>
               </div>
             </div>
-            <h3 className="h3">Personal crypto card</h3>
+            <h3 className="h3">Spend with card</h3>
             <p className="body">Use a partner-enabled virtual or physical card for eligible everyday purchases.</p>
-            <a className="link-arrow" href="#card">Explore the card<svg className="ic" aria-hidden="true"><use href="#i-arrow-right" /></svg></a>
+            <Link className="link-arrow" href="/cards">Explore the card<svg className="ic" aria-hidden="true"><use href="#i-arrow-right" /></svg></Link>
           </article>
         </div>
       </div>
     </section>
-    <section className="sec" id="card">
+
+    {/* ============ Dedicated Section: Buy Crypto ============ */}
+    <section className="sec" id="buy" style={{ scrollMarginTop: '110px' }}>
+      <div className="wrap">
+        <div className="sec-split">
+          <div className="sec-head rv">
+            <p className="eyebrow">Instant On-Ramp</p>
+            <h2 className="h2">Buy crypto with card, Apple Pay, or bank rail.</h2>
+          </div>
+          <p className="body rv">
+            Acquire Bitcoin, Ethereum, Solana, and stablecoins in seconds with zero hidden markups. Delivered straight to your self-custody or Coincashy wallet.
+          </p>
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '20px', marginTop: '2rem' }}>
+          {/* Rail 1: Apple & Google Pay */}
+          <div style={{ padding: '2rem', borderRadius: '22px', background: 'var(--surface)', border: '1px solid var(--line)', display: 'flex', flexDirection: 'column' }}>
+            <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: 'var(--surface-2)', display: 'grid', placeItems: 'center', color: 'var(--hi)', marginBottom: '1.25rem' }}>
+              <svg className="ic" style={{ width: '22px', height: '22px' }}><use href="#b-applepay" /></svg>
+            </div>
+            <h3 className="h3" style={{ marginBottom: '0.6rem' }}>Apple Pay &amp; Google Pay</h3>
+            <p className="body" style={{ color: 'var(--low)', fontSize: '0.92rem', lineHeight: 1.55, flexGrow: 1 }}>
+              1-tap checkout directly from your iPhone, Mac, or Android device. Biometric Face ID verification and instant crypto delivery.
+            </p>
+            <div style={{ marginTop: '1.25rem', paddingTop: '1rem', borderTop: '1px solid var(--line)', fontSize: '0.82rem', color: 'var(--jade)', display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <span>✓ Instant sub-60s credit</span>
+            </div>
+          </div>
+
+          {/* Rail 2: Visa & Mastercard */}
+          <div style={{ padding: '2rem', borderRadius: '22px', background: 'var(--surface)', border: '1px solid var(--line)', display: 'flex', flexDirection: 'column' }}>
+            <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: 'var(--surface-2)', display: 'grid', placeItems: 'center', color: 'var(--hi)', marginBottom: '1.25rem' }}>
+              <svg className="ic" style={{ width: '22px', height: '22px' }}><use href="#i-credit-card" /></svg>
+            </div>
+            <h3 className="h3" style={{ marginBottom: '0.6rem' }}>Credit &amp; Debit Cards</h3>
+            <p className="body" style={{ color: 'var(--low)', fontSize: '0.92rem', lineHeight: 1.55, flexGrow: 1 }}>
+              Universal global support for Visa and Mastercard in 140+ countries. Protected by 3D-Secure 2.0 anti-fraud protocols.
+            </p>
+            <div style={{ marginTop: '1.25rem', paddingTop: '1rem', borderTop: '1px solid var(--line)', fontSize: '0.82rem', color: 'var(--jade)', display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <span>✓ Fixed locked-in quotes</span>
+            </div>
+          </div>
+
+          {/* Rail 3: SEPA Instant */}
+          <div style={{ padding: '2rem', borderRadius: '22px', background: 'var(--surface)', border: '1px solid var(--line)', display: 'flex', flexDirection: 'column' }}>
+            <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: 'var(--surface-2)', display: 'grid', placeItems: 'center', color: 'var(--hi)', marginBottom: '1.25rem' }}>
+              <svg className="ic" style={{ width: '22px', height: '22px' }}><use href="#b-sepa" /></svg>
+            </div>
+            <h3 className="h3" style={{ marginBottom: '0.6rem' }}>SEPA Instant &amp; Bank Wire</h3>
+            <p className="body" style={{ color: 'var(--low)', fontSize: '0.92rem', lineHeight: 1.55, flexGrow: 1 }}>
+              Deposit EUR in under 10 seconds with 0% bank rail fees across 36 European nations. UK Faster Payments for instant GBP.
+            </p>
+            <div style={{ marginTop: '1.25rem', paddingTop: '1rem', borderTop: '1px solid var(--line)', fontSize: '0.82rem', color: 'var(--jade)', display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <span>✓ 0% deposit transaction fee</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Quick Buy Asset Row */}
+        <div style={{ marginTop: '2.5rem', padding: '1.75rem', borderRadius: '22px', background: 'var(--surface)', border: '1px solid var(--line)', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '16px' }}>
+          <div>
+            <span style={{ fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--fg-faint)', fontWeight: 600 }}>Supported Purchase Assets</span>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '8px' }}>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '6px 12px', borderRadius: '99px', background: 'var(--surface-2)', fontSize: '0.86rem', fontWeight: 600 }}>
+                <span className="coin sm btc">₿</span> Bitcoin (BTC)
+              </span>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '6px 12px', borderRadius: '99px', background: 'var(--surface-2)', fontSize: '0.86rem', fontWeight: 600 }}>
+                <span className="coin sm eth">Ξ</span> Ethereum (ETH)
+              </span>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '6px 12px', borderRadius: '99px', background: 'var(--surface-2)', fontSize: '0.86rem', fontWeight: 600 }}>
+                <span className="coin sm usdt">₮</span> Tether (USDT)
+              </span>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '6px 12px', borderRadius: '99px', background: 'var(--surface-2)', fontSize: '0.86rem', fontWeight: 600 }}>
+                <span className="coin sm usdc">$</span> USD Coin (USDC)
+              </span>
+            </div>
+          </div>
+          <a className="btn btn-solid" href="#exchange-widget" style={{ minWidth: '160px' }}>
+            Buy with Widget
+            <svg className="ic" aria-hidden="true"><use href="#i-arrow-right" /></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    {/* ============ Dedicated Section: Sell Crypto ============ */}
+    <section className="sec" id="sell" style={{ scrollMarginTop: '110px' }}>
+      <div className="wrap">
+        <div className="sec-split">
+          <div className="sec-head rv">
+            <p className="eyebrow">Direct Bank Off-Ramp</p>
+            <h2 className="h2">Sell crypto. Cash out directly to your bank account.</h2>
+          </div>
+          <p className="body rv">
+            Convert supported cryptocurrencies and receive fiat funds in your bank account via SEPA Instant or Faster Payments with guaranteed locked quotes.
+          </p>
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '20px', marginTop: '2rem' }}>
+          {/* Sell Step 1 */}
+          <div style={{ padding: '2rem', borderRadius: '22px', background: 'var(--surface)', border: '1px solid var(--line)' }}>
+            <span style={{ fontFamily: 'var(--f-mono)', fontSize: '0.8rem', color: 'var(--jade)', fontWeight: 600, display: 'block', marginBottom: '0.5rem' }}>STEP 01</span>
+            <h3 className="h3" style={{ marginBottom: '0.6rem' }}>Select Asset &amp; Currency</h3>
+            <p className="body" style={{ color: 'var(--low)', fontSize: '0.92rem', lineHeight: 1.55 }}>
+              Choose to sell BTC, ETH, USDT, USDC, or SOL and select whether you want EUR, GBP, or USD payout.
+            </p>
+          </div>
+
+          {/* Sell Step 2 */}
+          <div style={{ padding: '2rem', borderRadius: '22px', background: 'var(--surface)', border: '1px solid var(--line)' }}>
+            <span style={{ fontFamily: 'var(--f-mono)', fontSize: '0.8rem', color: 'var(--jade)', fontWeight: 600, display: 'block', marginBottom: '0.5rem' }}>STEP 02</span>
+            <h3 className="h3" style={{ marginBottom: '0.6rem' }}>Enter Your Bank Details</h3>
+            <p className="body" style={{ color: 'var(--low)', fontSize: '0.92rem', lineHeight: 1.55 }}>
+              Provide your IBAN or bank account details. We verify account ownership in real time for compliance and safety.
+            </p>
+          </div>
+
+          {/* Sell Step 3 */}
+          <div style={{ padding: '2rem', borderRadius: '22px', background: 'var(--surface)', border: '1px solid var(--line)' }}>
+            <span style={{ fontFamily: 'var(--f-mono)', fontSize: '0.8rem', color: 'var(--jade)', fontWeight: 600, display: 'block', marginBottom: '0.5rem' }}>STEP 03</span>
+            <h3 className="h3" style={{ marginBottom: '0.6rem' }}>Instant Fiat Transfer</h3>
+            <p className="body" style={{ color: 'var(--low)', fontSize: '0.92rem', lineHeight: 1.55 }}>
+              Send your crypto to the designated escrow address. As soon as confirmed, fiat lands in your bank in seconds via SEPA Instant.
+            </p>
+          </div>
+        </div>
+
+        {/* Sell visual simulation & CTA */}
+        <div style={{ marginTop: '2.5rem', padding: '2rem', borderRadius: '24px', background: 'linear-gradient(145deg, var(--surface), var(--ground))', border: '1px solid var(--line)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '2rem', alignItems: 'center' }}>
+          <div>
+            <span style={{ fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--jade)', fontWeight: 600 }}>• Instant Off-Ramp Simulation</span>
+            <h3 className="h3" style={{ margin: '0.5rem 0 0.75rem' }}>From Blockchain to European IBAN in &lt;10s</h3>
+            <p className="body" style={{ color: 'var(--low)', fontSize: '0.92rem' }}>
+              No days-long bank delays or broker freezes. Experience true institutional liquidity with wholesale OTC exchange rates.
+            </p>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            <div style={{ padding: '14px 18px', borderRadius: '14px', background: 'var(--surface-2)', border: '1px solid var(--line)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <span style={{ color: 'var(--fg-dim)', fontSize: '0.9rem' }}>You send</span>
+              <span style={{ fontFamily: 'var(--f-mono)', fontWeight: 600 }}>1.0000 ETH</span>
+            </div>
+            <div style={{ padding: '14px 18px', borderRadius: '14px', background: 'var(--surface-2)', border: '1px solid var(--line)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <span style={{ color: 'var(--fg-dim)', fontSize: '0.9rem' }}>Your bank receives</span>
+              <span style={{ fontFamily: 'var(--f-mono)', fontWeight: 600, color: 'var(--jade)' }}>€2,284.50 EUR (SEPA)</span>
+            </div>
+            <a className="btn btn-solid btn-block" href="#exchange-widget" style={{ justifyContent: 'center', marginTop: '6px' }}>
+              Start Selling with Widget
+              <svg className="ic" aria-hidden="true"><use href="#i-arrow-right" /></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* ============ Dedicated Section: Convert Crypto ============ */}
+    <section className="sec" id="convert" style={{ scrollMarginTop: '110px' }}>
+      <div className="wrap">
+        <div className="sec-split">
+          <div className="sec-head rv">
+            <p className="eyebrow">Zero-Slippage Swaps</p>
+            <h2 className="h2">Convert between 50+ crypto assets seamlessly.</h2>
+          </div>
+          <p className="body rv">
+            Move between Bitcoin, stablecoins, and leading tokens with a single click. Guaranteed quotes, 0 gas volatility, and no complex order book charts.
+          </p>
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '20px', marginTop: '2rem' }}>
+          {/* Feature 1 */}
+          <div style={{ padding: '2rem', borderRadius: '22px', background: 'var(--surface)', border: '1px solid var(--line)' }}>
+            <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: 'var(--surface-2)', display: 'grid', placeItems: 'center', color: 'var(--jade)', marginBottom: '1.25rem' }}>
+              <svg className="ic" style={{ width: '22px', height: '22px' }}><use href="#i-gauge" /></svg>
+            </div>
+            <h3 className="h3" style={{ marginBottom: '0.6rem' }}>0% Slippage Guarantee</h3>
+            <p className="body" style={{ color: 'var(--low)', fontSize: '0.92rem', lineHeight: 1.55 }}>
+              DEX swaps frequently suffer from MEV bots and 2–5% slippage. Coincashy locks your execution rate for 30 seconds: what you see is exactly what lands in your wallet.
+            </p>
+          </div>
+
+          {/* Feature 2 */}
+          <div style={{ padding: '2rem', borderRadius: '22px', background: 'var(--surface)', border: '1px solid var(--line)' }}>
+            <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: 'var(--surface-2)', display: 'grid', placeItems: 'center', color: 'var(--brass)', marginBottom: '1.25rem' }}>
+              <svg className="ic" style={{ width: '22px', height: '22px' }}><use href="#i-repeat" /></svg>
+            </div>
+            <h3 className="h3" style={{ marginBottom: '0.6rem' }}>50+ Cross-Chain Pairs</h3>
+            <p className="body" style={{ color: 'var(--low)', fontSize: '0.92rem', lineHeight: 1.55 }}>
+              Swap between Bitcoin, Ethereum, Solana, USDT, USDC, and EURC without multi-bridge wrapping risks or native gas token prerequisites.
+            </p>
+          </div>
+
+          {/* Feature 3 */}
+          <div style={{ padding: '2rem', borderRadius: '22px', background: 'var(--surface)', border: '1px solid var(--line)' }}>
+            <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: 'var(--surface-2)', display: 'grid', placeItems: 'center', color: 'var(--hi)', marginBottom: '1.25rem' }}>
+              <svg className="ic" style={{ width: '22px', height: '22px' }}><use href="#i-lock" /></svg>
+            </div>
+            <h3 className="h3" style={{ marginBottom: '0.6rem' }}>Deep OTC Liquidity</h3>
+            <p className="body" style={{ color: 'var(--low)', fontSize: '0.92rem', lineHeight: 1.55 }}>
+              Whether converting €50 or €500,000, our institutional liquidity aggregation routes your swap through deep order books with zero price impact.
+            </p>
+          </div>
+        </div>
+
+        {/* Convert CTA banner */}
+        <div style={{ marginTop: '2.5rem', padding: '1.75rem 2rem', borderRadius: '22px', background: 'var(--surface)', border: '1px solid var(--line)', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '16px' }}>
+          <div>
+            <div style={{ fontWeight: 600, fontSize: '1.05rem', color: 'var(--hi)', marginBottom: '4px' }}>Ready to swap between assets?</div>
+            <div style={{ fontSize: '0.85rem', color: 'var(--low)' }}>Select any two crypto assets in our exchange terminal to preview real-time locked rates.</div>
+          </div>
+          <a className="btn btn-solid" href="#exchange-widget" style={{ minWidth: '160px' }}>
+            Convert with Widget
+            <svg className="ic" aria-hidden="true"><use href="#i-arrow-right" /></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    {/* ============ Personal Crypto Card Lab ============ */}
+    <section className="sec" id="card" style={{ scrollMarginTop: '110px' }}>
       <div className="wrap">
         <div className="sec-split">
           <div className="sec-head rv">
             <p className="eyebrow">Personal crypto card</p>
             <h2 className="h2">Your crypto. Ready for real life.</h2>
           </div>
-          <p className="body rv">Move supported balances into everyday spending through a personal card experience designed for clarity and control. Try the controls.</p>
+          <p className="body rv">Move supported balances into everyday spending through a personal card experience designed for clarity and control. Try the controls below or visit our dedicated Card Studio.</p>
         </div>
         <div className="lab-grid" id="card-lab">
           <div>
@@ -178,24 +422,19 @@ export default function PersonalView() {
               <input type="range" id="lab-limit" min={100} max={5000} step={100} defaultValue={1500} />
             </div>
             <div className="lab-banner" id="lab-banner" hidden><svg className="ic" aria-hidden="true"><use href="#i-snowflake" /></svg><span>Your card is frozen. New payments are declined until you unfreeze it.</span></div>
-            <div className="lab-group">
-              <span className="lab-lbl">Recent activity</span>
-              <div className="lab-activity">
-                <div className="la-row"><span>Coffee shop<small>Today · Contactless</small></span><b>−€4.20</b></div>
-                <div className="la-row"><span>Metro top-up<small>Yesterday · Online</small></span><b>−€20.00</b></div>
-                <div className="la-row"><span>Available balance<small>Updated just now</small></span><b>€1,240.50</b></div>
-              </div>
+            <div style={{ marginTop: '1rem' }}>
+              <Link className="btn btn-solid btn-block" href="/cards" style={{ justifyContent: 'center' }}>
+                Open Full Card Studio
+                <svg className="ic" aria-hidden="true"><use href="#i-arrow-right" /></svg>
+              </Link>
             </div>
-            <form className="waitlist" id="waitlist" noValidate>
-              <label className="lab-lbl" htmlFor="wl-email">Join the waitlist</label>
-              <div className="wl-row"><input className="input" id="wl-email" type="email" placeholder="you@example.com" autoComplete="email" /><button className="btn btn-solid" type="submit">Join the waitlist</button></div>
-              <span className="err" id="wl-email-err" />
-            </form>
           </div>
         </div>
       </div>
     </section>
-    <section className="sec" id="how">
+
+    {/* ============ How It Works ============ */}
+    <section className="sec" id="how" style={{ scrollMarginTop: '110px' }}>
       <div className="wrap">
         <div className="sec-head rv">
           <p className="eyebrow">Simple by design</p>
@@ -214,7 +453,7 @@ export default function PersonalView() {
               <div className="hp-card">
                 <div className="hp-title">Choose an asset<small>Step 1 of 4</small></div>
                 <div className="hp-row sel"><span className="coin sm btc">₿</span>Bitcoin<em>BTC</em></div>
-                <div className="hp-row"><span className="coin sm eth">╬₧</span>Ether<em>ETH</em></div>
+                <div className="hp-row"><span className="coin sm eth">Ξ</span>Ether<em>ETH</em></div>
                 <div className="hp-row"><span className="coin sm usdt">₮</span>Tether<em>USDT</em></div>
                 <div className="hp-row"><span className="coin sm usdc">$</span>USD Coin<em>USDC</em></div>
                 <div className="hp-row sel"><svg className="ic" aria-hidden="true"><use href="#i-euro" /></svg>Amount<em>€250.00</em></div>
@@ -252,7 +491,9 @@ export default function PersonalView() {
         </div>
       </div>
     </section>
-    <section className="sec sec-flush-top" id="faq-personal">
+
+    {/* ============ FAQ Section ============ */}
+    <section className="sec sec-flush-top" id="faq-personal" style={{ scrollMarginTop: '110px' }}>
       <div className="wrap faq-grid">
         <div className="sec-head">
           <p className="eyebrow">Questions</p>
@@ -268,7 +509,8 @@ export default function PersonalView() {
         </div>
       </div>
     </section>
-    {/* Personal · Closing: sonar grid */}
+
+    {/* ============ Closing Sonar ============ */}
     <section className="sec sonar" data-sonar>
       <canvas className="sonar-canvas" aria-hidden="true" suppressHydrationWarning />
       <div className="sonar-wash" aria-hidden="true" />
@@ -276,7 +518,7 @@ export default function PersonalView() {
         <p className="eyebrow">Get started</p>
         <h2 className="h2">Crypto that fits your life.</h2>
         <p className="lede">Choose your asset and preferred payment method to begin. Tap anywhere to send a ping.</p>
-        <div className="cta-row"><a className="btn btn-solid" href="#buy">Buy crypto<svg className="ic" aria-hidden="true"><use href="#i-arrow-right" /></svg></a><a className="btn btn-line" href="https://coincashy.io" target="_blank" rel="noopener">Visit Coincashy.io<svg className="ic" aria-hidden="true"><use href="#i-arrow-up-right" /></svg></a></div>
+        <div className="cta-row"><a className="btn btn-solid" href="#exchange-widget">Launch Exchange Terminal<svg className="ic" aria-hidden="true"><use href="#i-arrow-right" /></svg></a><Link className="btn btn-line" href="/cards">Explore Cards<svg className="ic" aria-hidden="true"><use href="#i-arrow-right" /></svg></Link></div>
       </div>
     </section>
   </main>
