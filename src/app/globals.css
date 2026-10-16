@@ -1478,7 +1478,7 @@ textarea.input{height:auto;min-height:110px;padding:14px 16px;resize:vertical;li
 /* ============ Subpage Hero ============ */
 .subpage-hero {
   min-height: auto !important;
-  padding-top: calc(env(safe-area-inset-top, 0px) + clamp(88px, 10vw, 128px)) !important;
+  padding-top: calc(env(safe-area-inset-top, 0px) + clamp(134px, 14vw, 160px)) !important;
   padding-bottom: clamp(36px, 5vw, 64px) !important;
 }
 .subpage-hero .hero-inner {
@@ -1488,5 +1488,20 @@ textarea.input{height:auto;min-height:110px;padding:14px 16px;resize:vertical;li
 }
 .subpage-hero .hero-copy-center {
   margin: 0 auto !important;
+}
+
+@media (max-width: 768px) {
+  .subpage-hero {
+    padding-top: calc(env(safe-area-inset-top, 0px) + clamp(136px, 16vw, 154px)) !important;
+    padding-bottom: 40px !important;
+  }
+  .subpage-hero .hero-copy-center .eyebrow {
+    margin-bottom: 8px !important;
+  }
+  .subpage-hero .hero-copy-center .display {
+    font-size: clamp(2.15rem, 7.6vw, 2.75rem) !important;
+    line-height: 1.14 !important;
+    margin-bottom: 12px !important;
+  }
 }
 
