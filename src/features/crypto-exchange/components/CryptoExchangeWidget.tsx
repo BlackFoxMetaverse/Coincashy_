@@ -1,15 +1,15 @@
 "use client";
 import React from 'react';
-import { useOrderWidget, PaymentMethod } from '../hooks/useOrderWidget';
+import { useOrderWidget, PaymentMethod, OrderMode } from '../hooks/useOrderWidget';
 import { FIAT_RATES, CRYPTO_RATES, Currency, OrderCalculator } from '../domain/OrderCalculator';
 
-export default function CryptoExchangeWidget() {
+export default function CryptoExchangeWidget({ defaultMode = 'buy' }: { defaultMode?: OrderMode } = {}) {
   const {
     mode, from, to, fromAmt, toAmt, method, isReview, timeLeft, rateText,
     setFrom, setTo, setFromAmt, setToAmt, setMethod, setIsReview,
     handleModeChange, handleSwap,
     fromOptions, toOptions
-  } = useOrderWidget();
+  } = useOrderWidget(defaultMode);
 
   const getChipUI = (c: Currency) => {
     if (OrderCalculator.isFiat(c)) {

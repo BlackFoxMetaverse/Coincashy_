@@ -5,11 +5,13 @@ import { OrderCalculator, Currency, FiatCurrency, FIAT_RATES, CRYPTO_RATES } fro
 export type OrderMode = 'buy' | 'sell' | 'convert';
 export type PaymentMethod = 'Card' | 'Apple Pay' | 'Google Pay' | 'Bank transfer';
 
-export function useOrderWidget() {
-  const [mode, setMode] = useState<OrderMode>('buy');
-  const [from, setFrom] = useState<Currency>('USD');
-  const [to, setTo] = useState<Currency>('BTC');
-  const [fromInput, setFromInput] = useState<string>('1000.00');
+export function useOrderWidget(defaultMode: OrderMode = 'buy') {
+  const [mode, setMode] = useState<OrderMode>(defaultMode);
+  const [from, setFrom] = useState<Currency>(defaultMode === 'sell' ? 'BTC' : 'USD');
+  const [to, setTo] = useState<Currency>(defaultMode === 'sell' ? 'EUR' : defaultMode === 'convert' ? 'USDT' : 'BTC');
+  const [fromInput, setFromInput] = useState<string>(
+    defaultMode === 'sell' ? '0.5' : defaultMode === 'convert' ? '0.25' : '1000.00'
+  );
   const [toInput, setToInput] = useState<string>('');
   const [side, setSide] = useState<'from' | 'to'>('from');
   const [method, setMethod] = useState<PaymentMethod>('Apple Pay');
@@ -92,7 +94,9 @@ export function useOrderWidget() {
         handleModeChange('buy');
       }
     };
-    syncHash();
+    if (typeof window !== 'undefined' && window.location.hash) {
+      syncHash();
+    }
     window.addEventListener('hashchange', syncHash);
     return () => window.removeEventListener('hashchange', syncHash);
   }, []);

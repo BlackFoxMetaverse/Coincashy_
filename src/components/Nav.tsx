@@ -84,9 +84,9 @@ export default function Nav() {
               <Link className="nav-link" href="/personal" data-nav="personal">Personal<svg className="ic" aria-hidden="true"><use href="#i-chevron-down" /></svg></Link>
               <div className="menu">
                 <div className="menu-grid cols-2">
-                  <Link className="menu-item" href="/personal#buy"><span className="menu-ic"><svg className="ic" aria-hidden="true"><use href="#i-arrow-down-left" /></svg></span><span><b>Buy crypto</b><small>Card, Apple Pay, SEPA</small></span></Link>
-                  <Link className="menu-item" href="/personal#sell"><span className="menu-ic"><svg className="ic" aria-hidden="true"><use href="#i-arrow-up-right" /></svg></span><span><b>Sell crypto</b><small>Direct to bank account</small></span></Link>
-                  <Link className="menu-item" href="/personal#convert"><span className="menu-ic"><svg className="ic" aria-hidden="true"><use href="#i-repeat" /></svg></span><span><b>Convert crypto</b><small>0% slippage swaps</small></span></Link>
+                  <Link className="menu-item" href="/buy-crypto"><span className="menu-ic"><svg className="ic" aria-hidden="true"><use href="#i-arrow-down-left" /></svg></span><span><b>Buy crypto</b><small>Card, Apple Pay, SEPA</small></span></Link>
+                  <Link className="menu-item" href="/sell-crypto"><span className="menu-ic"><svg className="ic" aria-hidden="true"><use href="#i-arrow-up-right" /></svg></span><span><b>Sell crypto</b><small>Direct to bank account</small></span></Link>
+                  <Link className="menu-item" href="/convert-crypto"><span className="menu-ic"><svg className="ic" aria-hidden="true"><use href="#i-repeat" /></svg></span><span><b>Convert crypto</b><small>0% slippage swaps</small></span></Link>
                   <Link className="menu-item" href="/cards"><span className="menu-ic"><svg className="ic" aria-hidden="true"><use href="#i-credit-card" /></svg></span><span><b>Personal crypto card</b><small>Everyday card spending</small></span></Link>
                 </div>
                 <Link className="menu-foot" href="/personal#how">How it works, in four steps<svg className="ic" aria-hidden="true"><use href="#i-arrow-right" /></svg></Link>
@@ -100,7 +100,7 @@ export default function Nav() {
                   <Link className="menu-item" href="/otc"><span className="menu-ic"><svg className="ic" aria-hidden="true"><use href="#i-chart-candlestick" /></svg></span><span><b>OTC &amp; liquidity</b></span></Link>
                   <Link className="menu-item" href="/ramp"><span className="menu-ic"><svg className="ic" aria-hidden="true"><use href="#i-arrow-left-right" /></svg></span><span><b>On/off-ramp</b></span></Link>
                   <Link className="menu-item" href="/vibans"><span className="menu-ic"><svg className="ic" aria-hidden="true"><use href="#i-landmark" /></svg></span><span><b>vIBANs</b></span></Link>
-                  <Link className="menu-item" href="/business#wallets"><span className="menu-ic"><svg className="ic" aria-hidden="true"><use href="#i-wallet" /></svg></span><span><b>Wallet as a Service</b></span></Link>
+                  <Link className="menu-item" href="/wallets"><span className="menu-ic"><svg className="ic" aria-hidden="true"><use href="#i-wallet" /></svg></span><span><b>Wallet as a Service</b></span></Link>
                   <Link className="menu-item" href="/cards"><span className="menu-ic"><svg className="ic" aria-hidden="true"><use href="#i-credit-card" /></svg></span><span><b>Corporate cards</b></span></Link>
                   <Link className="menu-item" href="/settlement"><span className="menu-ic"><svg className="ic" aria-hidden="true"><use href="#i-globe" /></svg></span><span><b>Stablecoin settlement</b></span></Link>
                   <Link className="menu-item" href="/developers"><span className="menu-ic"><svg className="ic" aria-hidden="true"><use href="#i-code-xml" /></svg></span><span><b>APIs &amp; webhooks</b></span></Link>
@@ -182,9 +182,9 @@ export default function Nav() {
             <summary>Personal<svg className="ic" aria-hidden="true"><use href="#i-chevron-down" /></svg></summary>
             <div className="m-sub">
               <Link href="/personal">Overview</Link>
-              <Link href="/personal#buy">Buy crypto</Link>
-              <Link href="/personal#sell">Sell crypto</Link>
-              <Link href="/personal#convert">Convert crypto</Link>
+              <Link href="/buy-crypto">Buy crypto</Link>
+              <Link href="/sell-crypto">Sell crypto</Link>
+              <Link href="/convert-crypto">Convert crypto</Link>
               <Link href="/cards">Personal crypto card</Link>
               <Link href="/personal#how">How it works</Link>
             </div>
@@ -197,7 +197,7 @@ export default function Nav() {
               <Link href="/otc">OTC &amp; liquidity</Link>
               <Link href="/ramp">On/off-ramp</Link>
               <Link href="/vibans">vIBANs</Link>
-              <Link href="/business#wallets">Wallet as a Service</Link>
+              <Link href="/wallets">Wallet as a Service</Link>
               <Link href="/cards">Corporate cards</Link>
               <Link href="/settlement">Stablecoin settlement</Link>
               <Link href="/developers">APIs &amp; webhooks</Link>
@@ -213,7 +213,7 @@ export default function Nav() {
               <Link href="/processing">Payment Processing</Link>
               <Link href="/ramp">On/Off Ramp</Link>
               <Link href="/settlement">Treasury &amp; Settlement</Link>
-              <Link href="/business#wallets">Wallet as a Service</Link>
+              <Link href="/wallets">Wallet as a Service</Link>
             </div>
           </details>
           <details>
