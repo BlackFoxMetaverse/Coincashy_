@@ -231,7 +231,7 @@ export default function BuyCryptoView() {
       </section>
 
       {/* ============ Popular Purchase Assets ============ */}
-      <section className="sec" style={{ paddingBlock: '3rem', borderBlock: '1px solid var(--line)', background: 'var(--surface-2)' }}>
+      <section className="sec" style={{ paddingBlock: '3rem' }}>
         <div className="wrap">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '12px' }}>
             <div>
@@ -242,14 +242,14 @@ export default function BuyCryptoView() {
                     style={{
                       display: 'inline-flex',
                       alignItems: 'center',
-                      gap: '5px',
+                      gap: '6px',
                       fontSize: '0.72rem',
                       fontWeight: 600,
-                      color: 'var(--jade)',
-                      background: 'rgba(34, 197, 94, 0.1)',
-                      padding: '2px 7px',
+                      color: 'var(--fg-dim)',
+                      background: 'var(--surface)',
+                      padding: '3px 9px',
                       borderRadius: '100px',
-                      border: '1px solid rgba(34, 197, 94, 0.25)',
+                      border: '1px solid var(--line)',
                     }}
                     title="Verifiable live prices powered by DIA Oracle"
                   >

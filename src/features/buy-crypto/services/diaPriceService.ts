@@ -39,6 +39,7 @@ export function formatCryptoPrice(sym: SupportedSymbol, price: number): string {
 export function compute24hChange(price: number, priceYesterday?: number): string {
   if (!priceYesterday || priceYesterday <= 0) return '0.0%';
   const pct = ((price - priceYesterday) / priceYesterday) * 100;
+  if (Math.abs(pct) < 0.05) return '0.0%';
   const sign = pct > 0 ? '+' : '';
   return `${sign}${pct.toFixed(1)}%`;
 }
