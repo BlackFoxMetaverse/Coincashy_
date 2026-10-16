@@ -1,8 +1,8 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import CryptoExchangeWidget from '../../crypto-exchange/components/CryptoExchangeWidget';
 import HowItWorksStepper from './HowItWorksStepper';
 import CardLabSection from './CardLabSection';
+import OneAccountGrid from './OneAccountGrid';
 
 export default function PersonalView({ standalone = false }: { standalone?: boolean } = {}) {
   return (
@@ -77,72 +77,7 @@ export default function PersonalView({ standalone = false }: { standalone?: bool
           </div>
           <p className="body rv">Start with familiar payment methods, follow clear transaction steps and manage your digital value without unnecessary complexity.</p>
         </div>
-        <div className="prod-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))' }}>
-          {/* Card 1: Buy */}
-          <article className="prod rv">
-            <div className="prod-vis" aria-hidden="true">
-              <div className="pm-stack">
-                <div className="pm-row"><svg className="ic" aria-hidden="true"><use href="#i-credit-card" /></svg>Card<em>Visa · Mastercard</em></div>
-                <div className="pm-row sel"><svg className="ic" aria-hidden="true"><use href="#i-smartphone" /></svg>Apple Pay<em>Selected</em></div>
-                <div className="pm-row"><svg className="ic" aria-hidden="true"><use href="#i-smartphone" /></svg>Google Pay</div>
-                <div className="pm-row"><svg className="ic" aria-hidden="true"><use href="#i-landmark" /></svg>Bank transfer</div>
-              </div>
-            </div>
-            <h3 className="h3">Buy crypto</h3>
-            <p className="body">Purchase supported assets using card, Apple Pay, Google Pay or bank transfer.</p>
-            <a className="link-arrow" href="#buy">Start buying<svg className="ic" aria-hidden="true"><use href="#i-arrow-right" /></svg></a>
-          </article>
-
-          {/* Card 2: Sell */}
-          <article className="prod rv">
-            <div className="prod-vis" aria-hidden="true">
-              <div className="sellflow">
-                <div className="sf-node"><span className="ico"><span className="coin sm eth">Ξ</span></span><b>0.75 ETH</b>You sell</div>
-                <svg className="ic sf-arrow" aria-hidden="true"><use href="#i-arrow-right" /></svg>
-                <div className="sf-node"><span className="ico"><svg className="ic" aria-hidden="true"><use href="#i-repeat" /></svg></span><b>€1,706.90</b>Converted</div>
-                <svg className="ic sf-arrow" aria-hidden="true"><use href="#i-arrow-right" /></svg>
-                <div className="sf-node"><span className="ico"><svg className="ic" aria-hidden="true"><use href="#i-landmark" /></svg></span><b>•••• 4821</b>Your bank</div>
-              </div>
-            </div>
-            <h3 className="h3">Sell crypto</h3>
-            <p className="body">Convert supported digital assets and receive funds through available payout methods.</p>
-            <a className="link-arrow" href="#sell">Start selling<svg className="ic" aria-hidden="true"><use href="#i-arrow-right" /></svg></a>
-          </article>
-
-          {/* Card 3: Convert */}
-          <article className="prod rv">
-            <div className="prod-vis" aria-hidden="true">
-              <div className="sellflow" style={{ justifyContent: 'center' }}>
-                <div className="sf-node"><span className="ico"><span className="coin sm btc">₿</span></span><b>0.05 BTC</b>From</div>
-                <svg className="ic sf-arrow" aria-hidden="true"><use href="#i-arrow-left-right" /></svg>
-                <div className="sf-node"><span className="ico"><span className="coin sm usdc">$</span></span><b>4,215 USDC</b>To</div>
-              </div>
-            </div>
-            <h3 className="h3">Convert crypto</h3>
-            <p className="body">Move between supported assets with clear quotes, zero slippage, and instant delivery.</p>
-            <a className="link-arrow" href="#convert">Try a conversion<svg className="ic" aria-hidden="true"><use href="#i-arrow-right" /></svg></a>
-          </article>
-
-          {/* Card 4: Spend with card */}
-          <article className="prod rv">
-            <div className="prod-vis" aria-hidden="true">
-              <div className="prod-card">
-                <div className="card finish-paper is-physical">
-                  <div className="card-tex" /><div className="card-foil" /><div className="card-sheen" />
-                  <div className="card-body">
-                    <div className="card-row"><span className="card-word"><Image className="cw-dark" src="/media/logo-white.png" alt="Coincashy" width={1217} height={157} /><Image className="cw-light" src="/media/logo-black.png" alt="" width={1217} height={157} /></span><span className="card-type">PHYSICAL</span></div>
-                    <div className="card-mid"><span className="card-chip" /><svg className="ic card-nfc" aria-hidden="true"><use href="#i-nfc" /></svg></div>
-                    <div className="card-num">•••• •••• •••• 2049</div>
-                    <div className="card-foot"><span>Your name</span><span>09/29</span></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <h3 className="h3">Spend with card</h3>
-            <p className="body">Use a partner-enabled virtual or physical card for eligible everyday purchases.</p>
-            <Link className="link-arrow" href="/cards">Explore the card<svg className="ic" aria-hidden="true"><use href="#i-arrow-right" /></svg></Link>
-          </article>
-        </div>
+        <OneAccountGrid />
       </div>
     </section>
 
