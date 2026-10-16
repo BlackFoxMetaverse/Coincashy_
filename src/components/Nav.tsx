@@ -63,11 +63,27 @@ export default function Nav() {
         {isTickerOpen && (
           <div id="top-ticker" className="top-ticker">
             <div className="ticker-inner">
-              <div className="ticker-logo">
-                <span>TOKEN2049</span>
-                <span className="ticker-logo-sub">SINGAPORE</span>
-              </div>
-              <span className="ticker-text">See you at the event &middot; <strong>7-8 October</strong>, Singapore <a href="https://token2049.com/singapore" target="_blank" rel="noopener" className="ticker-link">Meet us there ↗</a></span>
+              <a
+                href="https://devcon.org/en/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ticker-logo"
+                aria-label="Devcon 8 Mumbai"
+              >
+                <span>DEVCON 8</span>
+                <span className="ticker-logo-sub">MUMBAI</span>
+              </a>
+              <span className="ticker-text">
+                See you at the event &middot; <strong>3—6 November, 2026</strong>, Mumbai, India{' '}
+                <a
+                  href="https://devcon.org/en/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="ticker-link"
+                >
+                  Meet us there ↗
+                </a>
+              </span>
             </div>
             <button className="ticker-close" data-close-ticker aria-label="Close banner" type="button" onClick={() => setIsTickerOpen(false)}>
               <svg className="ic"><use href="#i-x" /></svg>

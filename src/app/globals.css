@@ -196,6 +196,11 @@ main.page{display:block}
   margin-right: 12px;
   letter-spacing: 0.05em;
   font-family: var(--f-display);
+  transition: opacity 0.2s ease;
+  cursor: pointer;
+}
+.ticker-logo:hover {
+  opacity: 0.85;
 }
 .ticker-logo-sub {
   font-weight: 600;
