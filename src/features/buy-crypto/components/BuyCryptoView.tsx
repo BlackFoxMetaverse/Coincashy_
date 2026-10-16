@@ -1,8 +1,14 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import CryptoExchangeWidget from '@/features/crypto-exchange/components/CryptoExchangeWidget';
+import {
+  SUPPORTED_SYMBOLS,
+  SupportedSymbol,
+  formatCryptoPrice,
+  compute24hChange,
+} from '../services/diaPriceService';
 
 interface PaymentRail {
   id: string;
@@ -58,13 +64,16 @@ const PAYMENT_RAILS: PaymentRail[] = [
   }
 ];
 
-const POPULAR_ASSETS = [
-  { sym: 'BTC', name: 'Bitcoin', icon: '₿', cls: 'btc', price: '$64,280.00', change: '+2.8%', min: '€20' },
-  { sym: 'ETH', name: 'Ethereum', icon: 'Ξ', cls: 'eth', price: '$3,490.50', change: '+3.4%', min: '€20' },
-  { sym: 'SOL', name: 'Solana', icon: '◎', cls: 'sol', price: '$152.40', change: '+5.1%', min: '€15' },
-  { sym: 'USDT', name: 'Tether USD', icon: '₮', cls: 'usdt', price: '$1.00', change: '0.0%', min: '€10' },
-  { sym: 'USDC', name: 'USD Coin', icon: '$', cls: 'usdc', price: '$1.00', change: '0.0%', min: '€10' },
-];
+const INITIAL_ASSETS: Record<
+  SupportedSymbol,
+  { sym: SupportedSymbol; name: string; icon: string; cls: string; price: string; change: string; min: string }
+> = {
+  BTC: { sym: 'BTC', name: 'Bitcoin', icon: '₿', cls: 'btc', price: '$81,311.95', change: '-0.9%', min: '€20' },
+  ETH: { sym: 'ETH', name: 'Ethereum', icon: 'Ξ', cls: 'eth', price: '$2,414.58', change: '-0.8%', min: '€20' },
+  SOL: { sym: 'SOL', name: 'Solana', icon: '◎', cls: 'sol', price: '$103.97', change: '-1.1%', min: '€15' },
+  USDT: { sym: 'USDT', name: 'Tether USD', icon: '₮', cls: 'usdt', price: '$1.00', change: '0.0%', min: '€10' },
+  USDC: { sym: 'USDC', name: 'USD Coin', icon: '$', cls: 'usdc', price: '$1.00', change: '0.0%', min: '€10' },
+};
 
 const FAQS = [
   {
@@ -92,6 +101,82 @@ const FAQS = [
 export default function BuyCryptoView() {
   const [selectedRail, setSelectedRail] = useState<string>('apple-google');
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [assetPrices, setAssetPrices] = useState(INITIAL_ASSETS);
+  const [isLivePricing, setIsLivePricing] = useState(false);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    async function loadPrices() {
+      try {
+        const res = await fetch('/api/prices');
+        if (res.ok) {
+          const json = await res.json();
+          if (json.success && json.data && isMounted) {
+            setAssetPrices((prev) => {
+              const updated = { ...prev };
+              SUPPORTED_SYMBOLS.forEach((sym) => {
+                if (json.data[sym]) {
+                  updated[sym] = {
+                    ...updated[sym],
+                    price: json.data[sym].formattedPrice,
+                    change: json.data[sym].change,
+                  };
+                }
+              });
+              return updated;
+            });
+            setIsLivePricing(true);
+            return;
+          }
+        }
+      } catch {
+        // Fallback to direct DIA API endpoint
+      }
+
+      // Direct DIA API fetch fallback for strictly the 5 displayed currencies
+      try {
+        const updates = await Promise.all(
+          SUPPORTED_SYMBOLS.map(async (sym) => {
+            const r = await fetch(`https://api.diadata.org/v1/quotation/${sym}`);
+            if (!r.ok) return null;
+            const d = await r.json();
+            return {
+              sym,
+              price: formatCryptoPrice(sym, d.Price),
+              change: compute24hChange(d.Price, d.PriceYesterday),
+            };
+          })
+        );
+
+        if (isMounted) {
+          setAssetPrices((prev) => {
+            const updated = { ...prev };
+            updates.forEach((item) => {
+              if (item && updated[item.sym]) {
+                updated[item.sym] = {
+                  ...updated[item.sym],
+                  price: item.price,
+                  change: item.change,
+                };
+              }
+            });
+            return updated;
+          });
+          setIsLivePricing(true);
+        }
+      } catch (err) {
+        console.warn('Direct DIA pricing query error:', err);
+      }
+    }
+
+    loadPrices();
+    const timer = setInterval(loadPrices, 60000);
+    return () => {
+      isMounted = false;
+      clearInterval(timer);
+    };
+  }, []);
 
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index);
@@ -113,7 +198,7 @@ export default function BuyCryptoView() {
             </p>
             
             <div className="cta-row" style={{ flexWrap: 'wrap', gap: '10px' }}>
-              <a className="btn btn-solid" href="#widget">
+              <a className="btn btn-solid" href="#exchange-widget">
                 Start buying now
                 <svg className="ic" aria-hidden="true"><use href="#i-arrow-right" /></svg>
               </a>
@@ -150,45 +235,89 @@ export default function BuyCryptoView() {
         <div className="wrap">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '12px' }}>
             <div>
-              <span className="eyebrow" style={{ marginBottom: '4px' }}>Market Overview</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+                <span className="eyebrow" style={{ margin: 0 }}>Market Overview</span>
+                {isLivePricing && (
+                  <span
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '5px',
+                      fontSize: '0.72rem',
+                      fontWeight: 600,
+                      color: 'var(--jade)',
+                      background: 'rgba(34, 197, 94, 0.1)',
+                      padding: '2px 7px',
+                      borderRadius: '100px',
+                      border: '1px solid rgba(34, 197, 94, 0.25)',
+                    }}
+                    title="Verifiable live prices powered by DIA Oracle"
+                  >
+                    <span className="dot live" style={{ width: '6px', height: '6px' }} />
+                    DIA Live Oracle
+                  </span>
+                )}
+              </div>
               <h2 className="h3" style={{ margin: 0 }}>Supported Cryptocurrencies</h2>
             </div>
             <span style={{ fontSize: '0.85rem', color: 'var(--fg-dim)', fontFamily: 'var(--f-mono)' }}>100+ digital assets supported</span>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: '14px' }}>
-            {POPULAR_ASSETS.map((asset) => (
-              <div
-                key={asset.sym}
-                style={{
-                  padding: '1.25rem',
-                  borderRadius: '18px',
-                  background: 'var(--surface)',
-                  border: '1px solid var(--line)',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '8px',
-                  transition: 'transform 0.2s, border-color 0.2s',
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    <span className={`coin sm ${asset.cls}`} style={{ width: '32px', height: '32px', fontSize: '1rem' }}>{asset.icon}</span>
-                    <div>
-                      <b style={{ display: 'block', fontSize: '0.95rem' }}>{asset.sym}</b>
-                      <span style={{ fontSize: '0.78rem', color: 'var(--fg-dim)' }}>{asset.name}</span>
+            {SUPPORTED_SYMBOLS.map((sym) => {
+              const asset = assetPrices[sym];
+              const isPositive = asset.change.startsWith('+');
+              const isNegative = asset.change.startsWith('-');
+              const changeColor = isPositive ? 'var(--jade)' : isNegative ? 'var(--coral)' : 'var(--fg-dim)';
+
+              return (
+                <div
+                  key={sym}
+                  style={{
+                    padding: '1.25rem',
+                    borderRadius: '18px',
+                    background: 'var(--surface)',
+                    border: '1px solid var(--line)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '8px',
+                    transition: 'transform 0.2s, border-color 0.2s',
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                      <span className={`coin sm ${asset.cls}`} style={{ width: '32px', height: '32px', fontSize: '1rem' }}>
+                        {asset.icon}
+                      </span>
+                      <div>
+                        <b style={{ display: 'block', fontSize: '0.95rem' }}>{sym}</b>
+                        <span style={{ fontSize: '0.78rem', color: 'var(--fg-dim)' }}>{asset.name}</span>
+                      </div>
                     </div>
+                    <span style={{ fontSize: '0.8rem', fontWeight: 600, color: changeColor }}>
+                      {asset.change}
+                    </span>
                   </div>
-                  <span style={{ fontSize: '0.8rem', fontWeight: 600, color: asset.change.startsWith('+') ? 'var(--jade)' : 'var(--fg-dim)' }}>
-                    {asset.change}
-                  </span>
+                  <div
+                    style={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'baseline',
+                      marginTop: '6px',
+                      paddingTop: '8px',
+                      borderTop: '1px solid var(--line)',
+                    }}
+                  >
+                    <span style={{ fontFamily: 'var(--f-mono)', fontWeight: 600, fontSize: '0.9rem' }}>
+                      {asset.price}
+                    </span>
+                    <a href="#exchange-widget" style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--hi)' }}>
+                      Buy {sym} →
+                    </a>
+                  </div>
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginTop: '6px', paddingTop: '8px', borderTop: '1px solid var(--line)' }}>
-                  <span style={{ fontFamily: 'var(--f-mono)', fontWeight: 600, fontSize: '0.9rem' }}>{asset.price}</span>
-                  <a href="#widget" style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--hi)' }}>Buy {asset.sym} →</a>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
