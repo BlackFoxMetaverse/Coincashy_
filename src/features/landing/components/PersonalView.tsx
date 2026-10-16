@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import CryptoExchangeWidget from '../../crypto-exchange/components/CryptoExchangeWidget';
+import HowItWorksStepper from './HowItWorksStepper';
+import CardLabSection from './CardLabSection';
 
 export default function PersonalView({ standalone = false }: { standalone?: boolean } = {}) {
   return (
@@ -369,67 +371,7 @@ export default function PersonalView({ standalone = false }: { standalone?: bool
           </div>
           <p className="body rv">Move supported balances into everyday spending through a personal card experience designed for clarity and control. Try the controls below or visit our dedicated Card Studio.</p>
         </div>
-        <div className="lab-grid" id="card-lab">
-          <div>
-            <div className="lab-stage" data-tilt>
-              <div className="card-tilt">
-                <div className="card finish-vault" id="lab-card">
-                  <div className="card-tex" /><div className="card-foil" /><div className="card-sheen" />
-                  <div className="card-body">
-                    <div className="card-row"><span className="card-word"><Image className="cw-dark" src="/media/logo-white.png" alt="Coincashy" width={1217} height={157} /><Image className="cw-light" src="/media/logo-black.png" alt="" width={1217} height={157} /></span><span className="card-type" id="lab-type">VIRTUAL</span></div>
-                    <div className="card-mid"><span className="card-chip" /><svg className="ic card-nfc" aria-hidden="true"><use href="#i-nfc" /></svg></div>
-                    <div className="card-num">•••• •••• •••• 2049</div>
-                    <div className="card-foot"><span><small>Cardholder</small>Your name</span><span><small>Valid thru</small>09/29</span></div>
-                  </div>
-                  <div className="card-frost"><span><svg className="ic" aria-hidden="true"><use href="#i-snowflake" /></svg>Card frozen</span></div>
-                </div>
-              </div>
-            </div>
-            <ul className="lab-feats">
-              <li><svg className="ic" aria-hidden="true"><use href="#i-layers" /></svg>Virtual and physical card options</li>
-              <li><svg className="ic" aria-hidden="true"><use href="#i-eye" /></svg>Transaction and balance visibility</li>
-              <li><svg className="ic" aria-hidden="true"><use href="#i-nfc" /></svg>Contactless and online spending</li>
-              <li><svg className="ic" aria-hidden="true"><use href="#i-gauge" /></svg>Personal spending controls</li>
-            </ul>
-          </div>
-          <div className="lab-panel">
-            <div className="lab-group">
-              <span className="lab-lbl" id="lbl-format">Format</span>
-              <div className="seg" role="radiogroup" aria-labelledby="lbl-format" id="lab-format">
-                <button type="button" role="radio" aria-checked="true" data-format="virtual">Virtual</button>
-                <button type="button" role="radio" aria-checked="false" data-format="physical" tabIndex={-1}>Physical</button>
-              </div>
-            </div>
-            <div className="lab-group">
-              <span className="lab-lbl" id="lbl-finish">Finish</span>
-              <div className="swatches" role="radiogroup" aria-labelledby="lbl-finish" id="lab-finish">
-                <button type="button" className="swatch sw-vault" role="radio" aria-checked="true" data-finish="vault" aria-label="Vault" />
-                <button type="button" className="swatch sw-sky" role="radio" aria-checked="false" data-finish="sky" aria-label="Sky" tabIndex={-1} />
-                <button type="button" className="swatch sw-paper" role="radio" aria-checked="false" data-finish="paper" aria-label="Paper" tabIndex={-1} />
-                <span className="sw-name" id="lab-finish-name">Vault</span>
-              </div>
-            </div>
-            <div className="lab-group">
-              <span className="lab-lbl">Controls</span>
-              <div>
-                <div className="switch-row"><span><b id="sw-freeze-l">Freeze card</b><small>Pause new payments straight away</small></span><button type="button" className="switch" id="sw-freeze" role="switch" aria-checked="false" aria-labelledby="sw-freeze-l" data-switch="frozen" /></div>
-                <div className="switch-row"><span><b id="sw-online-l">Online payments</b><small>Shop on websites and in apps</small></span><button type="button" className="switch" id="sw-online" role="switch" aria-checked="true" aria-labelledby="sw-online-l" data-switch="online" /></div>
-                <div className="switch-row"><span><b id="sw-nfc-l">Contactless</b><small>Tap to pay in store</small></span><button type="button" className="switch" id="sw-nfc" role="switch" aria-checked="true" aria-labelledby="sw-nfc-l" data-switch="contactless" /></div>
-              </div>
-            </div>
-            <div className="range-row">
-              <div className="top"><label className="lab-lbl" htmlFor="lab-limit">Monthly spending limit</label><output id="lab-limit-out" htmlFor="lab-limit">€1,500</output></div>
-              <input type="range" id="lab-limit" min={100} max={5000} step={100} defaultValue={1500} />
-            </div>
-            <div className="lab-banner" id="lab-banner" hidden><svg className="ic" aria-hidden="true"><use href="#i-snowflake" /></svg><span>Your card is frozen. New payments are declined until you unfreeze it.</span></div>
-            <div style={{ marginTop: '1rem' }}>
-              <Link className="btn btn-solid btn-block" href="/cards" style={{ justifyContent: 'center' }}>
-                Open Full Card Studio
-                <svg className="ic" aria-hidden="true"><use href="#i-arrow-right" /></svg>
-              </Link>
-            </div>
-          </div>
-        </div>
+        <CardLabSection />
       </div>
     </section>
 
@@ -441,54 +383,7 @@ export default function PersonalView({ standalone = false }: { standalone?: bool
           <h2 className="h2">From payment to crypto in four clear steps.</h2>
           <p className="lede">Exact verification, processing time and availability depend on the selected product and country.</p>
         </div>
-        <div className="how-grid" id="how-grid">
-          <div className="how-steps" role="tablist" aria-label="Steps to buy crypto" aria-orientation="vertical">
-            <button className="how-step is-active" type="button" role="tab" aria-selected="true" aria-controls="hp-0" id="hs-0" suppressHydrationWarning><span className="n">01</span><span><span className="hs-t h3">Choose</span><span className="hs-d">Select an asset and enter the amount.</span></span><span className="bar" /></button>
-            <button className="how-step" type="button" role="tab" aria-selected="false" aria-controls="hp-1" id="hs-1" tabIndex={-1} suppressHydrationWarning><span className="n">02</span><span><span className="hs-t h3">Pay</span><span className="hs-d">Use an available card, wallet or bank rail.</span></span><span className="bar" /></button>
-            <button className="how-step" type="button" role="tab" aria-selected="false" aria-controls="hp-2" id="hs-2" tabIndex={-1} suppressHydrationWarning><span className="n">03</span><span><span className="hs-t h3">Verify</span><span className="hs-d">Complete the required identity and payment checks.</span></span><span className="bar" /></button>
-            <button className="how-step" type="button" role="tab" aria-selected="false" aria-controls="hp-3" id="hs-3" tabIndex={-1} suppressHydrationWarning><span className="n">04</span><span><span className="hs-t h3">Receive</span><span className="hs-d">Your crypto moves to the supported destination.</span></span><span className="bar" /></button>
-          </div>
-          <div className="how-vis">
-            <div className="how-pane is-active" id="hp-0" role="tabpanel" aria-labelledby="hs-0" suppressHydrationWarning>
-              <div className="hp-card">
-                <div className="hp-title">Choose an asset<small>Step 1 of 4</small></div>
-                <div className="hp-row sel"><span className="coin sm btc">₿</span>Bitcoin<em>BTC</em></div>
-                <div className="hp-row"><span className="coin sm eth">Ξ</span>Ether<em>ETH</em></div>
-                <div className="hp-row"><span className="coin sm usdt">₮</span>Tether<em>USDT</em></div>
-                <div className="hp-row"><span className="coin sm usdc">$</span>USD Coin<em>USDC</em></div>
-                <div className="hp-row sel"><svg className="ic" aria-hidden="true"><use href="#i-euro" /></svg>Amount<em>€250.00</em></div>
-              </div>
-            </div>
-            <div className="how-pane" id="hp-1" role="tabpanel" aria-labelledby="hs-1" aria-hidden="true" suppressHydrationWarning>
-              <div className="hp-card">
-                <div className="hp-title">Pay €250.00<small>Step 2 of 4</small></div>
-                <div className="hp-grid">
-                  <div className="hp-row"><svg className="ic" aria-hidden="true"><use href="#i-credit-card" /></svg>Card</div>
-                  <div className="hp-row sel"><svg className="ic" aria-hidden="true"><use href="#i-smartphone" /></svg>Apple Pay</div>
-                  <div className="hp-row"><svg className="ic" aria-hidden="true"><use href="#i-smartphone" /></svg>Google Pay</div>
-                  <div className="hp-row"><svg className="ic" aria-hidden="true"><use href="#i-landmark" /></svg>Bank transfer</div>
-                </div>
-                <div className="hp-row"><svg className="ic" aria-hidden="true"><use href="#i-clock" /></svg>Quote held<em>00:30</em></div>
-              </div>
-            </div>
-            <div className="how-pane" id="hp-2" role="tabpanel" aria-labelledby="hs-2" aria-hidden="true" suppressHydrationWarning>
-              <div className="hp-card">
-                <div className="hp-title">Verify<small>Step 3 of 4</small></div>
-                <div className="hp-check"><i><svg className="ic" aria-hidden="true"><use href="#i-check" /></svg></i>Identity check<em>Done</em></div>
-                <div className="hp-check"><i><svg className="ic" aria-hidden="true"><use href="#i-check" /></svg></i>Payment check<em>Done</em></div>
-                <div className="hp-check wait"><i />Wallet screening<em>In progress</em></div>
-              </div>
-            </div>
-            <div className="how-pane" id="hp-3" role="tabpanel" aria-labelledby="hs-3" aria-hidden="true" suppressHydrationWarning>
-              <div className="hp-card">
-                <div className="hp-title">Received<small>Step 4 of 4</small></div>
-                <div className="hp-big">+0.0034402 <span className="small mono">BTC</span></div>
-                <div className="hp-row"><svg className="ic" aria-hidden="true"><use href="#i-wallet" /></svg>Your Coincashy wallet<em>Received</em></div>
-                <div className="hp-row"><svg className="ic" aria-hidden="true"><use href="#i-receipt" /></svg>You paid<em>€250.00</em></div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <HowItWorksStepper />
       </div>
     </section>
 
