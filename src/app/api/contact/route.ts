@@ -58,6 +58,32 @@ export async function POST(request: Request) {
 
     const hubspotEndpoint = `${baseHost}/submissions/v3/integration/submit/${portalId}/${formId}`;
 
+    // Extract client IP address from request headers
+    const forwarded = request.headers.get('x-forwarded-for');
+    const realIp = request.headers.get('x-real-ip');
+    const clientIp = forwarded ? forwarded.split(',')[0].trim() : (realIp || undefined);
+
+    // Extract HubSpot tracking cookie (hubspotutk)
+    const cookieHeader = request.headers.get('cookie') || '';
+    const cookieMatch = cookieHeader.match(/hubspotutk=([^;]+)/);
+    const hutk = (typeof data.hutk === 'string' && data.hutk.trim())
+      ? data.hutk.trim()
+      : (cookieMatch ? decodeURIComponent(cookieMatch[1].trim()) : undefined);
+
+    const context: Record<string, string> = {
+      pageUri: typeof data.pageUri === 'string' && data.pageUri.trim()
+        ? data.pageUri.trim()
+        : 'https://coincashy.io/contact',
+      pageName: 'Coincashy - Contact Sales',
+    };
+
+    if (clientIp) {
+      context.ipAddress = clientIp;
+    }
+    if (hutk) {
+      context.hutk = hutk;
+    }
+
     const hubspotPayload = {
       submittedAt: Date.now(),
       fields: [
@@ -72,10 +98,7 @@ export async function POST(request: Request) {
         { name: 'target_markets', value: markets },
         { name: 'preferred_currencies', value: currencies },
       ],
-      context: {
-        pageUri: 'https://coincashy.io/contact',
-        pageName: 'Coincashy - Contact Sales',
-      },
+      context,
     };
 
     const res = await fetch(hubspotEndpoint, {

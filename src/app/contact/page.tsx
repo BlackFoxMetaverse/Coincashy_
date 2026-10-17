@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, Suspense } from 'react';
+import Script from 'next/script';
 import { useSearchParams } from 'next/navigation';
 import Footer from '@/components/Footer';
 
@@ -172,6 +173,13 @@ function ContactFormInner({ rawTopic }: { rawTopic: string }) {
       return;
     }
 
+    // Extract HubSpot tracking cookie (hubspotutk) from document.cookie
+    let hutk: string | undefined;
+    if (typeof document !== 'undefined') {
+      const match = document.cookie.match(/hubspotutk=([^;]+)/);
+      if (match) hutk = decodeURIComponent(match[1].trim());
+    }
+
     const payload = {
       name,
       company,
@@ -181,6 +189,8 @@ function ContactFormInner({ rawTopic }: { rawTopic: string }) {
       monthlyVolume: volumeSelect?.value || 'Not specified',
       products: selectedProducts.join(', ') || 'Not specified',
       notes: notesInput?.value.trim() || 'Not specified',
+      pageUri: typeof window !== 'undefined' ? window.location.href : 'https://coincashy.io/contact',
+      hutk,
     };
 
     setSubmitting(true);
@@ -615,6 +625,11 @@ export default function ContactPage() {
         </section>
       </main>
       <Footer />
+      <Script
+        src="https://js-na2.hs-scripts.com/247718972.js"
+        strategy="afterInteractive"
+        id="hs-script-loader"
+      />
 
       {/* Scoped CSS adjustments for high-density, viewport-fitted contact experience */}
       <style>{`
