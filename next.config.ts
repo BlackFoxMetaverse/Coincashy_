@@ -15,8 +15,28 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/convert',
-        destination: '/personal#convert',
-        permanent: false,
+        destination: '/convert-crypto',
+        permanent: true,
+      },
+      {
+        source: '/career',
+        destination: '/careers',
+        permanent: true,
+      },
+      {
+        source: '/join',
+        destination: '/careers',
+        permanent: true,
+      },
+      {
+        source: '/join-our-team',
+        destination: '/careers',
+        permanent: true,
+      },
+      {
+        source: '/jobs',
+        destination: '/careers',
+        permanent: true,
       },
       {
         source: '/card',

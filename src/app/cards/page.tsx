@@ -44,6 +44,41 @@ export default function CardsPage() {
                 </a>
               </div>
 
+              {/* Program Availability & Status Banner */}
+              <div
+                style={{
+                  margin: '1.75rem auto 0',
+                  maxWidth: '720px',
+                  padding: '12px 18px',
+                  borderRadius: '14px',
+                  background: 'var(--surface-2)',
+                  border: '1px solid var(--line)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '12px',
+                  textAlign: 'left',
+                }}
+              >
+                <span
+                  style={{
+                    padding: '4px 10px',
+                    borderRadius: '99px',
+                    background: 'rgba(16, 185, 129, 0.15)',
+                    color: 'var(--jade)',
+                    fontWeight: 700,
+                    fontSize: '0.75rem',
+                    letterSpacing: '0.04em',
+                    textTransform: 'uppercase',
+                    whiteSpace: 'nowrap',
+                  }}
+                >
+                  Pilot Program
+                </span>
+                <p style={{ margin: 0, fontSize: '0.84rem', color: 'var(--low)', lineHeight: 1.45 }}>
+                  Available in select EEA jurisdictions. Cards are partner-enabled and issued under authorized Visa &amp; Mastercard programs. Join the waitlist for immediate rollout notification in your country.
+                </p>
+              </div>
+
               {/* Horizontal Metrics Trust Bar */}
               <div className="hero-metrics-bar">
                 <div className="metric-item">
@@ -417,7 +452,7 @@ export default function CardsPage() {
         </section>
 
         {/* ================= Comparison: Personal vs Corporate ================= */}
-        <section className="sec" id="corporate" style={{ paddingBottom: '5rem' }}>
+        <section className="sec" id="corporate" style={{ paddingBottom: '5rem', scrollMarginTop: '100px' }}>
           <div className="wrap">
             <div style={{ textAlign: 'center', maxWidth: '680px', margin: '0 auto 3rem' }}>
               <p className="eyebrow">Tailored For Scale</p>

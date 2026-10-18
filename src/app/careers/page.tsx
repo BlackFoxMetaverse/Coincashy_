@@ -171,7 +171,7 @@ export default function CareersPage() {
         </section>
 
         {/* Culture & Perks Grid */}
-        <section className="sec" style={{ paddingBottom: '4rem' }}>
+        <section className="sec" id="why-join" style={{ paddingBottom: '4rem', scrollMarginTop: '100px' }}>
           <div className="wrap">
             <div className="sec-split" style={{ marginBottom: '3rem' }}>
               <div className="sec-head">
@@ -195,7 +195,7 @@ export default function CareersPage() {
         </section>
 
         {/* Open Roles Section */}
-        <section className="sec" id="open-roles" style={{ paddingBottom: '5rem' }}>
+        <section className="sec" id="open-roles" style={{ paddingBottom: '5rem', scrollMarginTop: '100px' }}>
           <div className="wrap">
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '1.5rem', marginBottom: '2.5rem' }}>
               <div>

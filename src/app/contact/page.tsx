@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, Suspense } from 'react';
+import Link from 'next/link';
 import Script from 'next/script';
 import { useSearchParams } from 'next/navigation';
 import Footer from '@/components/Footer';
@@ -338,6 +339,17 @@ function ContactFormInner({ rawTopic }: { rawTopic: string }) {
             <span style={{ color: 'var(--jade)', fontWeight: 700 }}>✓</span>
             <span>SEPA Instant, SWIFT &amp; Visa/Mastercard settlement</span>
           </div>
+        </div>
+
+        {/* Careers Notice */}
+        <div style={{ marginTop: '1.25rem', padding: '1rem', borderRadius: '12px', background: 'var(--surface-2)', border: '1px solid var(--line)', display: 'flex', flexDirection: 'column', gap: '6px' }}>
+          <div style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--hi)' }}>Looking to join our team?</div>
+          <p style={{ margin: 0, fontSize: '0.8rem', color: 'var(--low)', lineHeight: 1.4 }}>
+            Explore open engineering, compliance, and trading positions on our careers portal.
+          </p>
+          <Link href="/careers" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', fontSize: '0.8rem', fontWeight: 600, color: 'var(--hi)', textDecoration: 'underline' }}>
+            View Careers &amp; Open Roles →
+          </Link>
         </div>
       </div>
 

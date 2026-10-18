@@ -22,10 +22,13 @@ const SectionTitle = ({ id, title }: { id: string, title: string }) => (
   </h2>
 );
 
-const CodeBlock = ({ children }: { children: React.ReactNode }) => (
-  <pre style={{ background: '#111', color: '#eee', padding: '1.5rem', borderRadius: '12px', overflowX: 'auto', fontSize: '0.85rem', fontFamily: 'monospace', border: '1px solid var(--line)', marginBottom: '1.5rem' }}>
-    {children}
-  </pre>
+const CodeBlock = ({ children, label = 'Illustrative Code Example' }: { children: React.ReactNode, label?: string }) => (
+  <div style={{ marginBottom: '1.5rem' }}>
+    <div style={{ fontSize: '0.72rem', color: 'var(--fg-dim)', marginBottom: '0.35rem', letterSpacing: '0.04em', textTransform: 'uppercase' }}>{label}</div>
+    <pre style={{ background: '#111', color: '#eee', padding: '1.5rem', borderRadius: '12px', overflowX: 'auto', fontSize: '0.85rem', fontFamily: 'monospace', border: '1px solid var(--line)', margin: 0 }}>
+      {children}
+    </pre>
+  </div>
 );
 
 const RequestBlock = ({ method, path, body }: { method: string, path: string, body?: string }) => (
@@ -182,6 +185,22 @@ export default function DevelopersPage() {
                 <p style={{ color: 'var(--fg-dim)', lineHeight: 1.6, marginBottom: '1.5rem', fontSize: '1.1rem' }}>
                   Three calls mint a payment link a Coincashy guest can open to buy crypto with fiat. This page walks the calls in order, then documents every field and everything that comes back. Every path below is called against <code style={{ color: 'var(--accent)', background: 'var(--surface-2)', padding: '0.2rem 0.4rem', borderRadius: '4px', border: '1px solid var(--line)' }}>trade.coincashy.io</code>.
                 </p>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: '1rem', marginBottom: '2rem' }}>
+                  <div style={{ padding: '1.25rem', borderRadius: '12px', background: 'var(--surface)', border: '1px solid var(--line)' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '0.5rem' }}>
+                      <span style={{ padding: '2px 8px', borderRadius: '99px', background: 'rgba(16, 185, 129, 0.15)', color: 'var(--jade)', fontSize: '0.72rem', fontWeight: 700 }}>LIVE IN PRODUCTION</span>
+                    </div>
+                    <div style={{ fontWeight: 600, color: 'var(--fg)', fontSize: '0.95rem', marginBottom: '0.25rem' }}>Hosted On-Ramp &amp; Payment Links</div>
+                    <p style={{ margin: 0, fontSize: '0.84rem', color: 'var(--fg-dim)', lineHeight: 1.45 }}>JWT authentication, guest profile provisioning, webhook events, and hosted fiat-to-crypto checkout links.</p>
+                  </div>
+                  <div style={{ padding: '1.25rem', borderRadius: '12px', background: 'var(--surface)', border: '1px solid var(--line)' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '0.5rem' }}>
+                      <span style={{ padding: '2px 8px', borderRadius: '99px', background: 'rgba(234, 179, 8, 0.15)', color: '#eab308', fontSize: '0.72rem', fontWeight: 700 }}>PARTNER PILOT / SANDBOX</span>
+                    </div>
+                    <div style={{ fontWeight: 600, color: 'var(--fg)', fontSize: '0.95rem', marginBottom: '0.25rem' }}>Direct Programmatic Payouts</div>
+                    <p style={{ margin: 0, fontSize: '0.84rem', color: 'var(--fg-dim)', lineHeight: 1.45 }}>Automated wallet payouts, institutional RFQ quotes, and custom multi-currency ledger routing.</p>
+                  </div>
+                </div>
                 <div style={{ background: 'var(--surface-2)', border: '1px solid var(--line)', borderRadius: '16px', padding: '2rem', marginBottom: '1.5rem', textAlign: 'center' }}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src="https://mermaid.ink/svg/pako:eNptk91q4zAQhV9l0EVJwbHvDW5JdkMoLKRLyvZmoUylcTxrWfJKcrOm9N1XihOaNvWVrfPN0fz5VUirSJTC09-BjKTvjDuH3W8D8enRBZbcowmwBPTwzbKR6JsRnlG2ZNQlt0jcxkSPHhb3d5fA4xmwZ7WjcMmsE7MeyEdtUpfzm5tFCfeb7QMUf_ah2JEhh4Fghj0_tTRmkF48SUchg8GTM9jR9RS-mMf4ZQlLQkcOgo3Jf2GMQ2iKaBB957t0_XzPoZn3zDCjDll_sjswh7vAkbf6hdQXrj2OHZngiwPuCzsVP4vn2qLKwNjANUsMbM2nG46xP9i0UEFwqCiXpynkbIuphcWhotsjfaeqXpd5nr8nsy5BkeaXmOmZ5aSvo_5Ygu3JnIsZaLsDNidooqID1yOwihSHEWY1u9iDYxxYo8frD7Y9yxYQOgqNVYBGJfZjkef153t6bqxtnwanIXqThzQDCA2lHg_6uC7a2j6mnEJQx9mbEQJ3NIlnI1iv0gR8f-z6bb2sJKur-ldF_0LaEf2UPh-q7VW9qVY_3w1O2cnBuVSaDxgGP-lx9UUmOnJxKZQoX0VMr0v_kULXirdMxE2y29FIUQY3UCaGXsWlWikO1omyRu3p7T8xHCaK" alt="System architecture flow" style={{ maxWidth: '100%', height: 'auto', borderRadius: '8px' }} />

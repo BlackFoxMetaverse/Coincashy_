@@ -227,7 +227,7 @@ export default function SonarSection() {
         <p className="eyebrow">Get started</p>
         <h2 className="h2">Tell us how your money needs to move.</h2>
         <p className="lede">
-          Every ring is a payment settling somewhere on the network. Tap anywhere to send one, then tell us about your markets, currencies, volumes and settlement needs.
+          Whether you need bespoke OTC execution, automated SEPA Instant clearing, or dedicated crypto payment links for your enterprise, our team is ready to assist. Request a quote or discuss your technical integration.
         </p>
         <div className="cta-row">
           <Link className="btn btn-solid" href="/contact">

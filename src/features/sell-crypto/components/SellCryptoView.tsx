@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import CryptoExchangeWidget from '@/features/crypto-exchange/components/CryptoExchangeWidget';
 
@@ -88,12 +88,38 @@ export default function SellCryptoView() {
   // Interactive Live Simulator state
   const [simAsset, setSimAsset] = useState<'BTC' | 'ETH' | 'USDT'>('ETH');
   const [simAmount, setSimAmount] = useState<string>('1.5');
+  const [assetPrices, setAssetPrices] = useState({
+    BTC: 84297.67,
+    ETH: 2640.35,
+    USDT: 0.92,
+  });
 
-  const assetPrices = {
-    BTC: 64280,
-    ETH: 3490.5,
-    USDT: 0.92
-  };
+  useEffect(() => {
+    let isMounted = true;
+    async function loadPrices() {
+      try {
+        const res = await fetch('/api/prices');
+        if (res.ok) {
+          const json = await res.json();
+          if (json.success && json.data && isMounted) {
+            setAssetPrices({
+              BTC: json.data.BTC?.price || 84297.67,
+              ETH: json.data.ETH?.price || 2640.35,
+              USDT: 0.92,
+            });
+          }
+        }
+      } catch (err) {
+        console.warn('SellCryptoView failed to fetch prices:', err);
+      }
+    }
+    loadPrices();
+    const interval = setInterval(loadPrices, 60000);
+    return () => {
+      isMounted = false;
+      clearInterval(interval);
+    };
+  }, []);
 
   const parsedAmt = parseFloat(String(simAmount).replace(/,/g, '')) || 0;
   const calculatedPayout = (parsedAmt * assetPrices[simAsset]).toLocaleString('en-US', {

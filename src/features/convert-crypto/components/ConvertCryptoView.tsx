@@ -1,27 +1,112 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import CryptoExchangeWidget from '@/features/crypto-exchange/components/CryptoExchangeWidget';
+import { selectExchangePair } from '@/features/crypto-exchange/hooks/useOrderWidget';
+import { Currency } from '@/features/crypto-exchange/domain/OrderCalculator';
 
-interface SwapPair {
+interface SwapPairConfig {
   from: string;
   to: string;
   fromName: string;
   toName: string;
-  rate: string;
-  change: string;
   badge: string;
+  computeRate: (p: Record<string, { price: number; change: string }>) => { rate: string; change: string };
 }
 
-const POPULAR_PAIRS: SwapPair[] = [
-  { from: 'BTC', to: 'USDT', fromName: 'Bitcoin', toName: 'Tether USD', rate: '1 BTC ≈ 64,280 USDT', change: '+2.8%', badge: 'High Volume' },
-  { from: 'ETH', to: 'USDC', fromName: 'Ethereum', toName: 'USD Coin', rate: '1 ETH ≈ 3,490.50 USDC', change: '+3.4%', badge: 'DeFi Standard' },
-  { from: 'SOL', to: 'USDC', fromName: 'Solana', toName: 'USD Coin', rate: '1 SOL ≈ 152.40 USDC', change: '+5.1%', badge: 'Fastest' },
-  { from: 'USDT', to: 'EURC', fromName: 'Tether USD', toName: 'Euro Coin', rate: '1 USDT ≈ 0.92 EURC', change: '+0.1%', badge: 'FX Swap' },
-  { from: 'BTC', to: 'ETH', fromName: 'Bitcoin', toName: 'Ethereum', rate: '1 BTC ≈ 18.41 ETH', change: '-0.4%', badge: 'Core Pair' },
-  { from: 'USDC', to: 'USDT', fromName: 'USD Coin', toName: 'Tether USD', rate: '1 USDC ≈ 1.0001 USDT', change: '0.0%', badge: '1:1 Peg' }
+const SWAP_PAIRS_CONFIG: SwapPairConfig[] = [
+  {
+    from: 'BTC',
+    to: 'USDT',
+    fromName: 'Bitcoin',
+    toName: 'Tether USD',
+    badge: 'High Volume',
+    computeRate: (p) => {
+      const btc = p.BTC?.price || 84297;
+      const usdt = p.USDT?.price || 1;
+      return {
+        rate: `1 BTC ≈ ${Math.round(btc / usdt).toLocaleString('en-US')} USDT`,
+        change: p.BTC?.change || '+2.8%',
+      };
+    },
+  },
+  {
+    from: 'ETH',
+    to: 'USDC',
+    fromName: 'Ethereum',
+    toName: 'USD Coin',
+    badge: 'DeFi Standard',
+    computeRate: (p) => {
+      const eth = p.ETH?.price || 2640.35;
+      const usdc = p.USDC?.price || 1;
+      return {
+        rate: `1 ETH ≈ ${(eth / usdc).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} USDC`,
+        change: p.ETH?.change || '+3.4%',
+      };
+    },
+  },
+  {
+    from: 'SOL',
+    to: 'USDC',
+    fromName: 'Solana',
+    toName: 'USD Coin',
+    badge: 'Fastest',
+    computeRate: (p) => {
+      const sol = p.SOL?.price || 154.2;
+      const usdc = p.USDC?.price || 1;
+      return {
+        rate: `1 SOL ≈ ${(sol / usdc).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} USDC`,
+        change: p.SOL?.change || '+5.1%',
+      };
+    },
+  },
+  {
+    from: 'USDT',
+    to: 'EURC',
+    fromName: 'Tether USD',
+    toName: 'Euro Coin',
+    badge: 'FX Swap',
+    computeRate: () => ({
+      rate: '1 USDT ≈ 0.92 EURC',
+      change: '+0.1%',
+    }),
+  },
+  {
+    from: 'BTC',
+    to: 'ETH',
+    fromName: 'Bitcoin',
+    toName: 'Ethereum',
+    badge: 'Core Pair',
+    computeRate: (p) => {
+      const btc = p.BTC?.price || 84297;
+      const eth = p.ETH?.price || 2640.35;
+      return {
+        rate: `1 BTC ≈ ${(btc / eth).toFixed(4)} ETH`,
+        change: p.BTC?.change || '-0.4%',
+      };
+    },
+  },
+  {
+    from: 'USDC',
+    to: 'USDT',
+    fromName: 'USD Coin',
+    toName: 'Tether USD',
+    badge: '1:1 Peg',
+    computeRate: () => ({
+      rate: '1 USDC ≈ 1.0000 USDT',
+      change: '0.0%',
+    }),
+  },
 ];
+
+const INITIAL_PRICES: Record<string, { price: number; change: string }> = {
+  BTC: { price: 84297.67, change: '+1.8%' },
+  ETH: { price: 2640.35, change: '+2.4%' },
+  SOL: { price: 154.2, change: '+4.2%' },
+  USDT: { price: 1.0, change: '0.0%' },
+  USDC: { price: 1.0, change: '0.0%' },
+};
 
 const FAQS = [
   {
@@ -48,6 +133,38 @@ const FAQS = [
 
 export default function ConvertCryptoView() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [prices, setPrices] = useState(INITIAL_PRICES);
+
+  useEffect(() => {
+    let isMounted = true;
+    async function fetchPrices() {
+      try {
+        const res = await fetch('/api/prices');
+        if (res.ok) {
+          const json = await res.json();
+          if (json.success && json.data && isMounted) {
+            setPrices((prev) => ({
+              ...prev,
+              ...json.data,
+            }));
+          }
+        }
+      } catch (err) {
+        console.warn('ConvertCryptoView failed to fetch /api/prices:', err);
+      }
+    }
+    fetchPrices();
+    const interval = setInterval(fetchPrices, 60000);
+    return () => {
+      isMounted = false;
+      clearInterval(interval);
+    };
+  }, []);
+
+  const popularPairs = SWAP_PAIRS_CONFIG.map((cfg) => ({
+    ...cfg,
+    ...cfg.computeRate(prices),
+  }));
 
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index);
@@ -113,7 +230,7 @@ export default function ConvertCryptoView() {
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '16px' }}>
-            {POPULAR_PAIRS.map((pair, idx) => (
+            {popularPairs.map((pair, idx) => (
               <div
                 key={idx}
                 style={{
@@ -145,14 +262,15 @@ export default function ConvertCryptoView() {
                   </span>
                 </div>
 
-                <a
-                  href="#widget"
+                <button
+                  type="button"
+                  onClick={() => selectExchangePair(pair.from as Currency, pair.to as Currency, 'convert')}
                   className="btn btn-line btn-sm"
-                  style={{ width: '100%', justifyContent: 'center', marginTop: '4px' }}
+                  style={{ width: '100%', justifyContent: 'center', marginTop: '4px', cursor: 'pointer' }}
                 >
                   Convert {pair.from} to {pair.to}
                   <svg className="ic" aria-hidden="true"><use href="#i-arrow-right" /></svg>
-                </a>
+                </button>
               </div>
             ))}
           </div>

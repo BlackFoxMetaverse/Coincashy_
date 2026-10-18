@@ -1,14 +1,32 @@
 "use client";
 import { useState, useEffect } from 'react';
-import { OrderCalculator, Currency, FiatCurrency, FIAT_RATES, CRYPTO_RATES } from '../domain/OrderCalculator';
+import { OrderCalculator, Currency, CryptoCurrency, FiatCurrency, FIAT_RATES, CRYPTO_RATES } from '../domain/OrderCalculator';
 
 export type OrderMode = 'buy' | 'sell' | 'convert';
 export type PaymentMethod = 'Card' | 'Apple Pay' | 'Google Pay' | 'Bank transfer';
 
-export function useOrderWidget(defaultMode: OrderMode = 'buy') {
+export function selectExchangePair(from: Currency, to: Currency, mode: OrderMode = 'convert') {
+  if (typeof window !== 'undefined') {
+    window.dispatchEvent(
+      new CustomEvent('coincashy:select-pair', {
+        detail: { from, to, mode },
+      })
+    );
+    const widgetEl = document.getElementById('widget') || document.getElementById('exchange-widget');
+    if (widgetEl) {
+      widgetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }
+}
+
+export function useOrderWidget(
+  defaultMode: OrderMode = 'buy',
+  initialFrom?: Currency,
+  initialTo?: Currency
+) {
   const [mode, setMode] = useState<OrderMode>(defaultMode);
-  const [from, setFrom] = useState<Currency>(defaultMode === 'sell' ? 'BTC' : 'USD');
-  const [to, setTo] = useState<Currency>(defaultMode === 'sell' ? 'EUR' : defaultMode === 'convert' ? 'USDT' : 'BTC');
+  const [from, setFrom] = useState<Currency>(initialFrom || (defaultMode === 'sell' ? 'BTC' : 'USD'));
+  const [to, setTo] = useState<Currency>(initialTo || (defaultMode === 'sell' ? 'EUR' : defaultMode === 'convert' ? 'USDT' : 'BTC'));
   const [fromInput, setFromInput] = useState<string>(
     defaultMode === 'sell' ? '0.5' : defaultMode === 'convert' ? '0.25' : '1000.00'
   );
@@ -18,6 +36,56 @@ export function useOrderWidget(defaultMode: OrderMode = 'buy') {
   const [isReview, setIsReview] = useState(false);
   const [timeLeft, setTimeLeft] = useState(30);
   const [jitter, setJitter] = useState(1);
+  const [, setPriceRevision] = useState(0);
+
+  // Fetch live oracle prices on mount and refresh periodically
+  useEffect(() => {
+    let isMounted = true;
+    async function loadLivePrices() {
+      try {
+        const res = await fetch('/api/prices');
+        if (res.ok) {
+          const json = await res.json();
+          if (json.success && json.data && isMounted) {
+            const updates: Partial<Record<CryptoCurrency, number>> = {};
+            (['BTC', 'ETH', 'SOL', 'USDT', 'USDC'] as const).forEach((sym) => {
+              if (json.data[sym]?.price) {
+                updates[sym] = json.data[sym].price;
+              }
+            });
+            OrderCalculator.updateCryptoRates(updates);
+            setPriceRevision((prev) => prev + 1);
+          }
+        }
+      } catch (err) {
+        console.warn('Could not fetch live oracle prices for order widget:', err);
+      }
+    }
+
+    loadLivePrices();
+    const interval = setInterval(loadLivePrices, 60000);
+    return () => {
+      isMounted = false;
+      clearInterval(interval);
+    };
+  }, []);
+
+  // Listen for programmatic pair selection (e.g. from Trending Pairs matrix)
+  useEffect(() => {
+    const handleCustomPair = (e: Event) => {
+      const detail = (e as CustomEvent<{ from: Currency; to: Currency; mode?: OrderMode }>).detail;
+      if (detail?.from && detail?.to) {
+        if (detail.mode) setMode(detail.mode);
+        else setMode('convert');
+        setFrom(detail.from);
+        setTo(detail.to);
+        setIsReview(false);
+        setSide('from');
+      }
+    };
+    window.addEventListener('coincashy:select-pair', handleCustomPair);
+    return () => window.removeEventListener('coincashy:select-pair', handleCustomPair);
+  }, []);
 
   const parseNum = (val: string) => {
     const cleaned = val.replace(/,/g, '').replace(/[^0-9.]/g, '');
@@ -116,14 +184,14 @@ export function useOrderWidget(defaultMode: OrderMode = 'buy') {
 
   const rateRate = OrderCalculator.getUsdValue(from, jitter) / OrderCalculator.getUsdValue(to, jitter);
   const rateText = mode === 'convert'
-    ? `1 ${from} ≈ ${Number(rateRate).toLocaleString('en-US', { minimumFractionDigits: rateRate < 1 ? 6 : 2, maximumFractionDigits: rateRate < 1 ? 6 : 2 })} ${to}`
+    ? `1 ${from} ≈ ${Number(rateRate).toLocaleString('en-US', { minimumFractionDigits: rateRate < 1 ? 4 : 2, maximumFractionDigits: rateRate < 1 ? 4 : 2 })} ${to}`
     : `1 ${mode === 'buy' ? to : from} ≈ ${FIAT_RATES[(mode === 'buy' ? from : to) as FiatCurrency].sym}${OrderCalculator.formatValue((mode === 'buy' ? from : to) as Currency, OrderCalculator.getUsdValue(mode === 'buy' ? to : from, jitter) / OrderCalculator.getUsdValue(mode === 'buy' ? from : to, jitter))}`;
 
   return {
     mode, from, to, fromAmt, toAmt, method, isReview, timeLeft, rateText,
     setFrom, setTo, setFromAmt: handleSetFromAmt, setToAmt: handleSetToAmt, setSide, setMethod, setIsReview,
     handleModeChange, handleSwap,
-    fromOptions: (mode === 'buy' ? Object.keys(FIAT_RATES) : mode === 'sell' ? Object.keys(CRYPTO_RATES) : Object.keys(CRYPTO_RATES)) as Currency[],
+    fromOptions: (mode === 'buy' ? Object.keys(FIAT_RATES) : Object.keys(CRYPTO_RATES)) as Currency[],
     toOptions: (mode === 'sell' ? Object.keys(FIAT_RATES) : Object.keys(CRYPTO_RATES)) as Currency[]
   };
 }

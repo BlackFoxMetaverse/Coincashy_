@@ -23,11 +23,11 @@ export default function HomeView() {
           </div>
         </div>
         <div className="hero-proof" aria-label="Trusted by clients and partners">
-          <span className="hero-proof-label">TRUSTED BY CLIENTS AND PARTNERS</span>
+          <span className="hero-proof-label">TRUSTED INFRASTRUCTURE, LIQUIDITY &amp; COMPLIANCE PARTNERS</span>
           <div className="marquee">
             <div className="marquee-track" style={{ '--dur': '40s' } as React.CSSProperties}>
               <div className="marquee-group">
-              <span style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--fg-faint)' } as React.CSSProperties}>200+</span>
+              <span style={{ fontSize: '0.85rem', fontWeight: 650, color: 'var(--fg-dim)', whiteSpace: 'nowrap', padding: '4px 10px', borderRadius: '99px', background: 'var(--surface-2)', border: '1px solid var(--line)' } as React.CSSProperties}>200+ Trading &amp; Settlement Pairs</span>
               <Image src="/media/partners/wintermute.png" alt="Wintermute" className="partner-logo" style={{ height: 26, width: 'auto' }}  height={26} width={100} />
               <Image src="/media/partners/sumsub.png" alt="Sumsub" className="partner-logo" style={{ height: 26, width: 'auto' }}  height={26} width={100} />
               <Image src="/media/partners/bcb-group.png" alt="BCB Group" className="partner-logo" style={{ height: 26, width: 'auto' }}  height={26} width={100} />
@@ -41,7 +41,7 @@ export default function HomeView() {
               <Image src="/media/partners/utila.png" alt="Utila" className="partner-logo" style={{ height: 26, width: 'auto' }}  height={26} width={100} />
               </div>
               <div className="marquee-group" aria-hidden="true">
-              <span style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--fg-faint)' } as React.CSSProperties}>200+</span>
+              <span style={{ fontSize: '0.85rem', fontWeight: 650, color: 'var(--fg-dim)', whiteSpace: 'nowrap', padding: '4px 10px', borderRadius: '99px', background: 'var(--surface-2)', border: '1px solid var(--line)' } as React.CSSProperties}>200+ Trading &amp; Settlement Pairs</span>
               <Image src="/media/partners/wintermute.png" alt="Wintermute" className="partner-logo" style={{ height: 26, width: 'auto' }}  height={26} width={100} />
               <Image src="/media/partners/sumsub.png" alt="Sumsub" className="partner-logo" style={{ height: 26, width: 'auto' }}  height={26} width={100} />
               <Image src="/media/partners/bcb-group.png" alt="BCB Group" className="partner-logo" style={{ height: 26, width: 'auto' }}  height={26} width={100} />

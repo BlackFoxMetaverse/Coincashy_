@@ -6,6 +6,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     '',
     '/personal',
+    '/buy-crypto',
+    '/sell-crypto',
+    '/convert-crypto',
     '/business',
     '/otc',
     '/processing',

@@ -347,7 +347,7 @@ export default function PersonalView({ standalone = false }: { standalone?: bool
       <div className="wrap sonar-inner">
         <p className="eyebrow">Get started</p>
         <h2 className="h2">Crypto that fits your life.</h2>
-        <p className="lede">Choose your asset and preferred payment method to begin. Tap anywhere to send a ping.</p>
+        <p className="lede">Choose your asset and preferred payment method to begin. Get started in minutes with secure on-ramps and transparent pricing.</p>
         <div className="cta-row"><a className="btn btn-solid" href="#exchange-widget">Launch Exchange Terminal<svg className="ic" aria-hidden="true"><use href="#i-arrow-right" /></svg></a><Link className="btn btn-line" href="/cards">Explore Cards<svg className="ic" aria-hidden="true"><use href="#i-arrow-right" /></svg></Link></div>
       </div>
     </section>

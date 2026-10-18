@@ -1,5 +1,5 @@
 export type FiatCurrency = 'USD' | 'EUR' | 'GBP';
-export type CryptoCurrency = 'BTC' | 'ETH' | 'USDT' | 'USDC';
+export type CryptoCurrency = 'BTC' | 'ETH' | 'SOL' | 'USDT' | 'USDC';
 export type Currency = FiatCurrency | CryptoCurrency;
 
 export const FIAT_RATES: Record<FiatCurrency, { sym: string, usd: number }> = {
@@ -11,11 +11,20 @@ export const FIAT_RATES: Record<FiatCurrency, { sym: string, usd: number }> = {
 export const CRYPTO_RATES: Record<CryptoCurrency, { glyph: string, usd: number, dp: number, cls: string }> = {
   BTC: { glyph: '₿', usd: 84297.67, dp: 7, cls: 'btc' },
   ETH: { glyph: 'Ξ', usd: 2640.35, dp: 6, cls: 'eth' },
+  SOL: { glyph: '◎', usd: 154.20, dp: 4, cls: 'sol' },
   USDT: { glyph: '₮', usd: 1, dp: 2, cls: 'usdt' },
   USDC: { glyph: '$', usd: 1, dp: 2, cls: 'usdc' }
 };
 
 export class OrderCalculator {
+  static updateCryptoRates(rates: Partial<Record<CryptoCurrency, number>>) {
+    (Object.keys(rates) as CryptoCurrency[]).forEach((sym) => {
+      if (CRYPTO_RATES[sym] && typeof rates[sym] === 'number' && rates[sym]! > 0) {
+        CRYPTO_RATES[sym].usd = rates[sym]!;
+      }
+    });
+  }
+
   static isFiat(c: Currency): c is FiatCurrency {
     return Object.prototype.hasOwnProperty.call(FIAT_RATES, c);
   }

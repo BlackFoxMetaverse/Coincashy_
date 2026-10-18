@@ -117,7 +117,7 @@ export default function Nav() {
                   <Link className="menu-item" href="/ramp"><span className="menu-ic"><svg className="ic" aria-hidden="true"><use href="#i-arrow-left-right" /></svg></span><span><b>On/off-ramp</b></span></Link>
                   <Link className="menu-item" href="/vibans"><span className="menu-ic"><svg className="ic" aria-hidden="true"><use href="#i-landmark" /></svg></span><span><b>vIBANs</b></span></Link>
                   <Link className="menu-item" href="/wallets"><span className="menu-ic"><svg className="ic" aria-hidden="true"><use href="#i-wallet" /></svg></span><span><b>Wallet as a Service</b></span></Link>
-                  <Link className="menu-item" href="/cards"><span className="menu-ic"><svg className="ic" aria-hidden="true"><use href="#i-credit-card" /></svg></span><span><b>Corporate cards</b></span></Link>
+                  <Link className="menu-item" href="/cards#corporate"><span className="menu-ic"><svg className="ic" aria-hidden="true"><use href="#i-credit-card" /></svg></span><span><b>Corporate cards</b></span></Link>
                   <Link className="menu-item" href="/settlement"><span className="menu-ic"><svg className="ic" aria-hidden="true"><use href="#i-globe" /></svg></span><span><b>Stablecoin settlement</b></span></Link>
                   <Link className="menu-item" href="/developers"><span className="menu-ic"><svg className="ic" aria-hidden="true"><use href="#i-code-xml" /></svg></span><span><b>APIs &amp; webhooks</b></span></Link>
                 </div>
@@ -167,8 +167,8 @@ export default function Nav() {
                   </div>
                   <div className="menu-col">
                     <h4>Careers</h4>
-                    <Link className="menu-link" href="/careers">Open Roles</Link>
-                    <Link className="menu-link" href="/contact">Join our team</Link>
+                    <Link className="menu-link" href="/careers#open-roles">Open Roles</Link>
+                    <Link className="menu-link" href="/careers#why-join">Join our team</Link>
                   </div>
                   <div className="menu-col">
                     <h4>Resources</h4>
@@ -213,7 +213,7 @@ export default function Nav() {
               <Link href="/ramp">On/off-ramp</Link>
               <Link href="/vibans">vIBANs</Link>
               <Link href="/wallets">Wallet as a Service</Link>
-              <Link href="/cards">Corporate cards</Link>
+              <Link href="/cards#corporate">Corporate cards</Link>
               <Link href="/settlement">Stablecoin settlement</Link>
               <Link href="/developers">APIs &amp; webhooks</Link>
             </div>
